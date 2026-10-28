@@ -1,0 +1,25 @@
+{
+  "$comment": "Handbook chapters. Requirements attach to a chapter through their 'topic'. 'module' names an interactive module rendered by src/views/handbook.ts.",
+  "topics": [
+    { "id": "organization", "title": "Manuscript organisation", "intro": "ARO's sections, in order, and what each one must do.", "module": "structure" },
+    { "id": "length", "title": "Paper length and article type", "intro": "Words and figures trade off against each other; tables are capped at 12.", "module": "length" },
+    { "id": "files", "title": "Accepted file formats", "intro": "Word for the manuscript; supplementary files separately." },
+    { "id": "template", "title": "Template usage", "intro": "Write inside the Stage-One template and keep its first-page fields." },
+    { "id": "typography", "title": "Typography and spacing", "intro": "A plain review copy: Times New Roman 12 pt, double spaced, one column, 20 mm margins." },
+    { "id": "abstract", "title": "Abstract", "intro": "150–250 words, self-contained, no citations, five moves.", "module": "abstract" },
+    { "id": "originality", "title": "Originality and contribution", "intro": "New, complete work that is not under review anywhere else." },
+    { "id": "equations", "title": "Equations, notation and units", "intro": "Numbered equations, defined symbols, SI units.", "module": "equations" },
+    { "id": "figures", "title": "Figures, tables and captions", "intro": "Resolution, placement, numbering and caption style.", "module": "figures" },
+    { "id": "keywords", "title": "Keywords (index terms)", "intro": "About five terms, alphabetical, comma-separated." },
+    { "id": "authors", "title": "Author information", "intro": "Institutional email, ORCID, Google Scholar, biography, registration and metadata." },
+    { "id": "references", "title": "References and Harvard style", "intro": "Author-date citations and an alphabetical reference list in ARO's Harvard style.", "module": "harvard" },
+    { "id": "citations", "title": "Citation restrictions", "intro": "What you may not cite." },
+    { "id": "writing", "title": "Academic writing standards", "intro": "Clear English and the template's style rules." },
+    { "id": "similarity", "title": "Plagiarism and similarity", "intro": "The 15% line and what counts towards it." },
+    { "id": "ethics", "title": "Publication ethics", "intro": "COPE, authorship, conflicts of interest, human participants." },
+    { "id": "ai", "title": "Artificial intelligence policy", "intro": "What ARO bans, what it encourages, and the open question between them.", "module": "ai" },
+    { "id": "blind", "title": "Double-blind review", "intro": "How review works and how to keep your manuscript anonymous.", "module": "anonymization" },
+    { "id": "revisions", "title": "Revisions, supplementary files and production", "intro": "During review, after the decision, and after acceptance.", "module": "response" },
+    { "id": "journal", "title": "Journal facts", "intro": "Scope, fees, licence, issues, indexing and timing." }
+  ]
+}

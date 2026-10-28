@@ -1,0 +1,11 @@
+{
+  "name": "aro-publication-navigator",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "An interactive A–Z companion for publishing Kurdish tokenizer research in ARO, The Scientific Journal of Koya University.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate:data": "node scripts/validate-data.mjs"
+  }
+}

@@ -1,0 +1,48 @@
+/* Fonts for the Brilliant design system.
+ *
+ * Brilliant ships three licensed Contrast Foundry faces — CoFo Brilliant (UI/body sans),
+ * CoFo Robert (display serif: a sharp, contemporary Clarendon, named after Robert Besley;
+ * weight 500 + italic) and CoFo Semi Mono (interactive readouts) — plus open-source Source
+ * Code Pro and KaTeX. The CoFo files are commercial and NOT included. Every stack in
+ * tokens.css puts them first, so with a licence you only add their @font-face rules.
+ *
+ * Bundled open substitutes (SIL OFL 1.1, licences in tokens/fonts/), chosen by rendering
+ * candidates against Brilliant's own headline art:
+ *   CoFo Robert     -> "Besley Display" = Besley (a revival of Robert Besley's original Clarendon)
+ *                      instanced at wght 600 so it matches CoFo Robert Medium's colour; it is
+ *                      registered at weight 500 because that is the weight the tokens ask for.
+ *                      Pair with letter-spacing ≈ −0.02em (already in the display tokens).
+ *   CoFo Brilliant  -> Inter (variable; metrics within ~2% of CoFo Brilliant)
+ *   CoFo Semi Mono  -> DM Mono
+ *   Source Code Pro -> Source Code Pro (exact)
+ *   KaTeX_Main      -> KaTeX (exact; load katex.min.css when you render maths)
+ *
+ * Paths are relative to this file. For a single-file page (artifact, email-able HTML) where
+ * tokens/fonts/ isn't available, the Google Fonts import at the bottom provides the same
+ * families (Besley only at 600, so a weight-500 request resolves to 600 as intended).
+ */
+/* Fallback for pages that can't reach tokens/fonts/ (must stay the first rule). */
+@import url("https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,600;1,600&family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&family=DM+Mono:wght@400;500&family=Source+Code+Pro:wght@400;500;700&display=swap");
+
+@font-face { font-family: "Besley Display"; src: url("fonts/Besley-600.woff") format("woff"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Besley Display"; src: url("fonts/Besley-Italic-600.woff") format("woff"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter-Variable.woff") format("woff"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter-Italic-Variable.woff") format("woff"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "DM Mono"; src: url("fonts/DMMono-Regular.woff") format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "DM Mono"; src: url("fonts/DMMono-Medium.woff") format("woff"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Source Code Pro"; src: url("fonts/SourceCodePro-Variable.woff") format("woff"); font-weight: 200 900; font-display: swap; }
+
+
+/* If licensed, add the real faces (they take precedence through the stacks):
+@font-face { font-family: "CoFo Brilliant"; src: url(cofo_brilliant_regular.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "CoFo Brilliant"; src: url(cofo_brilliant_medium.woff2)  format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "CoFo Brilliant"; src: url(cofo_brilliant_bold.woff2)    format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "CoFo Robert";    src: url(cofo_robert_medium.woff2)        format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "CoFo Robert";    src: url(cofo_robert_medium_italic.woff2) format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "CoFo Semi Mono"; src: url(cofo_semi_mono_regular.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+*/
+
+/* Display emphasis: Brilliant sets the key words of campaign headlines in the display italic
+   ("Your personal tutor for <em>math</em> and <em>coding</em>"). */
+.ts-display-lg em, .ts-display-xl em, .ts-display-2xl em, .ts-display-3xl em, .ts-display-4xl em,
+.ts-display-5xl em, .ts-display-6xl em, .display-hero em, .display-section em { font-style: italic; }

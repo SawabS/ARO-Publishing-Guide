@@ -1,0 +1,332 @@
+{
+  "$comment": "The ten publication stages. Lessons carry a tag: official (restates ARO sources), general (standard scholarly practice), project (advice for this Kurdish tokenizer paper). Checklist items are the self-declared checks used by the Readiness dashboard; 'auto' links an item to a browser-side .docx check; 'dependsOn' lists items that should be done first; 'conflict' marks an item that needs an answer from the editorial office.",
+  "stages": [
+    {
+      "id": "s01", "num": 1, "title": "Understand ARO", "hue": "blue",
+      "short": "Scope, article types, fees, indexing and how decisions are made.",
+      "accomplishes": "You know whether ARO fits the paper, what it costs (nothing), what it expects and who decides.",
+      "prerequisites": [],
+      "actions": [
+        "Read the Guide to Authors once from top to bottom.",
+        "Read the Kurdish NLP paper in ARO's current issue to see length, structure and references.",
+        "Note the two questions you will put to the editorial office (anonymisation and discipline box)."
+      ],
+      "requirements": ["r-scope", "r-article-types", "r-fees", "r-indexing", "r-review-process", "r-license"],
+      "resources": ["res-guide", "res-faq", "res-example", "res-contact"],
+      "lessons": [
+        { "id": "l01a", "title": "What ARO publishes", "tag": "official", "body": [
+          "ARO is Koya University's journal for the sciences and engineering, launched in 2013. It publishes original research articles, review articles and letters, in English, and takes interdisciplinary work.",
+          "It is diamond open access: no submission fee, no processing fee, free to read. Articles carry the CC BY-NC-SA 4.0 licence and authors keep copyright.",
+          "It publishes two issues a year. Accepted papers go online ahead of print, then appear in the next issue."
+        ] },
+        { "id": "l01b", "title": "Does a Kurdish tokenizer paper fit?", "tag": "project", "body": [
+          "Yes in practice. ARO's current issue (Vol. 14 No. 2, 2026) includes a Sorani Kurdish stance-detection study, so Kurdish NLP has been reviewed and published there.",
+          "The catch is the template's discipline tick box: Computer Science lists only Software Engineering, and undeclared disciplines are not considered. Ask the office which box to tick before you submit."
+        ] },
+        { "id": "l01c", "title": "Who decides", "tag": "official", "body": [
+          "The editorial office checks completeness, scope and similarity. At least two subject experts review the paper without seeing your name. An Associate Editor recommends acceptance, revision or rejection, and the Editor-in-Chief decides.",
+          "The FAQ estimates 4–6 weeks for the initial review and 8–12 weeks to a decision. One 2026 Kurdish NLP paper took about 24 weeks from receipt to acceptance."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-read-guide", "label": "Read the Guide to Authors in full" },
+        { "id": "k-scope", "label": "Confirmed the paper fits ARO's scope and chose Research Article" },
+        { "id": "k-read-example", "label": "Read at least one recent ARO computer science paper" }
+      ],
+      "next": "Check that the research itself is complete enough to submit."
+    },
+    {
+      "id": "s02", "num": 2, "title": "Prepare your research", "hue": "green",
+      "short": "Finished experiments, a clear contribution, clean data provenance.",
+      "accomplishes": "The study is complete, original and reproducible before you start writing.",
+      "prerequisites": ["s01"],
+      "actions": [
+        "Finish every planned tokenizer configuration (algorithm × vocabulary size × data mix) and its evaluation.",
+        "Write down the contribution in three sentences.",
+        "Record the source and licence of every corpus.",
+        "Decide whether any part involves human participants (evaluation, annotation)."
+      ],
+      "requirements": ["r-no-prelim", "r-original", "r-contribution", "r-ethics", "r-human-participants"],
+      "resources": ["res-pubethics", "res-ethics-policy", "res-cope"],
+      "lessons": [
+        { "id": "l02a", "title": "No preliminary results", "tag": "official", "body": [
+          "ARO's template rules out papers with only preliminary data or results and reworked versions of earlier papers. Submit after the experiment grid is finished and analysed."
+        ] },
+        { "id": "l02b", "title": "Make the contribution checkable", "tag": "general", "body": [
+          "A reviewer should be able to point at a table or figure for each claim. 'We show that Unigram gives lower fertility than BPE on Sorani at 32K' is checkable; 'We propose a better tokenizer' is not.",
+          "Use the readiness matrix in My Research to pair each claim with the evidence that supports it."
+        ] },
+        { "id": "l02c", "title": "Data provenance and licences", "tag": "project", "body": [
+          "For each Kurdish corpus, record where it came from, its size before and after cleaning, its dialect and script mix, and the terms you used it under. You will need this for Methods and for any later release of the data or tokenizers."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-experiments-done", "label": "All planned experiments run and analysed" },
+        { "id": "k-contribution", "label": "Contribution written in three sentences, each tied to evidence", "dependsOn": ["k-experiments-done"] },
+        { "id": "k-not-elsewhere", "label": "Work not published or under review elsewhere (or disclosed)" },
+        { "id": "k-data-licences", "label": "Source and licence of every corpus recorded" },
+        { "id": "k-ethics-approval", "label": "Ethics approval obtained, or confirmed no human participants" }
+      ],
+      "next": "Plan the paper's sections against ARO's structure."
+    },
+    {
+      "id": "s03", "num": 3, "title": "Structure your paper", "hue": "purple",
+      "short": "Title, abstract, keywords, sections and references in ARO's order.",
+      "accomplishes": "A complete draft in the order ARO expects, within the length limits, written by you.",
+      "prerequisites": ["s02"],
+      "actions": [
+        "Draft the title (15 words or fewer) and five alphabetical index terms.",
+        "Draft the abstract: why, what, how, findings, significance; 150–250 words; no citations.",
+        "Write Introduction (no subheadings), Materials and Methods, Results and Discussion, Conclusions, Acknowledgment, References.",
+        "Choose your word band and count figures against it."
+      ],
+      "requirements": ["r-title", "r-abstract", "r-keywords", "r-structure", "r-length", "r-article-types", "r-harvard", "r-ref-min", "r-no-preprints", "r-ai-text", "r-english", "r-contribution", "r-style"],
+      "resources": ["res-guide", "res-example", "res-harvard", "res-zotero", "res-acl"],
+      "lessons": [
+        { "id": "l03a", "title": "ARO's section order", "tag": "official", "body": [
+          "Title, authors, abstract, index terms, Introduction, Materials and Methods, Results and Discussion, Conclusions, Appendix (optional), Acknowledgment, References.",
+          "The Introduction is concise and has no subheadings. Methods must allow replication. Conclusions state the main findings and their importance and must not repeat the abstract."
+        ] },
+        { "id": "l03b", "title": "Where related work goes", "tag": "general", "body": [
+          "ARO's list has no Related Work section. Either weave prior work into the Introduction (no subheadings allowed there) or open Materials and Methods with a short background subsection. Both are common in ARO papers."
+        ] },
+        { "id": "l03c", "title": "Write it yourself", "tag": "official", "body": [
+          "ARO does not allow text generated by AI or similar tools, and treats a violation as misconduct. Grammar checking is encouraged; the Guide's list of paraphrasers and summarisers sits awkwardly next to the ban, so do not rely on them. See the AI policy chapter in the Handbook."
+        ] },
+        { "id": "l03d", "title": "Words and figures trade off", "tag": "official", "body": [
+          "Research papers: 2,500–3,000 words allow up to 14 figures; 3,000–4,500 allow 11; 4,500–5,000 allow 9; 5,000–6,000 allow 7. More than 6,000 words is overlong. At most 12 tables. The abstract, references and appendices count; captions and table contents do not."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-title", "label": "Title has 15 words or fewer, no unexplained abbreviations", "auto": "a-title" },
+        { "id": "k-abstract", "label": "Abstract 150–250 words, self-contained, no citations", "auto": "a-abstract" },
+        { "id": "k-keywords", "label": "About five index terms in alphabetical order", "auto": "a-keywords" },
+        { "id": "k-sections", "label": "All required sections present in ARO order", "auto": "a-sections" },
+        { "id": "k-length", "label": "Word count and figure count fit one length band", "auto": "a-length" },
+        { "id": "k-own-words", "label": "All text written by the authors (no AI-generated text)" },
+        { "id": "k-refs-15", "label": "At least 15 peer-reviewed references", "auto": "a-refcount" }
+      ],
+      "next": "Move the draft into the Stage-One template."
+    },
+    {
+      "id": "s04", "num": 4, "title": "Format the manuscript", "hue": "orange",
+      "short": "Stage-One template, typography, figures, tables, equations, Harvard style.",
+      "accomplishes": "A Word file in the Stage-One template that a reviewer can read without formatting distractions.",
+      "prerequisites": ["s03"],
+      "actions": [
+        "Download the Stage-One template and paste the draft into it using its styles.",
+        "Check Times New Roman 12 pt, double spacing, letter paper and 20 mm margins.",
+        "Export figures at 300–600 dpi and place each after the paragraph that cites it.",
+        "Number equations (1), (2)… flush right; build tables with Word's table tool.",
+        "Convert every citation to Harvard author-date."
+      ],
+      "requirements": ["r-template", "r-discipline", "r-typography", "r-page-setup", "r-file-format", "r-figures-inline", "r-figures", "r-tables", "r-equations", "r-units", "r-harvard"],
+      "resources": ["res-stage-one", "res-aro-dotx", "res-harvard", "res-zotero", "res-mendeley"],
+      "lessons": [
+        { "id": "l04a", "title": "Stage One versus Stage Two", "tag": "official", "body": [
+          "Stage One is your review copy: one column, double spaced, Times New Roman 12 pt. Stage Two happens after acceptance, when ARO's production team prepares the camera-ready layout. You do not typeset the final paper."
+        ] },
+        { "id": "l04b", "title": "Two template links", "tag": "official", "body": [
+          "The Submissions checklist links to ARO_Submission.docx in Google Docs (titled 'Preparation of Stage-One Paper Submission'). The Guide to Authors links to ARO_Template.dotx on Google Drive. Both are official; the checklist one is the file you confirm you used."
+        ] },
+        { "id": "l04c", "title": "If you write in LaTeX", "tag": "project", "body": [
+          "ARO needs a Word file. Convert early (pandoc can get you most of the way), then fix equations in Word's equation editor and rebuild tables with Word's table tool. Leave a day for this."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-template", "label": "Draft is in the Stage-One template with first-page fields intact", "auto": "a-template" },
+        { "id": "k-discipline", "label": "Article type and discipline ticked on the first page", "conflict": "c-discipline" },
+        { "id": "k-typography", "label": "Times New Roman 12 pt, double spaced, one column", "auto": "a-typography" },
+        { "id": "k-page", "label": "Letter paper with 20 mm margins", "auto": "a-page" },
+        { "id": "k-figures", "label": "Figures at 300 dpi or more, placed in the text, captioned 'Fig. N.'", "auto": "a-figures" },
+        { "id": "k-tables", "label": "Tables built in Word, titled, units in headings, no vertical rules (12 maximum)", "auto": "a-tables" },
+        { "id": "k-equations", "label": "Equations numbered (1), (2)… and symbols defined" },
+        { "id": "k-harvard", "label": "All citations and references in ARO's Harvard style", "auto": "a-harvard" }
+      ],
+      "next": "Collect author information from every co-author."
+    },
+    {
+      "id": "s05", "num": 5, "title": "Prepare author information", "hue": "teal",
+      "short": "Institutional emails, ORCID, Google Scholar, biographies, author order.",
+      "accomplishes": "One verified table of author metadata, agreed by every co-author.",
+      "prerequisites": [],
+      "actions": [
+        "Collect each author's official university email, affiliation, ORCID iD and Google Scholar URL.",
+        "Agree the author list and order in writing.",
+        "Write a biography of up to 100 words per author.",
+        "Write the Acknowledgment: funding, compute, data providers; disclose conflicts of interest."
+      ],
+      "requirements": ["r-official-email", "r-orcid-scholar", "r-biography", "r-author-metadata", "r-authorship", "r-coi-funding"],
+      "resources": ["res-orcid", "res-scholar"],
+      "lessons": [
+        { "id": "l05a", "title": "What every author needs", "tag": "official", "body": [
+          "An official university or institute email, an active ORCID iD, an active Google Scholar profile, and a stated affiliation. These go on the template's first page and into the submission system, where affiliation, ORCID and Google Scholar URL are mandatory."
+        ] },
+        { "id": "l05b", "title": "Start this early", "tag": "general", "body": [
+          "This stage has no prerequisites on purpose: start it in week one. A co-author without a Scholar profile, or using a personal email, is the most common reason a ready manuscript sits unsubmitted."
+        ] },
+        { "id": "l05c", "title": "Team papers", "tag": "project", "body": [
+          "For a team project, record who designed the experiments, built the corpora, trained tokenizers, ran the analysis and wrote each section. It settles the author order and helps with the biography and acknowledgment."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-emails", "label": "Official institutional email for every author" },
+        { "id": "k-orcid", "label": "ORCID iD for every author" },
+        { "id": "k-scholar", "label": "Google Scholar profile URL for every author" },
+        { "id": "k-bios", "label": "Biography of up to 100 words per author, with affiliation", "conflict": "c-biography" },
+        { "id": "k-author-order", "label": "Author list and order approved in writing by all co-authors" },
+        { "id": "k-coi", "label": "Funding acknowledged and conflicts of interest disclosed" }
+      ],
+      "next": "Validate the whole package before submitting."
+    },
+    {
+      "id": "s06", "num": 6, "title": "Validate the submission", "hue": "pink",
+      "short": "Similarity, references, preprints, anonymisation, the official checklist.",
+      "accomplishes": "Every checklist item is true, and the known open questions have answers from the office.",
+      "prerequisites": ["s04", "s05"],
+      "actions": [
+        "Run the .docx check on the Readiness page.",
+        "Check similarity if your institution offers iThenticate or Turnitin; aim well below 15%.",
+        "Replace every arXiv-only reference with a peer-reviewed version, or ask the office.",
+        "Email the office about anonymisation, file format and discipline box.",
+        "Prepare an anonymised copy of the manuscript."
+      ],
+      "requirements": ["r-similarity", "r-ref-urls", "r-no-preprints", "r-double-blind", "r-abstract", "r-length", "r-ai-text", "r-ethics", "r-coi-funding", "r-compliance"],
+      "resources": ["res-checklist", "res-crossref-stq", "res-acl", "res-contact", "res-editorial-policies"],
+      "lessons": [
+        { "id": "l06a", "title": "The 15% similarity line", "tag": "official", "body": [
+          "ARO screens every submission with Crossref's similarity service. A report above 15% is declined immediately. Your own earlier writing counts: a thesis, a course report or a previous paper on the same corpus can push the number up."
+        ] },
+        { "id": "l06b", "title": "The anonymisation question", "tag": "official", "body": [
+          "The Guide and the template say to fill in author details and let the office anonymise. The checklist says submit without author names. Prepare both versions and ask. The Handbook's anonymisation module lists every place your identity can leak."
+        ] },
+        { "id": "l06c", "title": "One email to the office", "tag": "project", "body": [
+          "Ask three things at once: which file to upload (with or without author names), whether a PDF is wanted alongside the .docx, and which discipline box an NLP paper should tick. A drafted email is on the ARO Directory page."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-similarity", "label": "Similarity checked or text reviewed for reuse; expected below 15%" },
+        { "id": "k-no-preprints", "label": "No non-peer-reviewed preprints cited", "auto": "a-preprints" },
+        { "id": "k-ref-dois", "label": "DOIs or URLs added to references where available", "auto": "a-dois" },
+        { "id": "k-anon-copy", "label": "Anonymised copy prepared (names, self-citations, links, file properties)", "auto": "a-anon", "conflict": "c-anonymization" },
+        { "id": "k-office-asked", "label": "Editorial office asked about anonymisation, format and discipline", "conflict": "c-anonymization" },
+        { "id": "k-checklist-11", "label": "All eleven items of ARO's submission checklist are true", "dependsOn": ["k-template", "k-abstract", "k-emails", "k-orcid", "k-scholar", "k-bios", "k-similarity", "k-anon-copy"] }
+      ],
+      "next": "Register and submit."
+    },
+    {
+      "id": "s07", "num": 7, "title": "Submit to ARO", "hue": "papaya",
+      "short": "Register, enter metadata, upload, confirm, track.",
+      "accomplishes": "The manuscript is in ARO's system and you have a confirmation email.",
+      "prerequisites": ["s06"],
+      "actions": [
+        "Register with your official university email.",
+        "Log in and start a new submission ('Make a Submission').",
+        "Enter title, abstract, keywords, discipline and every author's affiliation, ORCID and Google Scholar URL.",
+        "Upload the manuscript file; upload supplementary files separately.",
+        "Use Comments to the Editor for disclosures (earlier versions, the anonymised copy).",
+        "Confirm the declarations, review, and submit. Keep the confirmation email."
+      ],
+      "requirements": ["r-registration", "r-metadata", "r-author-metadata", "r-file-format", "r-supplementary", "r-compliance", "r-original"],
+      "resources": ["res-register", "res-login", "res-howto", "res-checklist"],
+      "lessons": [
+        { "id": "l07a", "title": "What happens on screen", "tag": "official", "body": [
+          "ARO runs Open Journal Systems. Its How to Submit page describes eight steps: prepare, register, open the submission portal, enter details, upload files, confirm compliance, review and submit, then receive a confirmation and track status. The page notes the exact screens may vary; follow the on-screen instructions.",
+          "The authenticated screens were not inspected for this guide, so the walkthrough uses ARO's own descriptions rather than exact button labels."
+        ] },
+        { "id": "l07b", "title": "Copy, do not retype", "tag": "general", "body": [
+          "Paste the title, abstract and keywords from the final manuscript. A typo in the metadata ends up in indexes and on your DOI record."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-registered", "label": "Account registered with official email", "dependsOn": ["k-emails"] },
+        { "id": "k-metadata", "label": "Metadata entered for every author and matches the manuscript", "dependsOn": ["k-orcid", "k-scholar"] },
+        { "id": "k-uploaded", "label": "Manuscript and supplementary files uploaded", "dependsOn": ["k-checklist-11"] },
+        { "id": "k-submitted", "label": "Submitted and confirmation email received", "dependsOn": ["k-uploaded"] }
+      ],
+      "next": "Wait for screening and review."
+    },
+    {
+      "id": "s08", "num": 8, "title": "Peer review", "hue": "mint",
+      "short": "Screening, double-blind review, decision, revision.",
+      "accomplishes": "You respond to the decision: a revision with a point-by-point reply, or a plan for a rejection.",
+      "prerequisites": ["s07"],
+      "actions": [
+        "Track status by logging in; do not change the manuscript while it is under review.",
+        "When a decision arrives, read every comment twice before replying.",
+        "For a revision: change the manuscript, mark the changes, and write a point-by-point response.",
+        "Keep the anonymity of the revised file."
+      ],
+      "requirements": ["r-review-process", "r-double-blind", "r-no-changes", "r-timelines", "r-plagiarism-any-stage"],
+      "resources": ["res-review-process", "res-review-policy", "res-faq", "res-login"],
+      "lessons": [
+        { "id": "l08a", "title": "Outcomes ARO names", "tag": "official", "body": [
+          "The FAQ names three recommendations: acceptance, revision and rejection. The public pages do not split revision into minor and major or give revision deadlines; follow the dates in the decision letter."
+        ] },
+        { "id": "l08b", "title": "Writing the response", "tag": "general", "body": [
+          "Quote each reviewer comment, answer it, and say exactly what changed and where (section and page). Thank reviewers once, at the top. When you disagree, give evidence, not tone. Use the response builder on the Readiness page."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-decision-read", "label": "Decision letter and all reviewer comments read" },
+        { "id": "k-response", "label": "Point-by-point response written", "dependsOn": ["k-decision-read"] },
+        { "id": "k-revision-submitted", "label": "Revised manuscript submitted (changes marked, still anonymous)", "dependsOn": ["k-response"] }
+      ],
+      "next": "After acceptance, production begins."
+    },
+    {
+      "id": "s09", "num": 9, "title": "Acceptance and production", "hue": "blue",
+      "short": "Editing, camera-ready preparation, licence, online publication, DOI.",
+      "accomplishes": "The paper is edited, laid out and published online with a DOI.",
+      "prerequisites": ["s08"],
+      "actions": [
+        "Answer production and editing queries quickly.",
+        "Check names, affiliations and ORCIDs in anything you are shown.",
+        "Note the licence: CC BY-NC-SA 4.0, you keep copyright."
+      ],
+      "requirements": ["r-production", "r-license", "r-issues", "r-plagiarism-any-stage"],
+      "resources": ["res-mes", "res-oa", "res-cc"],
+      "lessons": [
+        { "id": "l09a", "title": "Stage Two", "tag": "official", "body": [
+          "ARO's production team prepares the camera-ready paper. A contracted editing company edits and proofreads every accepted paper for free: spelling, grammar, punctuation, citations and references against the ARO template.",
+          "Accepted papers go online ahead of print, then join the issue for their period. The public pages do not describe an author proof step, so watch your email."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-accepted", "label": "Acceptance received" },
+        { "id": "k-production-queries", "label": "Production and editing queries answered", "dependsOn": ["k-accepted"] },
+        { "id": "k-online", "label": "Article online with a DOI", "dependsOn": ["k-production-queries"] }
+      ],
+      "next": "Share the paper and update your profiles."
+    },
+    {
+      "id": "s10", "num": 10, "title": "Post-publication", "hue": "green",
+      "short": "Verify the record, update profiles, release artifacts, share.",
+      "accomplishes": "The paper is findable, correctly attributed and connected to its code and data.",
+      "prerequisites": ["s09"],
+      "actions": [
+        "Check the article page: names, affiliations, title, abstract, DOI.",
+        "Add the DOI to ORCID and Google Scholar for every author.",
+        "Release code, tokenizers and data where licences allow, linking the DOI.",
+        "Deposit the published PDF in your university repository."
+      ],
+      "requirements": ["r-how-to-cite", "r-self-archive", "r-license", "r-corrections"],
+      "resources": ["res-oa", "res-orcid", "res-scholar"],
+      "lessons": [
+        { "id": "l10a", "title": "Sharing is encouraged", "tag": "official", "body": [
+          "ARO encourages authors to deposit every version (preprint, accepted manuscript, version of record) in repositories, and allows the final PDF on websites. Credit ARO as the first publisher."
+        ] },
+        { "id": "l10b", "title": "Release the tokenizers", "tag": "project", "body": [
+          "Tokenizer files, training configs and evaluation scripts make the paper reusable. Publish them with a licence compatible with your corpora, cite the DOI in the README, and add a 'How to cite' block that points to the ARO article."
+        ] }
+      ],
+      "checklist": [
+        { "id": "k-record-checked", "label": "Published record checked for errors" },
+        { "id": "k-profiles", "label": "DOI added to ORCID and Google Scholar for every author" },
+        { "id": "k-artifacts", "label": "Code, tokenizers and data released where permitted" },
+        { "id": "k-repository", "label": "Published PDF deposited in an institutional repository" }
+      ],
+      "next": "Done. Consider the next paper."
+    }
+  ]
+}
