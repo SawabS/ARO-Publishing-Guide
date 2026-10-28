@@ -27,16 +27,27 @@ a { color: var(--text-link); text-underline-offset: 2px; }
 /* ── app bar, nav, footer, tab bar ───────────────────────────────────── */
 .app-bar { position: sticky; top: 0; z-index: var(--z-app-bar); }
 .brand { gap: 10px; flex: none; }
-.brand__mark { display: inline-block; width: 34px; height: 36px; }
-.brand__mark svg { width: 100%; height: 100%; }
-.brand__mark { --nb: var(--blue-500); --nf: var(--blue-300); --nr: var(--blue-200); --np: var(--blue-700); --nfacet: rgba(255,255,255,.2); }
-.brand__text { font: var(--ts-heading-sm); white-space: nowrap; }
+/* The "ARO" wordmark is the logo: heavy lettering on a 3D blue lip plate. */
+.brand { align-items: center; }
+.brand__logo {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 38px; padding: 0 12px; border-radius: 12px;
+  background: var(--blue-500); color: #fff;
+  font: 800 22px/1 var(--font-sans); letter-spacing: .08em; text-indent: .08em;
+  box-shadow: 0 4px 0 var(--blue-700);
+  transition: transform 120ms var(--ease-spring-smooth), box-shadow 120ms;
+}
+.brand:hover .brand__logo { transform: translateY(-1px); box-shadow: 0 5px 0 var(--blue-700); }
+.brand:active .brand__logo { transform: translateY(3px); box-shadow: 0 1px 0 var(--blue-700); }
+.brand:focus-visible { outline: none; }
+.brand:focus-visible .brand__logo { outline: 3px solid var(--border-select); outline-offset: 3px; }
+.brand__text { font: var(--ts-heading-xs); white-space: nowrap; color: var(--text-secondary); }
 .main-nav { gap: var(--space-5); overflow-x: auto; scrollbar-width: none; }
 .main-nav a { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 .main-nav a.tour-spot, .tabbar a.tour-spot { color: var(--text-blue-primary); box-shadow: inset 0 -3px 0 var(--border-blue-bold); }
 @media (max-width: 1180px) { .main-nav span { display: none; } .main-nav { gap: var(--space-4); } }
-@media (max-width: 768px) { .main-nav { display: none; } .brand__text { font: var(--ts-heading-xs); } }
-@media (max-width: 380px) { .brand__text { display: none; } }
+@media (max-width: 768px) { .main-nav { display: none; } .brand__logo { height: 36px; font-size: 20px; } }
+@media (max-width: 400px) { .brand__text { display: none; } }
 .tabbar { display: none; }
 @media (max-width: 768px) {
   .tabbar { display: grid; grid-template-columns: repeat(7, 1fr); position: sticky; bottom: 0; z-index: var(--z-app-bar); background: var(--bg-elevated); border-top: 1px solid var(--border-primary); padding: 4px 2px calc(4px + env(safe-area-inset-bottom)); }
