@@ -747,6 +747,6 @@ main p, main li, main dd, main td, main blockquote, main pre { overflow-wrap: br
 @media (prefers-reduced-motion: reduce) { .lesson-node[data-state="current"] svg, .start-bubble { animation: none; } }
 
 /* An open stage popover must sit above every later node: each node wrap is its own stacking context, so lift the wrap and row that hold it. */
-.path__row:has(.stage-pop:not([hidden])) { position: relative; z-index: 30; }
-.node-wrap:has(.stage-pop:not([hidden])) { position: relative; z-index: 30; }
+.path__row:has(.stage-pop:not([hidden])) { position: relative; z-index: 1; }
+.node-wrap:has(.stage-pop:not([hidden])) { position: relative; z-index: 1; }
 .lesson-node[data-state="current"] svg, .start-bubble { will-change: auto; }

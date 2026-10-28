@@ -1,5 +1,5 @@
 // Journey: the course map of ten stages, and each stage's lesson page.
-import { h, icon, clear } from '../lib/dom.js';
+import { h, icon, clear, reducedMotion } from '../lib/dom.js';
 import { D, stage, stageProgress, overallProgress, currentStage, unmetPrereqs, stageLabel, allChecks, checkStatus, req, res, src, conflict } from '../lib/model.js';
 import { store } from '../lib/store.js';
 import { lessonNode, requirementCard, checkRow, progressBar, crumbs, guidanceBadge, verifiedNote, legend, sfx, sourceLink } from '../lib/ui.js';
@@ -54,8 +54,11 @@ export function renderJourney(root) {
                     root.querySelectorAll('.path__item[aria-expanded]').forEach(x => x.setAttribute('aria-expanded', 'false'));
                     pop.hidden = !open;
                     btn.setAttribute('aria-expanded', String(open));
-                    if (open)
+                    if (open) {
                         sfx('open');
+                        requestAnimationFrame(() => { const r = pop.getBoundingClientRect(); if (r.top < 250 || r.bottom > innerHeight - 16)
+                            window.scrollBy({ top: r.top - Math.max(250, (innerHeight - r.height) / 2), behavior: reducedMotion() ? 'auto' : 'smooth' }); });
+                    }
                 },
             }, st === 'current' ? h('span.start-bubble', null, p.done ? 'Next' : 'Start') : null, lessonNode({ state: st, hue: s.hue, segments: s.checklist.length, progress: p.done }), h('span.path__label', null, h('span', null, h('span.path__num', null, String(s.num).padStart(2, '0') + ' '), s.title)));
             path.append(h('div.path__row.path__row--wave', { style: `--wave:${wave}` }, h('div.node-wrap', null, btn, pop)));

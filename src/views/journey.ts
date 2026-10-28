@@ -1,5 +1,5 @@
 // Journey: the course map of ten stages, and each stage's lesson page.
-import { h, icon, clear } from '../lib/dom.js';
+import { h, icon, clear, reducedMotion } from '../lib/dom.js';
 import { D, stage, stageProgress, overallProgress, currentStage, unmetPrereqs, stageLabel, allChecks, checkStatus, req, res, src, conflict } from '../lib/model.js';
 import { store } from '../lib/store.js';
 import { lessonNode, requirementCard, checkRow, progressBar, crumbs, guidanceBadge, verifiedNote, legend, sfx, sourceLink } from '../lib/ui.js';
@@ -93,7 +93,7 @@ export function renderJourney(root: HTMLElement) {
           root.querySelectorAll('.stage-pop').forEach(x => { (x as HTMLElement).hidden = true; });
           root.querySelectorAll('.path__item[aria-expanded]').forEach(x => x.setAttribute('aria-expanded', 'false'));
           pop.hidden = !open; btn.setAttribute('aria-expanded', String(open));
-          if (open) sfx('open');
+          if (open) { sfx('open'); requestAnimationFrame(() => { const r = pop.getBoundingClientRect(); if (r.top < 250 || r.bottom > innerHeight - 16) window.scrollBy({ top: r.top - Math.max(250, (innerHeight - r.height) / 2), behavior: reducedMotion() ? 'auto' : 'smooth' }); }); }
         },
       },
         st === 'current' ? h('span.start-bubble', null, p.done ? 'Next' : 'Start') : null,
