@@ -236,8 +236,9 @@ export function renderExplore(root: HTMLElement, _p: string[], query: URLSearchP
     nodeEls = new Map(); edgeEls = []; pulseEls = new Map(); byNode = new Map();
     svgRoot = svg('svg', { class: 'graph-svg', role: 'application', 'aria-label': 'Publication knowledge graph. Tab moves between cards, Enter selects, Shift with arrow keys moves the focused card.', tabindex: '0' }) as SVGSVGElement;
     const defs = svg('defs');
-    RELS.forEach(r => defs.appendChild(svg('marker', { id: 'arr-' + r, viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto-start-reverse' },
-      svg('path', { d: 'M0 1 L9 5 L0 9 z', class: 'arrow arrow--' + r }))));
+    // arrowheads keep a constant size (not tied to line width); lit links get a larger head in the same colour
+    RELS.forEach(r => [['arr-', 11], ['arrl-', 15]].forEach(([pre, size]) => defs.appendChild(svg('marker', { id: pre + r, viewBox: '0 0 10 10', refX: 9.5, refY: 5, markerWidth: size, markerHeight: size, markerUnits: 'userSpaceOnUse', orient: 'auto' },
+      svg('path', { d: 'M0 .5 L10 5 L0 9.5 L2.4 5 z', class: 'arrow arrow--' + r })))));
     svgRoot.appendChild(defs);
     world = svg('g', { class: 'graph-world' }) as SVGGElement;
 
@@ -254,7 +255,8 @@ export function renderExplore(root: HTMLElement, _p: string[], query: URLSearchP
     const eg = svg('g', { class: 'graph-edges' });
     L.edges.forEach((e, i) => {
       const a = L.placed.get(e.from)!, b = L.placed.get(e.to)!;
-      const path = svg('path', { d: edgePath(a, b), class: edgeClass(e, lit), 'marker-end': `url(#arr-${e.rel})` }) as SVGPathElement;
+      const cls = edgeClass(e, lit);
+      const path = svg('path', { d: edgePath(a, b), class: cls, 'marker-end': `url(#${cls.includes('is-lit') ? 'arrl-' : 'arr-'}${e.rel})` }) as SVGPathElement;
       const t = svg('title'); t.textContent = `${a.n.label} → ${REL_LABEL[e.rel]} → ${b.n.label}`; path.appendChild(t);
       eg.appendChild(path); edgeEls.push(path);
       [e.from, e.to].forEach(id => byNode.set(id, [...(byNode.get(id) || []), i]));
@@ -337,7 +339,7 @@ export function renderExplore(root: HTMLElement, _p: string[], query: URLSearchP
     if (ui.mode !== 'graph' || !svgRoot) return;
     const lit = litSet();
     nodeEls.forEach((g, id) => { g.setAttribute('class', nodeClasses(id)); g.setAttribute('aria-pressed', String(ui.selected === id)); });
-    L.edges.forEach((e, i) => edgeEls[i]?.setAttribute('class', edgeClass(e, lit)));
+    L.edges.forEach((e, i) => { const cls = edgeClass(e, lit); edgeEls[i]?.setAttribute('class', cls); edgeEls[i]?.setAttribute('marker-end', `url(#${cls.includes('is-lit') ? 'arrl-' : 'arr-'}${e.rel})`); });
     refreshPulses();
     // lit cards and links rise above the dimmed ones
     const ng = world?.querySelector('.graph-nodes');

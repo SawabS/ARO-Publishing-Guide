@@ -739,3 +739,9 @@ main p, main li, main dd, main td, main blockquote, main pre { overflow-wrap: br
   .bar-sep { display: none; }
   .bar-group--links, .bar-group--history, .bar-sep--history, .graph-zoom { display: none; }
 }
+/* Every arrowhead takes its link's relationship colour, in both themes. */
+.arrow { fill: var(--e); stroke: none; }
+.gedge { stroke: var(--e, var(--gray-400)); }
+[data-theme="dark"] .gedge--requires, [data-theme="dark"] .arrow--requires, [data-theme="dark"] .gpulse--requires { --e: var(--purple-400, #b18cff); }
+[data-theme="dark"] .gedge--depends_on, [data-theme="dark"] .arrow--depends_on, [data-theme="dark"] .gpulse--depends_on, [data-theme="dark"] .gpulse--leads_to { --e: var(--blue-400, #6f8dff); }
+[data-theme="dark"] .gedge--explained_by, [data-theme="dark"] .arrow--explained_by, [data-theme="dark"] .gpulse--explained_by { --e: var(--gray-400, #9a9a9a); }
