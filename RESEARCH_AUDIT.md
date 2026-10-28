@@ -1,6 +1,6 @@
 # Research audit
 
-This file records how the ARO Publication Navigator's content was researched and verified. It is the human-readable companion to `data/sources.json` (the source registry), `data/requirements.json` (the rules) and `data/conflicts.json` (where sources disagree).
+This file records how the ARO Publication Guide's content was researched and verified. It is the human-readable companion to `data/sources.json` (the source registry), `data/requirements.json` (the rules) and `data/conflicts.json` (where sources disagree).
 
 - **Verification date:** 27 October 2026 for every page listed below. This is when each page was read for this project, **not** when ARO last edited it. ARO's pages show no "last updated" dates.
 - **Canonical domain:** `aro.koyauniversity.org`. No legacy, test or staging domains were used. One link on the Management Office page points to an old Google Sites page (`sites.google.com/a/koyauniversity.org/oldaro`); it was not used as a source.
@@ -37,7 +37,7 @@ This file records how the ARO Publication Navigator's content was researched and
 | [Current issue (Vol. 14 No. 2, 2026)](https://aro.koyauniversity.org/index.php/aro/issue/current) | Official ARO | Read | 2026-10-27 | 0 |
 | [Archives](https://aro.koyauniversity.org/index.php/aro/issue/archive) | Official ARO | Linked, not opened | 2026-10-27 | 0 |
 | [Privacy Statement](https://aro.koyauniversity.org/index.php/aro/about/privacy) | Official ARO | Linked, not opened | 2026-10-27 | 0 |
-| [Example ARO article: stance detection for Sorani Kurdish (Vol. 14 No. 2)](https://aro.koyauniversity.org/index.php/aro/article/view/2814) | Official ARO | Read | 2026-10-27 | 2 |
+| [Example ARO article: natural language processing study (Vol. 14 No. 2)](https://aro.koyauniversity.org/index.php/aro/article/view/2814) | Official ARO | Read | 2026-10-27 | 2 |
 | [STAGE-ONE Template (ARO_Submission.docx, Google Docs)](https://docs.google.com/document/d/1szazcmQAUDyaI8GN0disy0MPlDg4pABK/edit?usp=share_link&ouid=102634136951986856087&rtpof=true&sd=true) | Official ARO | Partly readable | 2026-10-27 | 28 |
 | [ARO template (ARO_Template.dotx, Google Drive)](https://drive.google.com/file/d/1xwPklQNBxpu5RDCDLGJyDNUTG2aa6Ujv/view?usp=sharing) | Official ARO | Partly readable | 2026-10-27 | 1 |
 | [Harvard System of Referencing (Anglia Ruskin University Library)](https://library.aru.ac.uk/referencing/harvard.htm) | Linked by ARO | Read | 2026-10-27 | 1 |
@@ -174,7 +174,7 @@ Each row is one requirement as stored in `data/requirements.json`; the full para
 
 **Analysis.** The ban is stated as a misconduct rule; the tool list is a convenience link. The page never says that paraphrasers or summarisers are exempt, and none of the policy pages adds a disclosure route. The only use the Guide clearly endorses is grammar checking.
 
-**Recommendation.** Write every sentence yourself. Use spelling and grammar correction only where it fixes your own sentences and does not generate new ones. Do not use paraphrasers, summarisers or chat models to produce, rewrite or translate manuscript text. Keep your drafts and version history as evidence of authorship. Ask the office whether grammar-tool use should be disclosed. Using language models as the object of your research (tokenizers, evaluation) is a separate matter: describe it fully in Methods.
+**Recommendation.** Write every sentence yourself. Use spelling and grammar correction only where it fixes your own sentences and does not generate new ones. Do not use paraphrasers, summarisers or chat models to produce, rewrite or translate manuscript text. Keep your drafts and version history as evidence of authorship. Ask the office whether grammar-tool use should be disclosed. Using AI models as the object of your research (for example evaluating or benchmarking them) is a separate matter: describe it fully in Methods.
 
 ### Preprint citations: the rule and a published counterexample (`c-preprints`, informational, medium impact)
 
@@ -183,7 +183,7 @@ Each row is one requirement as stored in `data/requirements.json`; the full para
 
 **Analysis.** One published exception does not change a written rule. Reviewers and editors will apply the Guide.
 
-**Recommendation.** Follow the rule. Cite the peer-reviewed venue version of every paper (most tokenization papers have an ACL Anthology version). For work that exists only as a technical report on arXiv (many model releases), ask the office whether the official model card or repository may be cited as software instead.
+**Recommendation.** Follow the rule. Cite the peer-reviewed venue version of every paper (most conference and workshop papers have a published proceedings version). For work that exists only as a technical report on arXiv (many technical reports and model releases), ask the office whether the official model card or repository may be cited as software instead.
 
 ### Peer review model wording (`c-review-model`, reconciled, low impact)
 
@@ -226,9 +226,9 @@ Each row is one requirement as stored in `data/requirements.json`; the full para
 
   - *tpl-stage-one*: Tick one field that matches your specialty; undeclared disciplines are not considered. Computer Science lists only Software Engineering.
   - *aro-about*: Scope: sciences and engineering, including interdisciplinary work.
-  - *aro-example-2814*: Observed: ARO published a Sorani Kurdish NLP paper in 2026.
+  - *aro-example-2814*: Observed: ARO published a natural language processing paper in 2026.
 
-**Analysis.** Kurdish NLP has been published in ARO, so the topic is within scope in practice, but the tick box closest to it is 'Computer Science: Software Engineering'. 'Undeclared disciplines are not considered' makes the tick box consequential.
+**Analysis.** Topics such as NLP have been published in ARO, so they are within scope in practice, but the closest tick box is 'Computer Science: Software Engineering'. 'Undeclared disciplines are not considered' makes the tick box consequential.
 
 **Recommendation.** Ask the office which box an NLP / AI paper should tick, in the same email as the anonymisation question. Until then, plan to tick Computer Science.
 

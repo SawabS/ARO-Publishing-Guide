@@ -1,4 +1,4 @@
-"""End-to-end tests for ARO Publication Navigator (Python Playwright; no npm packages needed).
+"""End-to-end tests for ARO Publication Guide (Python Playwright; no npm packages needed).
 
     python3 tests/e2e.py http://localhost:4173                 # desktop (1280×860)
     python3 tests/e2e.py http://localhost:4173 "iPhone 13"     # any Playwright device: touch, mobile viewport
@@ -48,11 +48,11 @@ def make_docx(path: pathlib.Path, good: bool):
     st.font.name = 'Times New Roman' if good else 'Calibri'
     st.font.size = Pt(12 if good else 10)
     st.paragraph_format.line_spacing = 2.0 if good else 1.0
-    d.add_heading('Comparing subword tokenizers for an example language', 0)
+    d.add_heading('Comparing methods for an example problem', 0)
     d.add_heading('Abstract', 1)
-    words = ('This illustrative abstract describes a study of tokenizers for an example language and reports what was done why it matters and what was found. ' * (12 if good else 2)).split()
+    words = ('This illustrative abstract describes a study of methods for an example problem and reports what was done why it matters and what was found. ' * (12 if good else 2)).split()
     d.add_paragraph(' '.join(words[:200] if good else words[:40]) + ('' if good else ' (Smith, 2020)'))
-    d.add_paragraph('Index Terms—Byte pair encoding, Kurdish, Language models, Tokenization, Unigram')
+    d.add_paragraph('Index Terms—Deep learning, Image segmentation, Medical imaging, Transfer learning, U-Net')
     body = ' '.join(['Example sentence about corpora and evaluation of segmentation quality.'] * 40)
     for h in ['Introduction', 'Materials and Methods', 'Results and Discussion', 'Conclusions', 'Acknowledgment']:
         d.add_heading(h, 1)
@@ -214,7 +214,7 @@ def _(page):
 @test('abstract workbench counts words and flags citations')
 def _(page):
     go(page, '#/handbook/abstract')
-    page.fill('#abs-ta', 'Tokenizers matter (Smith, 2020). ' * 3)
+    page.fill('#abs-ta', 'Methods matter (Smith, 2020). ' * 3)
     expect(page.locator('#module')).to_contain_text('citation')
     expect(page.locator('.abs-meter')).to_contain_text('12 words')
 

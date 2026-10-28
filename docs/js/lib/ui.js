@@ -6,7 +6,7 @@ import { store } from './store.js';
 export const GUIDANCE = {
     official: { label: 'Official ARO requirement', badge: 'badge--blue' },
     general: { label: 'General academic recommendation', badge: 'badge--purple' },
-    project: { label: 'Project-specific recommendation', badge: 'badge--orange' },
+    project: { label: 'Practical tip, not a journal rule', badge: 'badge--orange' },
 };
 export const guidanceBadge = (g) => h(`span.badge.badge--subtle.${GUIDANCE[g].badge}.g-badge`, { 'data-guidance': g }, GUIDANCE[g].label);
 const STATUS_BADGE = { mandatory: 'badge--red', conditional: 'badge--yellow', recommended: 'badge--teal', informational: 'badge--minimal' };

@@ -18,12 +18,12 @@ export function emailDraft() {
         'c-file-format': 'Should the first submission include a PDF alongside the .docx, as the template mentions?',
         'c-ai-tools': 'The Guide bans AI-generated text but recommends grammar-checking software. Is the use of grammar and spelling correction on author-written text acceptable, and should it be disclosed?',
         'c-biography': 'Is the author biography (up to 100 words) required for every author, or optional as the Guide describes?',
-        'c-discipline': 'My paper is on natural language processing (tokenization for Kurdish language models). Which submission field should I tick on the Stage-One template, given that the Computer Science group lists Software Engineering?',
+        'c-discipline': 'My paper is on [your topic and field]. Which submission field should I tick on the Stage-One template, given that the Computer Science group lists Software Engineering?',
     };
     const lines = qs.filter(c => ask[c.id]).map((c, i) => `${i + 1}. ${ask[c.id]}`);
     return {
-        subject: 'Pre-submission questions: Stage-One manuscript on Kurdish tokenization',
-        body: `Dear ARO Editorial Office,\n\nI am preparing a research article on tokenization for Kurdish in large language models for submission to ARO. Before submitting, I would be grateful for clarification on the following points from the author guidelines:\n\n${lines.join('\n\n') || '[No open questions remain.]'}\n\nThank you for your help.\n\nKind regards,\n[Your name]\n[Department, university]\n[Institutional email]`,
+        subject: 'Pre-submission questions: Stage-One manuscript on [your topic]',
+        body: `Dear ARO Editorial Office,\n\nI am preparing a research article on [your topic] for submission to ARO. Before submitting, I would be grateful for clarification on the following points from the author guidelines:\n\n${lines.join('\n\n') || '[No open questions remain.]'}\n\nThank you for your help.\n\nKind regards,\n[Your name]\n[Department, university]\n[Institutional email]`,
     };
 }
 export function renderDirectory(root, _p, query) {

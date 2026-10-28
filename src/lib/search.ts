@@ -13,7 +13,7 @@ const docs: Doc[] = [
   ...D.sources.map(s => ({ id: s.id, type: 'Source', title: s.title, text: `${s.org} ${s.url} ${s.notes || ''}`, route: routeFor(s.id) })),
   ...D.people.map((p, i) => ({ id: 'person-' + i, type: 'Person', title: p.name, text: `${p.role} ${p.affiliation} ${p.country}`, route: `#/directory?q=${encodeURIComponent(p.name)}` })),
   ...D.handbook.map(t => ({ id: t.id, type: 'Handbook', title: t.title, text: t.intro, route: `#/handbook/${t.id}` })),
-  ...D.research.sections.map(s => ({ id: s.id, type: 'My research', title: s.name, text: `${s.purpose} ${s.evidence} ${s.content.join(' ')}`, route: routeFor(s.id) })),
+  ...D.research.sections.map(s => ({ id: s.id, type: 'Your paper', title: s.name, text: `${s.purpose} ${s.evidence} ${s.content.join(' ')}`, route: routeFor(s.id) })),
   { id: 'harvard', type: 'Module', title: 'Harvard referencing module', text: 'citation reference list author-date et al DOI practice quiz', route: '#/handbook/references' },
   { id: 'docx', type: 'Tool', title: 'Check my .docx manuscript', text: 'upload word count abstract keywords margins font anonymisation', route: '#/readiness' },
   { id: 'email', type: 'Tool', title: 'Email to the editorial office', text: 'contact aro.journal@koyauniversity.org question anonymisation discipline format', route: '#/directory' },

@@ -1,4 +1,4 @@
-/* ARO Publication Navigator — app layer on top of the Brilliant Web Skill.
+/* ARO Publication Guide — app layer on top of the Brilliant Web Skill.
    Only semantic roles from tokens.css are used for UI; hue ramps (--blue-500 …) appear only in the
    knowledge graph and progress art, as the skill's rules allow. */
 
@@ -411,7 +411,7 @@ a { color: var(--text-link); text-underline-offset: 2px; }
 .flow-card { animation: slideUp 300ms var(--ease-spring-smooth); }
 .flow-card h3, .flow-card p { margin: 0; }
 
-/* ── my research ─────────────────────────────────────────────────────── */
+/* ── your paper ─────────────────────────────────────────────────────── */
 .research { padding-bottom: var(--space-10); }
 .research h2 { margin: 0; }
 .research-summary { display: grid; gap: var(--space-3); }

@@ -16,7 +16,7 @@
         "aro-editorial-policies"
       ],
       "rule": "ARO publishes original research articles, review articles and letters in the sciences and engineering, including interdisciplinary work. It does not take pre-submission enquiries; scope questions go to the editorial office by email.",
-      "explain": "A Kurdish tokenizer study is computer science, which is inside the scope. ARO published a Sorani Kurdish NLP paper in 2026, so the topic has precedent.",
+      "explain": "ARO covers science and engineering and takes interdisciplinary work. Compare your topic with the Aims and Scope page and with recent issues; if the fit is unclear, ask the office before you submit.",
       "how": "Read two or three recent ARO computer science papers before writing, so your framing and depth match what the journal prints."
     },
     {
@@ -34,7 +34,7 @@
         "aro-publishing"
       ],
       "rule": "Section policies: Articles (the main type), Review Articles (critical analysis of a field's literature) and Letters (short reports of an outstanding finding). The template asks you to tick one: Research Article (2,500–6,000 words), Review Paper (4,000–10,000 words) or Letter (under 2,500 words).",
-      "explain": "Experiments comparing BPE, Unigram and existing tokenizers are original research, so the type is Research Article.",
+      "explain": "New experiments, data or analysis that add knowledge are original research, so the type is Research Article. A survey of existing work is a Review Article.",
       "how": "Tick Research Article on the template's first page."
     },
     {
@@ -88,7 +88,7 @@
       ],
       "rule": "The template's editorial policy section rules out reworked versions of previously submitted or published papers and papers with only preliminary data or results.",
       "explain": "Submit when the experiment grid is complete and analysed, not after the first runs.",
-      "how": "Finish every planned tokenizer configuration and its evaluation before writing the Results section."
+      "how": "Finish every planned experiment and its evaluation before writing the Results section."
     },
     {
       "id": "r-contribution",
@@ -104,7 +104,7 @@
         "aro-publishing"
       ],
       "rule": "Under Original Contribution, authors must state clearly what their work contributes. Publishing with ARO says editors look for research that fills a gap or has real-world relevance, backed by solid data.",
-      "explain": "Reviewers will ask what is new compared with earlier Kurdish tokenization and NLP work.",
+      "explain": "Reviewers will ask what is new compared with earlier work on the same problem.",
       "how": "End the Introduction with a short list of contributions that each point to a result in the paper."
     },
     {
@@ -299,7 +299,7 @@
         "tpl-stage-one"
       ],
       "rule": "No more than 15 words; avoid abbreviations unless unavoidable.",
-      "explain": "Spell out names reviewers may not know. 'BPE' is widely known in NLP, but the journal's readers span all of science and engineering.",
+      "explain": "Spell out names reviewers may not know. An abbreviation common in your subfield may be unknown to the journal's readers, who span all of science and engineering.",
       "how": "Count the words; expand acronyms."
     },
     {
@@ -337,7 +337,7 @@
       ],
       "rule": "Index Terms: about five keywords or phrases, in alphabetical order, separated by commas. (The Guide has a Keywords heading but gives no number.)",
       "explain": "Keywords route the paper to reviewers and search engines.",
-      "how": "Example: Byte pair encoding, Kurdish, Large language models, Tokenization, Unigram language model."
+      "how": "Example: Deep learning, Image segmentation, Medical imaging, Transfer learning, U-Net."
     },
     {
       "id": "r-structure",
@@ -369,7 +369,7 @@
         "tpl-stage-one"
       ],
       "rule": "Research papers: 2,500–3,000 words with fewer than 15 figures; 3,000–4,500 with fewer than 12; 4,500–5,000 with fewer than 10; 5,000–6,000 with fewer than 8. Over 6,000 words is overlong. Reviews: up to 10,000 words and fewer than 20 figures. All papers: at most 12 tables. Word counts include the abstract, references and appendices but exclude figure captions and table contents.",
-      "explain": "The more words you use, the fewer figures you are allowed. A tokenizer grid study easily produces many plots; combine them into multi-panel figures.",
+      "explain": "The more words you use, the fewer figures you are allowed. An experiment with many conditions easily produces many plots; combine them into multi-panel figures.",
       "how": "Use the length calculator in the Handbook."
     },
     {
@@ -417,7 +417,7 @@
         "tpl-stage-one"
       ],
       "rule": "Number equations consecutively, in parentheses, flush right. Refer to them as '(1)', not 'Eq. (1)', except at the start of a sentence. Use the Word equation editor or MathType, not 'float over text'. Italicise variables and define symbols before or right after the equation.",
-      "explain": "Fertility, compression ratio and normalised sequence length are worth writing as numbered equations, so reviewers can check your definitions.",
+      "explain": "Any measure you define yourself (an error rate, a ratio, a normalised score) is worth writing as a numbered equation, so reviewers can check your definitions.",
       "how": "See the worked example in the Handbook."
     },
     {
@@ -468,7 +468,7 @@
         "tpl-stage-one"
       ],
       "rule": "The template requires a minimum of 15 references.",
-      "explain": "Easy for tokenization work, but every reference must be peer reviewed (see the preprint rule).",
+      "explain": "Easy to reach in most fields, but every reference must be peer reviewed (see the preprint rule).",
       "how": "Count after removing non-peer-reviewed items."
     },
     {
@@ -610,7 +610,7 @@
         "aro-ethics-policy"
       ],
       "rule": "ARO follows COPE. Authors declare that all text, data, figures and tables are original, cite copyrighted material properly and do not infringe others' rights. Fabrication, falsification and plagiarism are prohibited. Conflicts of interest must be disclosed.",
-      "explain": "Corpus licensing belongs here: say where each Kurdish corpus came from and under what terms you used it.",
+      "explain": "Data licensing belongs here: say where each dataset came from and under what terms you used it.",
       "how": "Add a data and licence paragraph to Methods."
     },
     {
@@ -683,7 +683,7 @@
         "aro-howto"
       ],
       "rule": "Upload supplementary materials as separate files.",
-      "explain": "Extra tables of per-dialect results or tokenizer configurations can go here instead of using up the 12-table limit.",
+      "explain": "Extra tables, such as per-subgroup results or full parameter settings, can go here instead of using up the 12-table limit.",
       "how": "Name files clearly, e.g. Supplementary_Table_S1.xlsx."
     },
     {
@@ -820,7 +820,7 @@
         "doaj"
       ],
       "rule": "Authors retain copyright and grant ARO first publication rights; articles are published under CC BY-NC-SA 4.0. Authors may make separate non-exclusive agreements (repositories, books) crediting ARO's first publication. Commercial use of the publisher PDF requires a licence fee.",
-      "explain": "Your tokenizer code and models can carry their own licences; the article licence covers the paper.",
+      "explain": "Your code, data and models can carry their own licences; the article licence covers the paper.",
       "how": "Cite ARO as the first publisher wherever you re-post the paper."
     },
     {

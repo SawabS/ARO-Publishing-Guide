@@ -10,7 +10,7 @@ declare global { interface Window { B?: { node(o: Record<string, unknown>): stri
 export const GUIDANCE: Record<Guidance, { label: string; badge: string }> = {
   official: { label: 'Official ARO requirement', badge: 'badge--blue' },
   general: { label: 'General academic recommendation', badge: 'badge--purple' },
-  project: { label: 'Project-specific recommendation', badge: 'badge--orange' },
+  project: { label: 'Practical tip, not a journal rule', badge: 'badge--orange' },
 };
 export const guidanceBadge = (g: Guidance) => h(`span.badge.badge--subtle.${GUIDANCE[g].badge}.g-badge`, { 'data-guidance': g }, GUIDANCE[g].label);
 

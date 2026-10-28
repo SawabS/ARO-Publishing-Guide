@@ -14,7 +14,7 @@ const NAV = [
     { id: 'journey', label: 'Journey', short: 'Journey', href: '#/', icon: 'a-map' },
     { id: 'explore', label: 'Explore', short: 'Graph', href: '#/explore', icon: 'a-graph' },
     { id: 'handbook', label: 'Handbook', short: 'Rules', href: '#/handbook', icon: 'i-book' },
-    { id: 'research', label: 'My Research', short: 'Paper', href: '#/research', icon: 'a-flask' },
+    { id: 'research', label: 'Your Paper', short: 'Paper', href: '#/research', icon: 'a-flask' },
     { id: 'resources', label: 'Resources', short: 'Files', href: '#/resources', icon: 'a-doc' },
     { id: 'readiness', label: 'Readiness', short: 'Ready', href: '#/readiness', icon: 'a-checklist' },
     { id: 'directory', label: 'Directory', short: 'ARO', href: '#/directory', icon: 'a-users' },
@@ -38,10 +38,10 @@ let keepCurrent = false;
 function shell() {
     clear(app);
     const themeBtn = h('button.icon-btn', { 'aria-label': 'Switch light or dark theme', onclick: toggleTheme }, icon('i-moon', 22));
-    const bar = h('header.app-bar', null, h('div.app-bar__inner', null, h('a.app-bar__brand.brand', { href: '#/', 'aria-label': 'ARO Publication Navigator, home' }, h('span.brand__logo', { 'aria-hidden': 'true' }, 'ARO'), h('span.brand__text', { 'aria-hidden': 'true' }, h('span.brand__pub', null, 'Publication '), 'Navigator')), h('nav.app-bar__nav.main-nav', { 'aria-label': 'Primary' }, NAV.map(n => h('a', { href: n.href, 'data-nav': n.id }, icon(n.icon, 16), h('span', null, n.label)))), h('div.app-bar__actions', null, h('button.icon-btn', { 'aria-label': 'Search (press /)', onclick: openSearch, 'data-search-btn': '' }, icon('a-search', 22)), themeBtn, h('a.gh-link', { href: 'https://github.com/SawabS', target: '_blank', rel: 'noopener noreferrer', 'aria-label': 'SawabS on GitHub (opens in a new tab)', title: 'github.com/SawabS' }, icon('a-github', 20), h('span.gh-link__name', { 'aria-hidden': 'true' }, 'SawabS')))));
+    const bar = h('header.app-bar', null, h('div.app-bar__inner', null, h('a.app-bar__brand.brand', { href: '#/', 'aria-label': 'ARO Publication Guide, home' }, h('span.brand__logo', { 'aria-hidden': 'true' }, 'ARO'), h('span.brand__text', { 'aria-hidden': 'true' }, 'Publication Guide')), h('nav.app-bar__nav.main-nav', { 'aria-label': 'Primary' }, NAV.map(n => h('a', { href: n.href, 'data-nav': n.id }, icon(n.icon, 16), h('span', null, n.label)))), h('div.app-bar__actions', null, h('button.icon-btn', { 'aria-label': 'Search (press /)', onclick: openSearch, 'data-search-btn': '' }, icon('a-search', 22)), themeBtn, h('a.gh-link', { href: 'https://github.com/SawabS', target: '_blank', rel: 'noopener noreferrer', 'aria-label': 'SawabS on GitHub (opens in a new tab)', title: 'github.com/SawabS' }, icon('a-github', 20), h('span.gh-link__name', { 'aria-hidden': 'true' }, 'SawabS')))));
     main = h('main#main', { tabindex: '-1' });
     const tabbar = h('nav.tabbar', { 'aria-label': 'Primary (mobile)' }, NAV.map(n => h('a', { href: n.href, 'data-nav': n.id }, icon(n.icon, 20), h('span', null, n.short))));
-    const footer = h('footer.site-footer.app-footer', null, h('div.app-footer__inner', null, h('p', null, 'ARO Publication Navigator is an independent study aid, not an ARO or Koya University service. Official rules live at ', h('a', { href: 'https://aro.koyauniversity.org/', target: '_blank', rel: 'noopener' }, 'aro.koyauniversity.org'), '. Progress is stored only in this browser.'), h('p', null, h('a', { href: '#/sources' }, 'Source registry'), ' · ', h('a', { href: '#/questions' }, 'Open questions'), ' · ', h('button.link-btn', { onclick: startTour }, 'Guided tour'), ' · ', h('button.link-btn', { onclick: resetProgress }, 'Reset progress'))));
+    const footer = h('footer.site-footer.app-footer', null, h('div.app-footer__inner', null, h('p', null, 'ARO Publication Guide is an independent study aid, not an ARO or Koya University service. Official rules live at ', h('a', { href: 'https://aro.koyauniversity.org/', target: '_blank', rel: 'noopener' }, 'aro.koyauniversity.org'), '. Progress is stored only in this browser.'), h('p', null, h('a', { href: '#/sources' }, 'Source registry'), ' · ', h('a', { href: '#/questions' }, 'Open questions'), ' · ', h('button.link-btn', { onclick: startTour }, 'Guided tour'), ' · ', h('button.link-btn', { onclick: resetProgress }, 'Reset progress'))));
     app.append(bar, main, footer, tabbar);
     updateThemeIcon(themeBtn);
 }
@@ -85,7 +85,7 @@ function route() {
     keepCurrent = !!(out && out.keep);
     store.setRoute(location.hash || '#/');
     const title = main.querySelector('h1')?.textContent;
-    document.title = title ? `ARO Publication Navigator · ${title}` : 'ARO Publication Navigator';
+    document.title = title ? `ARO Publication Guide · ${title}` : 'ARO Publication Guide';
     if (!query.get('focus') && !query.get('lesson'))
         window.scrollTo({ top: 0 });
 }
@@ -157,7 +157,7 @@ const TOUR = [
     ['journey', 'Start with the journey', 'Ten stages take you from understanding ARO to sharing the published paper. Each plate opens a lesson with actions, rules, sources and a checklist. Nothing is locked; the coloured plate is the stage we suggest next.'],
     ['explore', 'See how rules connect', 'The knowledge graph links stages, ARO rules, documents and open questions. Pick any node to see what it requires and the shortest path to it from the start.'],
     ['handbook', 'Read the rules, explained', 'Every ARO rule from the author pages, in plain English, with how to comply and the exact source. Interactive modules cover Harvard referencing, abstracts, figures and anonymisation.'],
-    ['research', 'Plan your paper', 'Section-by-section guidance for the Kurdish tokenizer paper and a matrix of the evidence each claim needs. This is advice, not journal rules.'],
+    ['research', 'Plan your paper', 'Section-by-section guidance for a research article and a matrix of the evidence each claim needs. This is advice, not journal rules.'],
     ['resources', 'Get the official files', 'The Stage-One template and every official page, with format, purpose and the date each link was checked.'],
     ['readiness', 'Check you are ready', 'All checklist items in one place, an in-browser .docx check, and exports to Markdown or PDF.'],
     ['directory', 'Know who is who', 'Editors, the advisory board, the management office, and a ready-to-send email for the open questions.'],

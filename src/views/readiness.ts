@@ -19,7 +19,7 @@ export function checklistMarkdown(): string {
   const lines = [
     '# ARO submission preparation checklist',
     '',
-    `Generated ${new Date().toLocaleString('en-GB')} by ARO Publication Navigator. Journal policies last verified ${D.verifiedDate}.`,
+    `Generated ${new Date().toLocaleString('en-GB')} by ARO Publication Guide. Journal policies last verified ${D.verifiedDate}.`,
     '',
     `Progress: ${p.done} of ${p.total} items ticked.`,
     '',

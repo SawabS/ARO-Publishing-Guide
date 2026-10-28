@@ -1,5 +1,5 @@
 {
-  "$comment": "The ten publication stages. Lessons carry a tag: official (restates ARO sources), general (standard scholarly practice), project (advice for this Kurdish tokenizer paper). Checklist items are the self-declared checks used by the Readiness dashboard; 'auto' links an item to a browser-side .docx check; 'dependsOn' lists items that should be done first; 'conflict' marks an item that needs an answer from the editorial office.",
+  "$comment": "The ten publication stages. Lessons carry a tag: official (restates ARO sources), general (standard scholarly practice), project (practical advice for authors, not a journal rule). Checklist items are the self-declared checks used by the Readiness dashboard; 'auto' links an item to a browser-side .docx check; 'dependsOn' lists items that should be done first; 'conflict' marks an item that needs an answer from the editorial office.",
   "stages": [
     {
       "id": "s01", "num": 1, "title": "Understand ARO", "hue": "blue",
@@ -8,7 +8,7 @@
       "prerequisites": [],
       "actions": [
         "Read the Guide to Authors once from top to bottom.",
-        "Read the Kurdish NLP paper in ARO's current issue to see length, structure and references.",
+        "Read a recent article in your own field in ARO's current issue to see length, structure and references.",
         "Note the two questions you will put to the editorial office (anonymisation and discipline box)."
       ],
       "requirements": ["r-scope", "r-article-types", "r-fees", "r-indexing", "r-review-process", "r-license"],
@@ -19,13 +19,13 @@
           "It is diamond open access: no submission fee, no processing fee, free to read. Articles carry the CC BY-NC-SA 4.0 licence and authors keep copyright.",
           "It publishes two issues a year. Accepted papers go online ahead of print, then appear in the next issue."
         ] },
-        { "id": "l01b", "title": "Does a Kurdish tokenizer paper fit?", "tag": "project", "body": [
-          "Yes in practice. ARO's current issue (Vol. 14 No. 2, 2026) includes a Sorani Kurdish stance-detection study, so Kurdish NLP has been reviewed and published there.",
-          "The catch is the template's discipline tick box: Computer Science lists only Software Engineering, and undeclared disciplines are not considered. Ask the office which box to tick before you submit."
+        { "id": "l01b", "title": "Does your paper fit ARO?", "tag": "project", "body": [
+          "Check the Aims and Scope page against your topic, then look at a recent issue for papers close to yours. ARO's current issue (Vol. 14 No. 2, 2026) includes a computer-science study on natural language processing, for example, so topics outside the classic engineering fields do appear.",
+          "Watch the template's discipline tick box: it lists specific disciplines (Computer Science lists only Software Engineering, for instance), and undeclared disciplines are not considered. If your field has no exact match, ask the office which box to tick before you submit."
         ] },
         { "id": "l01c", "title": "Who decides", "tag": "official", "body": [
           "The editorial office checks completeness, scope and similarity. At least two subject experts review the paper without seeing your name. An Associate Editor recommends acceptance, revision or rejection, and the Editor-in-Chief decides.",
-          "The FAQ estimates 4–6 weeks for the initial review and 8–12 weeks to a decision. One 2026 Kurdish NLP paper took about 24 weeks from receipt to acceptance."
+          "The FAQ estimates 4–6 weeks for the initial review and 8–12 weeks to a decision. One 2026 article in the current issue took about 24 weeks from receipt to acceptance, so plan for the slower end."
         ] }
       ],
       "checklist": [
@@ -41,7 +41,7 @@
       "accomplishes": "The study is complete, original and reproducible before you start writing.",
       "prerequisites": ["s01"],
       "actions": [
-        "Finish every planned tokenizer configuration (algorithm × vocabulary size × data mix) and its evaluation.",
+        "Finish every planned experiment, analysis or case study, and its evaluation, before you write the Results.",
         "Write down the contribution in three sentences.",
         "Record the source and licence of every corpus.",
         "Decide whether any part involves human participants (evaluation, annotation)."
@@ -53,11 +53,11 @@
           "ARO's template rules out papers with only preliminary data or results and reworked versions of earlier papers. Submit after the experiment grid is finished and analysed."
         ] },
         { "id": "l02b", "title": "Make the contribution checkable", "tag": "general", "body": [
-          "A reviewer should be able to point at a table or figure for each claim. 'We show that Unigram gives lower fertility than BPE on Sorani at 32K' is checkable; 'We propose a better tokenizer' is not.",
+          "A reviewer should be able to point at a table or figure for each claim. 'Method A reduces error by 12% over method B on dataset X' is checkable; 'We propose a better method' is not.",
           "Use the readiness matrix in My Research to pair each claim with the evidence that supports it."
         ] },
         { "id": "l02c", "title": "Data provenance and licences", "tag": "project", "body": [
-          "For each Kurdish corpus, record where it came from, its size before and after cleaning, its dialect and script mix, and the terms you used it under. You will need this for Methods and for any later release of the data or tokenizers."
+          "For each dataset, record where it came from, its size before and after cleaning, and the terms you used it under. You will need this for Methods and for any later release of the data."
         ] }
       ],
       "checklist": [
@@ -166,7 +166,7 @@
           "This stage has no prerequisites on purpose: start it in week one. A co-author without a Scholar profile, or using a personal email, is the most common reason a ready manuscript sits unsubmitted."
         ] },
         { "id": "l05c", "title": "Team papers", "tag": "project", "body": [
-          "For a team project, record who designed the experiments, built the corpora, trained tokenizers, ran the analysis and wrote each section. It settles the author order and helps with the biography and acknowledgment."
+          "For a team project, record who designed the experiments, collected the data, built the models or instruments, ran the analysis and wrote each section. It settles the author order and helps with the biography and acknowledgment."
         ] }
       ],
       "checklist": [
@@ -307,7 +307,7 @@
       "actions": [
         "Check the article page: names, affiliations, title, abstract, DOI.",
         "Add the DOI to ORCID and Google Scholar for every author.",
-        "Release code, tokenizers and data where licences allow, linking the DOI.",
+        "Release code, models and data where licences allow, linking the DOI.",
         "Deposit the published PDF in your university repository."
       ],
       "requirements": ["r-how-to-cite", "r-self-archive", "r-license", "r-corrections"],
@@ -316,14 +316,14 @@
         { "id": "l10a", "title": "Sharing is encouraged", "tag": "official", "body": [
           "ARO encourages authors to deposit every version (preprint, accepted manuscript, version of record) in repositories, and allows the final PDF on websites. Credit ARO as the first publisher."
         ] },
-        { "id": "l10b", "title": "Release the tokenizers", "tag": "project", "body": [
-          "Tokenizer files, training configs and evaluation scripts make the paper reusable. Publish them with a licence compatible with your corpora, cite the DOI in the README, and add a 'How to cite' block that points to the ARO article."
+        { "id": "l10b", "title": "Release your code and data", "tag": "project", "body": [
+          "Code, configuration files and evaluation scripts make the paper reusable. Publish them with a licence compatible with your datasets, cite the DOI in the README, and add a 'How to cite' block that points to the ARO article."
         ] }
       ],
       "checklist": [
         { "id": "k-record-checked", "label": "Published record checked for errors" },
         { "id": "k-profiles", "label": "DOI added to ORCID and Google Scholar for every author" },
-        { "id": "k-artifacts", "label": "Code, tokenizers and data released where permitted" },
+        { "id": "k-artifacts", "label": "Code, models and data released where permitted" },
         { "id": "k-repository", "label": "Published PDF deposited in an institutional repository" }
       ],
       "next": "Done. Consider the next paper."

@@ -1,6 +1,6 @@
-# ARO Publication Navigator
+# ARO Publication Guide
 
-An interactive, source-linked companion for publishing **Kurdish tokenizer research** in **[ARO – The Scientific Journal of Koya University](https://aro.koyauniversity.org/)**. It walks a manuscript from "does this fit ARO?" to "the DOI is on my ORCID", and keeps every claim tied to the official page it comes from.
+An interactive, source-linked companion for publishing your research in **[ARO – The Scientific Journal of Koya University](https://aro.koyauniversity.org/)**. It walks a manuscript from "does this fit ARO?" to "the DOI is on my ORCID", and keeps every claim tied to the official page it comes from.
 
 > Independent study aid. Not an ARO or Koya University service. Official rules live at aro.koyauniversity.org. Journal policies last verified **27 October 2026**.
 
@@ -14,12 +14,12 @@ An interactive, source-linked companion for publishing **Kurdish tokenizer resea
 | **Explore** | The publication knowledge graph: 139 nodes (stages, requirements, open questions, official pages, documents, tools, manuscript sections, editorial processes, submission artifacts) and 368 typed edges (*requires, depends on, explained by, downloaded from, submitted during, reviewed under, leads to, conflicts with*). Pan, zoom, fit, search, filter by node type and relation, "Path from Stage 01" (shortest path), "Everything it needs" (transitive dependencies), and an accessible list view (default on phones). Built from the same data as the journey, so stage nodes show live progress. |
 | **Handbook** | 53 ARO requirements in 21 chapters, each paraphrased, explained, with how to comply, status (mandatory / conditional / recommended / informational), sources and dependent stages. Interactive modules: section ordering, length-vs-figures calculator, abstract workbench, equations explorable, figure dpi calculator, a 10-part **Harvard referencing module** with practice questions, AI-policy scenarios, an anonymisation exercise, a submission walkthrough and a review simulator with a response-to-reviewers template. |
 | **Open questions** | 12 places where ARO's own pages disagree, shown side by side with analysis and a recommendation; unresolved ones can be marked answered once the office replies, which unblocks dependent checklist items. |
-| **My Research** | Section-by-section guidance for the tokenizer paper (purpose → evidence → content → example → ARO rules → completion criteria), topics reviewers expect, and a research readiness matrix. Clearly marked as advice, not journal rules; no results are invented. |
+| **Your Paper** | Section-by-section guidance for any research article (purpose → evidence → content → example → ARO rules → completion criteria), topics reviewers expect, and a research readiness matrix. Clearly marked as advice, not journal rules; no results are invented. |
 | **Resources** | 26 verified documents, pages, portals and tools with format, purpose, source, status, stages and verification date; filters; "Download my preparation checklist". Templates link to ARO's own Google Docs/Drive files; nothing is re-hosted. Full source registry at `#/sources`. |
 | **Readiness** | Every checklist item in one dashboard (done / to do / blocked / awaiting the office), an **in-browser .docx check** (word count, abstract, keywords, sections, length band, references, preprints, DOIs, font, spacing, page size, margins, figures, tables, template markers, identity signals), Markdown and print/PDF export, and progress backup/restore. Automated findings are advisory and kept separate from self-declared ticks. |
 | **ARO Directory** | Journal identity, searchable directory of 28 editors, advisory board and office staff (decision-makers vs administration), contacts, and a pre-filled email of the open questions (opens your mail app; nothing is sent by the site). |
 
-Every piece of guidance is labelled **Official ARO requirement**, **General academic recommendation** or **Project-specific recommendation**.
+Every piece of guidance is labelled **Official ARO requirement**, **General academic recommendation** or **Practical tip (not a journal rule)**.
 
 ## Key findings from the research
 
@@ -81,7 +81,7 @@ data/                 structured content: the single source of truth
   stages.json         10 publication stages: lessons, actions, checklist (with dependencies)
   resources.json      26 documents, pages, portals and tools
   people.json         journal facts and the editorial directory (no personal emails)
-  research.json       tokenizer-paper sections, topics and readiness matrix
+  research.json       paper-planning sections, topics and readiness matrix
   graph.json          extra graph nodes (processes, artifacts) and edges
   handbook.json       handbook chapters and their interactive modules
 scripts/              build, data validation, link checker

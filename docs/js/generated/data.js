@@ -279,14 +279,14 @@ export const DATA = {
         },
         {
             "id": "aro-example-2814",
-            "title": "Example ARO article: stance detection for Sorani Kurdish (Vol. 14 No. 2)",
+            "title": "Example ARO article: natural language processing study (Vol. 14 No. 2)",
             "org": "ARO / Koya University",
             "official": true,
             "type": "page",
             "url": "https://aro.koyauniversity.org/index.php/aro/article/view/2814",
             "check": "fetched",
             "verified": "2026-10-27",
-            "notes": "Evidence, not a rule: a Kurdish NLP paper in ARO's current issue. Received 2026-01-02, accepted 2026-06-19, published 2026-08-15; 5 keywords; DOI 10.14500/aro.12814."
+            "notes": "Evidence, not a rule: a computer-science paper in ARO's current issue. Received 2026-01-02, accepted 2026-06-19, published 2026-08-15; 5 keywords; DOI 10.14500/aro.12814."
         },
         {
             "id": "tpl-stage-one",
@@ -512,7 +512,7 @@ export const DATA = {
             "url": "https://aclanthology.org/",
             "check": "fetched",
             "verified": "2026-10-27",
-            "notes": "Where peer-reviewed versions of most NLP tokenization papers live."
+            "notes": "Where peer-reviewed versions of most NLP and computational linguistics papers live."
         }
     ],
     "requirements": [
@@ -531,7 +531,7 @@ export const DATA = {
                 "aro-editorial-policies"
             ],
             "rule": "ARO publishes original research articles, review articles and letters in the sciences and engineering, including interdisciplinary work. It does not take pre-submission enquiries; scope questions go to the editorial office by email.",
-            "explain": "A Kurdish tokenizer study is computer science, which is inside the scope. ARO published a Sorani Kurdish NLP paper in 2026, so the topic has precedent.",
+            "explain": "ARO covers science and engineering and takes interdisciplinary work. Compare your topic with the Aims and Scope page and with recent issues; if the fit is unclear, ask the office before you submit.",
             "how": "Read two or three recent ARO computer science papers before writing, so your framing and depth match what the journal prints."
         },
         {
@@ -549,7 +549,7 @@ export const DATA = {
                 "aro-publishing"
             ],
             "rule": "Section policies: Articles (the main type), Review Articles (critical analysis of a field's literature) and Letters (short reports of an outstanding finding). The template asks you to tick one: Research Article (2,500–6,000 words), Review Paper (4,000–10,000 words) or Letter (under 2,500 words).",
-            "explain": "Experiments comparing BPE, Unigram and existing tokenizers are original research, so the type is Research Article.",
+            "explain": "New experiments, data or analysis that add knowledge are original research, so the type is Research Article. A survey of existing work is a Review Article.",
             "how": "Tick Research Article on the template's first page."
         },
         {
@@ -603,7 +603,7 @@ export const DATA = {
             ],
             "rule": "The template's editorial policy section rules out reworked versions of previously submitted or published papers and papers with only preliminary data or results.",
             "explain": "Submit when the experiment grid is complete and analysed, not after the first runs.",
-            "how": "Finish every planned tokenizer configuration and its evaluation before writing the Results section."
+            "how": "Finish every planned experiment and its evaluation before writing the Results section."
         },
         {
             "id": "r-contribution",
@@ -619,7 +619,7 @@ export const DATA = {
                 "aro-publishing"
             ],
             "rule": "Under Original Contribution, authors must state clearly what their work contributes. Publishing with ARO says editors look for research that fills a gap or has real-world relevance, backed by solid data.",
-            "explain": "Reviewers will ask what is new compared with earlier Kurdish tokenization and NLP work.",
+            "explain": "Reviewers will ask what is new compared with earlier work on the same problem.",
             "how": "End the Introduction with a short list of contributions that each point to a result in the paper."
         },
         {
@@ -814,7 +814,7 @@ export const DATA = {
                 "tpl-stage-one"
             ],
             "rule": "No more than 15 words; avoid abbreviations unless unavoidable.",
-            "explain": "Spell out names reviewers may not know. 'BPE' is widely known in NLP, but the journal's readers span all of science and engineering.",
+            "explain": "Spell out names reviewers may not know. An abbreviation common in your subfield may be unknown to the journal's readers, who span all of science and engineering.",
             "how": "Count the words; expand acronyms."
         },
         {
@@ -852,7 +852,7 @@ export const DATA = {
             ],
             "rule": "Index Terms: about five keywords or phrases, in alphabetical order, separated by commas. (The Guide has a Keywords heading but gives no number.)",
             "explain": "Keywords route the paper to reviewers and search engines.",
-            "how": "Example: Byte pair encoding, Kurdish, Large language models, Tokenization, Unigram language model."
+            "how": "Example: Deep learning, Image segmentation, Medical imaging, Transfer learning, U-Net."
         },
         {
             "id": "r-structure",
@@ -884,7 +884,7 @@ export const DATA = {
                 "tpl-stage-one"
             ],
             "rule": "Research papers: 2,500–3,000 words with fewer than 15 figures; 3,000–4,500 with fewer than 12; 4,500–5,000 with fewer than 10; 5,000–6,000 with fewer than 8. Over 6,000 words is overlong. Reviews: up to 10,000 words and fewer than 20 figures. All papers: at most 12 tables. Word counts include the abstract, references and appendices but exclude figure captions and table contents.",
-            "explain": "The more words you use, the fewer figures you are allowed. A tokenizer grid study easily produces many plots; combine them into multi-panel figures.",
+            "explain": "The more words you use, the fewer figures you are allowed. An experiment with many conditions easily produces many plots; combine them into multi-panel figures.",
             "how": "Use the length calculator in the Handbook."
         },
         {
@@ -932,7 +932,7 @@ export const DATA = {
                 "tpl-stage-one"
             ],
             "rule": "Number equations consecutively, in parentheses, flush right. Refer to them as '(1)', not 'Eq. (1)', except at the start of a sentence. Use the Word equation editor or MathType, not 'float over text'. Italicise variables and define symbols before or right after the equation.",
-            "explain": "Fertility, compression ratio and normalised sequence length are worth writing as numbered equations, so reviewers can check your definitions.",
+            "explain": "Any measure you define yourself (an error rate, a ratio, a normalised score) is worth writing as a numbered equation, so reviewers can check your definitions.",
             "how": "See the worked example in the Handbook."
         },
         {
@@ -983,7 +983,7 @@ export const DATA = {
                 "tpl-stage-one"
             ],
             "rule": "The template requires a minimum of 15 references.",
-            "explain": "Easy for tokenization work, but every reference must be peer reviewed (see the preprint rule).",
+            "explain": "Easy to reach in most fields, but every reference must be peer reviewed (see the preprint rule).",
             "how": "Count after removing non-peer-reviewed items."
         },
         {
@@ -1125,7 +1125,7 @@ export const DATA = {
                 "aro-ethics-policy"
             ],
             "rule": "ARO follows COPE. Authors declare that all text, data, figures and tables are original, cite copyrighted material properly and do not infringe others' rights. Fabrication, falsification and plagiarism are prohibited. Conflicts of interest must be disclosed.",
-            "explain": "Corpus licensing belongs here: say where each Kurdish corpus came from and under what terms you used it.",
+            "explain": "Data licensing belongs here: say where each dataset came from and under what terms you used it.",
             "how": "Add a data and licence paragraph to Methods."
         },
         {
@@ -1198,7 +1198,7 @@ export const DATA = {
                 "aro-howto"
             ],
             "rule": "Upload supplementary materials as separate files.",
-            "explain": "Extra tables of per-dialect results or tokenizer configurations can go here instead of using up the 12-table limit.",
+            "explain": "Extra tables, such as per-subgroup results or full parameter settings, can go here instead of using up the 12-table limit.",
             "how": "Name files clearly, e.g. Supplementary_Table_S1.xlsx."
         },
         {
@@ -1335,7 +1335,7 @@ export const DATA = {
                 "doaj"
             ],
             "rule": "Authors retain copyright and grant ARO first publication rights; articles are published under CC BY-NC-SA 4.0. Authors may make separate non-exclusive agreements (repositories, books) crediting ARO's first publication. Commercial use of the publisher PDF requires a licence fee.",
-            "explain": "Your tokenizer code and models can carry their own licences; the article licence covers the paper.",
+            "explain": "Your code, data and models can carry their own licences; the article licence covers the paper.",
             "how": "Cite ARO as the first publisher wherever you re-post the paper."
         },
         {
@@ -1551,7 +1551,7 @@ export const DATA = {
                 }
             ],
             "analysis": "The ban is stated as a misconduct rule; the tool list is a convenience link. The page never says that paraphrasers or summarisers are exempt, and none of the policy pages adds a disclosure route. The only use the Guide clearly endorses is grammar checking.",
-            "recommendation": "Write every sentence yourself. Use spelling and grammar correction only where it fixes your own sentences and does not generate new ones. Do not use paraphrasers, summarisers or chat models to produce, rewrite or translate manuscript text. Keep your drafts and version history as evidence of authorship. Ask the office whether grammar-tool use should be disclosed. Using language models as the object of your research (tokenizers, evaluation) is a separate matter: describe it fully in Methods.",
+            "recommendation": "Write every sentence yourself. Use spelling and grammar correction only where it fixes your own sentences and does not generate new ones. Do not use paraphrasers, summarisers or chat models to produce, rewrite or translate manuscript text. Keep your drafts and version history as evidence of authorship. Ask the office whether grammar-tool use should be disclosed. Using AI models as the object of your research (for example evaluating or benchmarking them) is a separate matter: describe it fully in Methods.",
             "affects": [
                 "r-ai-text",
                 "r-english"
@@ -1573,7 +1573,7 @@ export const DATA = {
                 }
             ],
             "analysis": "One published exception does not change a written rule. Reviewers and editors will apply the Guide.",
-            "recommendation": "Follow the rule. Cite the peer-reviewed venue version of every paper (most tokenization papers have an ACL Anthology version). For work that exists only as a technical report on arXiv (many model releases), ask the office whether the official model card or repository may be cited as software instead.",
+            "recommendation": "Follow the rule. Cite the peer-reviewed venue version of every paper (most conference and workshop papers have a published proceedings version). For work that exists only as a technical report on arXiv (many technical reports and model releases), ask the office whether the official model card or repository may be cited as software instead.",
             "affects": [
                 "r-no-preprints"
             ]
@@ -1682,10 +1682,10 @@ export const DATA = {
                 },
                 {
                     "source": "aro-example-2814",
-                    "claim": "Observed: ARO published a Sorani Kurdish NLP paper in 2026."
+                    "claim": "Observed: ARO published a natural language processing paper in 2026."
                 }
             ],
-            "analysis": "Kurdish NLP has been published in ARO, so the topic is within scope in practice, but the tick box closest to it is 'Computer Science: Software Engineering'. 'Undeclared disciplines are not considered' makes the tick box consequential.",
+            "analysis": "Topics such as NLP have been published in ARO, so they are within scope in practice, but the closest tick box is 'Computer Science: Software Engineering'. 'Undeclared disciplines are not considered' makes the tick box consequential.",
             "recommendation": "Ask the office which box an NLP / AI paper should tick, in the same email as the anonymisation question. Until then, plan to tick Computer Science.",
             "affects": [
                 "r-discipline"
@@ -1987,8 +1987,8 @@ export const DATA = {
         },
         {
             "id": "res-example",
-            "title": "Example: Sorani Kurdish stance detection (ARO 2026)",
-            "purpose": "A recent Kurdish NLP paper in ARO, useful to see length, structure and reference style.",
+            "title": "Example: a recent computer-science article in ARO (2026)",
+            "purpose": "A recent article in ARO, useful to see length, structure and reference style.",
             "format": "Article page with PDF",
             "kind": "page",
             "org": "ARO / Koya University",
@@ -2105,7 +2105,7 @@ export const DATA = {
             "prerequisites": [],
             "actions": [
                 "Read the Guide to Authors once from top to bottom.",
-                "Read the Kurdish NLP paper in ARO's current issue to see length, structure and references.",
+                "Read a recent article in your own field in ARO's current issue to see length, structure and references.",
                 "Note the two questions you will put to the editorial office (anonymisation and discipline box)."
             ],
             "requirements": [
@@ -2135,11 +2135,11 @@ export const DATA = {
                 },
                 {
                     "id": "l01b",
-                    "title": "Does a Kurdish tokenizer paper fit?",
+                    "title": "Does your paper fit ARO?",
                     "tag": "project",
                     "body": [
-                        "Yes in practice. ARO's current issue (Vol. 14 No. 2, 2026) includes a Sorani Kurdish stance-detection study, so Kurdish NLP has been reviewed and published there.",
-                        "The catch is the template's discipline tick box: Computer Science lists only Software Engineering, and undeclared disciplines are not considered. Ask the office which box to tick before you submit."
+                        "Check the Aims and Scope page against your topic, then look at a recent issue for papers close to yours. ARO's current issue (Vol. 14 No. 2, 2026) includes a computer-science study on natural language processing, for example, so topics outside the classic engineering fields do appear.",
+                        "Watch the template's discipline tick box: it lists specific disciplines (Computer Science lists only Software Engineering, for instance), and undeclared disciplines are not considered. If your field has no exact match, ask the office which box to tick before you submit."
                     ]
                 },
                 {
@@ -2148,7 +2148,7 @@ export const DATA = {
                     "tag": "official",
                     "body": [
                         "The editorial office checks completeness, scope and similarity. At least two subject experts review the paper without seeing your name. An Associate Editor recommends acceptance, revision or rejection, and the Editor-in-Chief decides.",
-                        "The FAQ estimates 4–6 weeks for the initial review and 8–12 weeks to a decision. One 2026 Kurdish NLP paper took about 24 weeks from receipt to acceptance."
+                        "The FAQ estimates 4–6 weeks for the initial review and 8–12 weeks to a decision. One 2026 article in the current issue took about 24 weeks from receipt to acceptance, so plan for the slower end."
                     ]
                 }
             ],
@@ -2179,7 +2179,7 @@ export const DATA = {
                 "s01"
             ],
             "actions": [
-                "Finish every planned tokenizer configuration (algorithm × vocabulary size × data mix) and its evaluation.",
+                "Finish every planned experiment, analysis or case study, and its evaluation, before you write the Results.",
                 "Write down the contribution in three sentences.",
                 "Record the source and licence of every corpus.",
                 "Decide whether any part involves human participants (evaluation, annotation)."
@@ -2210,7 +2210,7 @@ export const DATA = {
                     "title": "Make the contribution checkable",
                     "tag": "general",
                     "body": [
-                        "A reviewer should be able to point at a table or figure for each claim. 'We show that Unigram gives lower fertility than BPE on Sorani at 32K' is checkable; 'We propose a better tokenizer' is not.",
+                        "A reviewer should be able to point at a table or figure for each claim. 'Method A reduces error by 12% over method B on dataset X' is checkable; 'We propose a better method' is not.",
                         "Use the readiness matrix in My Research to pair each claim with the evidence that supports it."
                     ]
                 },
@@ -2219,7 +2219,7 @@ export const DATA = {
                     "title": "Data provenance and licences",
                     "tag": "project",
                     "body": [
-                        "For each Kurdish corpus, record where it came from, its size before and after cleaning, its dialect and script mix, and the terms you used it under. You will need this for Methods and for any later release of the data or tokenizers."
+                        "For each dataset, record where it came from, its size before and after cleaning, and the terms you used it under. You will need this for Methods and for any later release of the data."
                     ]
                 }
             ],
@@ -2515,7 +2515,7 @@ export const DATA = {
                     "title": "Team papers",
                     "tag": "project",
                     "body": [
-                        "For a team project, record who designed the experiments, built the corpora, trained tokenizers, ran the analysis and wrote each section. It settles the author order and helps with the biography and acknowledgment."
+                        "For a team project, record who designed the experiments, collected the data, built the models or instruments, ran the analysis and wrote each section. It settles the author order and helps with the biography and acknowledgment."
                     ]
                 }
             ],
@@ -2880,7 +2880,7 @@ export const DATA = {
             "actions": [
                 "Check the article page: names, affiliations, title, abstract, DOI.",
                 "Add the DOI to ORCID and Google Scholar for every author.",
-                "Release code, tokenizers and data where licences allow, linking the DOI.",
+                "Release code, models and data where licences allow, linking the DOI.",
                 "Deposit the published PDF in your university repository."
             ],
             "requirements": [
@@ -2905,10 +2905,10 @@ export const DATA = {
                 },
                 {
                     "id": "l10b",
-                    "title": "Release the tokenizers",
+                    "title": "Release your code and data",
                     "tag": "project",
                     "body": [
-                        "Tokenizer files, training configs and evaluation scripts make the paper reusable. Publish them with a licence compatible with your corpora, cite the DOI in the README, and add a 'How to cite' block that points to the ARO article."
+                        "Code, configuration files and evaluation scripts make the paper reusable. Publish them with a licence compatible with your datasets, cite the DOI in the README, and add a 'How to cite' block that points to the ARO article."
                     ]
                 }
             ],
@@ -2923,7 +2923,7 @@ export const DATA = {
                 },
                 {
                     "id": "k-artifacts",
-                    "label": "Code, tokenizers and data released where permitted"
+                    "label": "Code, models and data released where permitted"
                 },
                 {
                     "id": "k-repository",
@@ -3351,7 +3351,7 @@ export const DATA = {
         }
     ],
     "research": {
-        "summary": "A study of tokenization for Kurdish in large language models: BPE and Unigram tokenizers trained across several vocabulary sizes and training-data distributions (including dialect mixes), compared with the tokenizers of existing pretrained models.",
+        "summary": "A planning aid for any research article: for each manuscript section, what it is for, what evidence a reviewer expects, what to write, and when it is done. It is not tied to a field; adapt the wording to your own study.",
         "sections": [
             {
                 "id": "sec-title",
@@ -3360,13 +3360,14 @@ export const DATA = {
                     "r-title",
                     "r-keywords"
                 ],
-                "purpose": "Tell an engineer outside NLP what you compared and on which language.",
+                "purpose": "Tell a reader outside your subfield what you studied and how.",
                 "evidence": "None; it must match what the Results show.",
                 "content": [
-                    "Name the language (and dialects if central), the algorithms and the setting (LLMs).",
-                    "Avoid acronyms in the title unless unavoidable."
+                    "Name the subject, the method or approach, and the setting or population.",
+                    "Avoid acronyms in the title unless unavoidable.",
+                    "Choose index terms a reader would search for, not just words from the title."
                 ],
-                "example": "Tokenizing Kurdish for Large Language Models: Byte-Pair Encoding and Unigram across Vocabulary Sizes and Dialect Mixes (16 words; cut one).",
+                "example": "[Method] for [Problem] in [Setting]: [A Comparison / A Case Study / An Evaluation] (aim for 15 words or fewer).",
                 "done": [
                     "15 words or fewer",
                     "Five alphabetical index terms"
@@ -3381,12 +3382,12 @@ export const DATA = {
                 "purpose": "Let the editor decide in one read whether the paper is worth reviewing.",
                 "evidence": "Only findings that appear in Results, with the same numbers.",
                 "content": [
-                    "Why: tokenizers built for high-resource languages split Kurdish into many pieces, which costs context and compute.",
-                    "What and how: the grid you trained and the metrics you used.",
+                    "Why: the problem and the gap, in one or two sentences.",
+                    "What and how: what you did and the main method.",
                     "Findings: your two or three main results, with numbers.",
-                    "Significance: what a model builder should do differently."
+                    "Significance: what a reader should do or believe differently."
                 ],
-                "example": "Large language models process Kurdish with tokenizers trained mostly on other languages, which [X]. We train byte-pair encoding and Unigram tokenizers at [N] vocabulary sizes on [M] training mixtures of Sorani, Kurmanji and [...], and compare them with the tokenizers of [K] pretrained models using fertility, [...] …",
+                "example": "[Problem] matters because [reason], yet [gap]. We [method] on [data/setting] and compare it with [baseline]. [Main result with a number]. This suggests [implication] …",
                 "done": [
                     "150–250 words",
                     "No citations",
@@ -3401,14 +3402,14 @@ export const DATA = {
                     "r-contribution"
                 ],
                 "purpose": "Show the gap and state the contribution, with no subheadings.",
-                "evidence": "Citations to peer-reviewed work on Kurdish NLP, tokenization and multilingual tokenizer fairness.",
+                "evidence": "Citations to peer-reviewed work that establishes the problem and what earlier studies did and did not cover.",
                 "content": [
-                    "Kurdish: speakers, dialects, scripts (Arabic-based for Sorani, Latin for Kurmanji), and why that complicates tokenization.",
-                    "Why tokenization matters for LLM cost and quality.",
-                    "What earlier Kurdish and low-resource tokenizer work did and did not cover.",
+                    "The problem and why it matters.",
+                    "What earlier work has done, and the specific gap it leaves.",
+                    "What this paper does about the gap.",
                     "A short list of contributions, each pointing to a result."
                 ],
-                "example": "Contributions: (1) the first systematic comparison of [...] for Kurdish at vocabulary sizes from [a] to [b]; (2) …",
+                "example": "Contributions: (1) [what is new]; (2) [what is shown or measured]; (3) [what is released or recommended].",
                 "done": [
                     "No subheadings",
                     "Gap stated with citations",
@@ -3425,22 +3426,21 @@ export const DATA = {
                     "r-tables"
                 ],
                 "purpose": "Let another team reproduce every number.",
-                "evidence": "Corpus statistics, cleaning steps, exact training settings, metric definitions.",
+                "evidence": "Data or material descriptions, procedures, exact settings, and definitions of every measure.",
                 "content": [
-                    "Corpora: sources, licences, sizes before and after deduplication, dialect and script shares.",
-                    "Normalisation: Unicode form, character unification (e.g. Arabic vs Persian code points), script handling, punctuation.",
-                    "Tokenizer training: library and version, algorithm settings, character coverage, byte fallback, special tokens, seeds.",
-                    "Experimental grid: algorithms × vocabulary sizes × data distributions.",
-                    "Baselines: which pretrained tokenizers and why.",
-                    "Metrics as numbered equations: fertility, compression, unknown-token or byte-fallback rate, [...].",
-                    "Held-out evaluation sets per dialect and script.",
-                    "Compute: hardware and time."
+                    "Data or materials: source, licence or permission, size, and any cleaning or exclusions.",
+                    "Procedure: the steps, tools and versions, parameters and random seeds.",
+                    "Design: the conditions, groups or configurations you compared.",
+                    "Baselines or controls, and why you chose them.",
+                    "Measures, defined as numbered equations where they are mathematical.",
+                    "Ethics approval or consent, where people or animals are involved.",
+                    "Equipment or compute used."
                 ],
-                "example": "Fertility is the mean number of tokens per word: F = T / W   (1), where T is the number of tokens and W the number of whitespace-separated words in the evaluation set.",
+                "example": "The error rate is the share of wrong predictions: E = N_wrong / N   (1), where N_wrong is the number of incorrect predictions and N the number of test cases.",
                 "done": [
-                    "Every corpus has source, licence and size",
-                    "Every metric is defined as a numbered equation",
-                    "Settings enough to rerun"
+                    "Every dataset has a source, licence and size",
+                    "Every measure is defined",
+                    "Settings are enough to repeat the work"
                 ]
             },
             {
@@ -3452,16 +3452,15 @@ export const DATA = {
                     "r-tables"
                 ],
                 "purpose": "Report what happened, then explain it.",
-                "evidence": "Tables and figures for every comparison claimed; variance or significance where you claim a difference.",
+                "evidence": "Tables and figures for every comparison claimed; variance, confidence intervals or significance where you claim a difference.",
                 "content": [
-                    "Effect of vocabulary size per algorithm.",
-                    "Effect of data distribution and dialect share.",
-                    "Comparison with pretrained tokenizers.",
-                    "Segmentation analysis on examples (morpheme boundaries).",
-                    "Downstream effect, if you measured it.",
-                    "Limitations: dialect coverage, corpus domain, metrics that do not capture quality."
+                    "Main results, one question at a time.",
+                    "Comparison with baselines or earlier work.",
+                    "Examples or error analysis that explain the numbers.",
+                    "What the results mean and what they do not show.",
+                    "Limitations: data coverage, assumptions, measures that miss something."
                 ],
-                "example": "Titles that state the finding: 'Fig. 3. Fertility falls with vocabulary size for both algorithms, flattening after [X]'.",
+                "example": "Figure titles that state the finding: 'Fig. 3. Accuracy rises with training size, flattening after [X]'.",
                 "done": [
                     "Every claim cites a figure or table",
                     "Within the figure cap for your word band",
@@ -3474,12 +3473,12 @@ export const DATA = {
                 "aro": [
                     "r-structure"
                 ],
-                "purpose": "State what a practitioner should take away, and what is next.",
+                "purpose": "State what a reader should take away, and what comes next.",
                 "evidence": "Only results already shown.",
                 "content": [
                     "Main findings in a few sentences.",
-                    "Practical recommendation (e.g. vocabulary size range).",
-                    "Future work: downstream training, more dialects, release."
+                    "A practical recommendation, if one follows from the results.",
+                    "Future work."
                 ],
                 "example": "",
                 "done": [
@@ -3494,15 +3493,15 @@ export const DATA = {
                     "r-coi-funding",
                     "r-structure"
                 ],
-                "purpose": "Credit funding, compute and data providers; disclose interests.",
+                "purpose": "Credit funding, resources and help; disclose interests.",
                 "evidence": "",
                 "content": [
                     "Funding and grants.",
-                    "Compute provider.",
-                    "Corpus providers and annotators.",
+                    "Equipment, compute or facility providers.",
+                    "Data providers and contributors who are not authors.",
                     "Conflicts of interest, if any."
                 ],
-                "example": "S. A. Author thanks [...] for access to [...].",
+                "example": "The authors thank [...] for access to [...].",
                 "done": [
                     "Singular heading 'Acknowledgment'",
                     "Omitted from the anonymised copy if it identifies you"
@@ -3521,135 +3520,130 @@ export const DATA = {
                 "evidence": "",
                 "content": [
                     "Harvard author-date, alphabetical.",
-                    "Peer-reviewed versions of tokenization papers (ACL Anthology).",
+                    "Peer-reviewed versions of every paper you cite.",
                     "DOIs or URLs.",
-                    "Datasets and software cited where the licence asks."
+                    "Datasets and software cited where their licence asks."
                 ],
                 "example": "",
                 "done": [
                     "15 or more",
-                    "No arXiv-only items",
+                    "No non-peer-reviewed preprints",
                     "DOIs where available"
                 ]
             }
         ],
         "topics": [
             {
-                "id": "t-morph",
-                "name": "Kurdish language characteristics and morphology",
-                "note": "Agglutinative morphology, clitics and dialect variation shape how subword units should look."
+                "id": "t-problem",
+                "name": "A clearly stated problem and gap",
+                "note": "Say what is not yet known or not yet solved, with citations, before saying what you did."
             },
             {
-                "id": "t-corpus",
-                "name": "Corpus collection, deduplication and normalisation",
-                "note": "Report sizes before and after; near-duplicate removal changes vocabulary statistics."
+                "id": "t-related",
+                "name": "Related work",
+                "note": "Cover the closest earlier studies fairly, including ones that disagree with you."
             },
             {
-                "id": "t-dialect",
-                "name": "Dialect and script coverage",
-                "note": "Sorani (Arabic-based script), Kurmanji (Latin script) and others; report per-dialect evaluation."
+                "id": "t-data",
+                "name": "Data or materials",
+                "note": "Source, size, permissions or licences, and what was excluded and why."
             },
             {
-                "id": "t-algos",
-                "name": "Tokenization algorithms",
-                "note": "BPE and Unigram; state the implementation and settings."
-            },
-            {
-                "id": "t-vocab",
-                "name": "Vocabulary-size experiments",
-                "note": "Choose sizes that bracket typical LLM vocabularies; include the largest sizes you trained."
-            },
-            {
-                "id": "t-dist",
-                "name": "Training data distributions",
-                "note": "Vary dialect shares deliberately; describe each mixture exactly."
+                "id": "t-method",
+                "name": "Method and design",
+                "note": "Enough detail, versions and settings that another team can repeat the work."
             },
             {
                 "id": "t-baselines",
-                "name": "Baseline tokenizer comparisons",
-                "note": "Name the pretrained models, their tokenizer versions and how you obtained them."
+                "name": "Baselines and controls",
+                "note": "Name what you compared against and how you obtained it; choose it before seeing results."
             },
             {
                 "id": "t-metrics",
-                "name": "Compression and fertility metrics",
-                "note": "Define each metric as an equation; use the same evaluation text for all tokenizers."
-            },
-            {
-                "id": "t-unk",
-                "name": "Unknown-token and byte-fallback behaviour",
-                "note": "Report how often each tokenizer falls back to bytes or unknown tokens per script."
-            },
-            {
-                "id": "t-seg",
-                "name": "Morphological segmentation analysis",
-                "note": "Qualitative examples plus, if available, agreement with a morpheme-segmented sample."
-            },
-            {
-                "id": "t-efficiency",
-                "name": "Computational efficiency",
-                "note": "Training and encoding time with hardware stated, in seconds."
-            },
-            {
-                "id": "t-downstream",
-                "name": "Downstream language-model evaluation",
-                "note": "Optional but strengthens claims about LLM impact; state if out of scope."
+                "name": "Measures and evaluation",
+                "note": "Define each measure, ideally as a numbered equation, and use the same test data for every comparison."
             },
             {
                 "id": "t-stats",
-                "name": "Statistical analysis and reproducibility",
-                "note": "Seeds, repeated runs or bootstrap intervals where you claim one setting beats another."
+                "name": "Statistical analysis and variability",
+                "note": "Repeated runs, confidence intervals or tests wherever you claim one result beats another."
+            },
+            {
+                "id": "t-ablation",
+                "name": "Which part matters",
+                "note": "Where the method has several parts or settings, show what happens when each is changed or removed."
+            },
+            {
+                "id": "t-efficiency",
+                "name": "Cost and efficiency",
+                "note": "Time, memory or resources used, with the hardware stated, where relevant."
+            },
+            {
+                "id": "t-error",
+                "name": "Examples and error analysis",
+                "note": "Show representative successes and failures, not only averages."
+            },
+            {
+                "id": "t-generalise",
+                "name": "How far the findings generalise",
+                "note": "State the conditions under which the result holds and where it was not tested."
+            },
+            {
+                "id": "t-ethics",
+                "name": "Ethics, consent and data protection",
+                "note": "Where people, animals or personal data are involved, state approvals and how data were protected."
             },
             {
                 "id": "t-limits",
-                "name": "Research limitations",
-                "note": "Corpus domain, dialects not covered, metrics that do not measure quality."
+                "name": "Limitations",
+                "note": "Be specific about assumptions, coverage and measures that do not capture everything."
             },
             {
-                "id": "t-release",
-                "name": "Public release of code, models and artifacts",
-                "note": "Release where corpus licences permit; link it from the paper after acceptance (keep it anonymous during review)."
+                "id": "t-repro",
+                "name": "Reproducibility and availability",
+                "note": "Settings, seeds and data sources in the paper; release code and data where permissions allow, kept anonymous during review."
             }
         ],
         "matrix": [
             {
-                "claim": "Tokenizer A segments Kurdish more efficiently than tokenizer B",
-                "evidence": "Fertility and compression on the same held-out text, per dialect and script",
+                "claim": "Our method outperforms [baseline]",
+                "evidence": "The same test data, the same measure, and the baseline's version and settings",
                 "where": "Results table",
                 "strength": "Repeated runs or confidence intervals"
             },
             {
-                "claim": "A vocabulary size of [X] is a good trade-off",
-                "evidence": "Metric curves across all trained sizes, plus model-side cost (embedding size)",
+                "claim": "A setting of [X] is a good trade-off",
+                "evidence": "Results across the whole range tried, plus the cost side of the trade-off",
                 "where": "Results figure",
-                "strength": "Show the curve flattening, not one point"
+                "strength": "Show the curve, not one point"
             },
             {
-                "claim": "Dialect share in training changes performance",
-                "evidence": "Per-dialect metrics for each training mixture",
+                "claim": "Factor [Z] changes the outcome",
+                "evidence": "Results for each level of the factor with everything else held fixed",
                 "where": "Results table",
-                "strength": "Same evaluation sets for every mixture"
+                "strength": "Same evaluation data for every level"
             },
             {
-                "claim": "Existing LLM tokenizers handle Kurdish poorly",
-                "evidence": "Baseline tokenizers on the same evaluation sets, with versions named",
+                "claim": "Existing approaches fall short on [problem]",
+                "evidence": "Earlier approaches run on the same data, with versions named",
                 "where": "Results table",
                 "strength": "Baselines chosen before seeing results"
             },
             {
-                "claim": "Segments align better with Kurdish morphology",
-                "evidence": "Segmentation examples and, ideally, agreement with a morpheme-annotated sample",
+                "claim": "The method works because of [mechanism]",
+                "evidence": "Ablations or examples that isolate the mechanism",
                 "where": "Discussion",
-                "strength": "Annotated sample size and annotator agreement"
+                "strength": "Isolate one change at a time"
             },
             {
-                "claim": "Better tokenization improves LLM performance",
-                "evidence": "A downstream experiment (perplexity per byte, task accuracy) holding everything else fixed",
+                "claim": "The finding generalises beyond our data",
+                "evidence": "A second dataset, setting or population",
                 "where": "Results",
                 "strength": "Without it, describe the claim as a hypothesis"
             },
             {
                 "claim": "The work is reproducible",
-                "evidence": "Full settings, seeds, corpus sources and code release plan",
+                "evidence": "Full settings, seeds, data sources and a code release plan",
                 "where": "Methods",
                 "strength": "Release after acceptance"
             }

@@ -56,7 +56,7 @@
         { "source": "aro-guide", "claim": "A section titled 'Free AI writing tools' lists grammar checkers, paraphrasers and summarisers (Scribbr)." }
       ],
       "analysis": "The ban is stated as a misconduct rule; the tool list is a convenience link. The page never says that paraphrasers or summarisers are exempt, and none of the policy pages adds a disclosure route. The only use the Guide clearly endorses is grammar checking.",
-      "recommendation": "Write every sentence yourself. Use spelling and grammar correction only where it fixes your own sentences and does not generate new ones. Do not use paraphrasers, summarisers or chat models to produce, rewrite or translate manuscript text. Keep your drafts and version history as evidence of authorship. Ask the office whether grammar-tool use should be disclosed. Using language models as the object of your research (tokenizers, evaluation) is a separate matter: describe it fully in Methods.",
+      "recommendation": "Write every sentence yourself. Use spelling and grammar correction only where it fixes your own sentences and does not generate new ones. Do not use paraphrasers, summarisers or chat models to produce, rewrite or translate manuscript text. Keep your drafts and version history as evidence of authorship. Ask the office whether grammar-tool use should be disclosed. Using AI models as the object of your research (for example evaluating or benchmarking them) is a separate matter: describe it fully in Methods.",
       "affects": ["r-ai-text", "r-english"]
     },
     {
@@ -69,7 +69,7 @@
         { "source": "aro-example-2814", "claim": "Observed: a 2026 ARO article's reference list includes an item labelled [Preprint]." }
       ],
       "analysis": "One published exception does not change a written rule. Reviewers and editors will apply the Guide.",
-      "recommendation": "Follow the rule. Cite the peer-reviewed venue version of every paper (most tokenization papers have an ACL Anthology version). For work that exists only as a technical report on arXiv (many model releases), ask the office whether the official model card or repository may be cited as software instead.",
+      "recommendation": "Follow the rule. Cite the peer-reviewed venue version of every paper (most conference and workshop papers have a published proceedings version). For work that exists only as a technical report on arXiv (many technical reports and model releases), ask the office whether the official model card or repository may be cited as software instead.",
       "affects": ["r-no-preprints"]
     },
     {
@@ -133,9 +133,9 @@
       "positions": [
         { "source": "tpl-stage-one", "claim": "Tick one field that matches your specialty; undeclared disciplines are not considered. Computer Science lists only Software Engineering." },
         { "source": "aro-about", "claim": "Scope: sciences and engineering, including interdisciplinary work." },
-        { "source": "aro-example-2814", "claim": "Observed: ARO published a Sorani Kurdish NLP paper in 2026." }
+        { "source": "aro-example-2814", "claim": "Observed: ARO published a natural language processing paper in 2026." }
       ],
-      "analysis": "Kurdish NLP has been published in ARO, so the topic is within scope in practice, but the tick box closest to it is 'Computer Science: Software Engineering'. 'Undeclared disciplines are not considered' makes the tick box consequential.",
+      "analysis": "Topics such as NLP have been published in ARO, so they are within scope in practice, but the closest tick box is 'Computer Science: Software Engineering'. 'Undeclared disciplines are not considered' makes the tick box consequential.",
       "recommendation": "Ask the office which box an NLP / AI paper should tick, in the same email as the anonymisation question. Until then, plan to tick Computer Science.",
       "affects": ["r-discipline"]
     },
