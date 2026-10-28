@@ -689,13 +689,6 @@ main p, main li, main dd, main td, main blockquote, main pre { overflow-wrap: br
 .gedge.is-lit { opacity: 1; stroke-width: 3; }
 .gedge.is-dim { opacity: .04; }
 .gedge--leads_to.is-base { stroke-width: 2.6; opacity: .7; }
-.gpulse { fill: none; stroke: var(--e, var(--blue-500)); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 9 91; pointer-events: none;
-  filter: drop-shadow(0 0 4px var(--e, var(--blue-500))); animation: gpulse 2.2s linear infinite; }
-@keyframes gpulse { from { stroke-dashoffset: 9; } to { stroke-dashoffset: -91; } }
-.gpulse--requires { --e: var(--purple-500); } .gpulse--depends_on { --e: var(--blue-500); } .gpulse--explained_by { --e: var(--gray-500, #888); }
-.gpulse--downloaded_from { --e: var(--green-500); } .gpulse--submitted_during { --e: var(--papaya-500); } .gpulse--reviewed_under { --e: var(--teal-500); }
-.gpulse--leads_to { --e: var(--blue-500); } .gpulse--conflicts_with { --e: var(--orange-500); }
-@media (prefers-reduced-motion: reduce) { .gpulse { display: none; } }
 
 .graph-legend-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 20px; }
 .graph-legend-row .graph-legend { position: static; padding: 0; background: none; box-shadow: none; }
@@ -742,9 +735,9 @@ main p, main li, main dd, main td, main blockquote, main pre { overflow-wrap: br
 /* Every arrowhead takes its link's relationship colour, in both themes. */
 .arrow { fill: var(--e); stroke: none; }
 .gedge { stroke: var(--e, var(--gray-400)); }
-[data-theme="dark"] .gedge--requires, [data-theme="dark"] .arrow--requires, [data-theme="dark"] .gpulse--requires { --e: var(--purple-400, #b18cff); }
-[data-theme="dark"] .gedge--depends_on, [data-theme="dark"] .arrow--depends_on, [data-theme="dark"] .gpulse--depends_on, [data-theme="dark"] .gpulse--leads_to { --e: var(--blue-400, #6f8dff); }
-[data-theme="dark"] .gedge--explained_by, [data-theme="dark"] .arrow--explained_by, [data-theme="dark"] .gpulse--explained_by { --e: var(--gray-400, #9a9a9a); }
+[data-theme="dark"] .gedge--requires, [data-theme="dark"] .arrow--requires { --e: var(--purple-400, #b18cff); }
+[data-theme="dark"] .gedge--depends_on, [data-theme="dark"] .arrow--depends_on { --e: var(--blue-400, #6f8dff); }
+[data-theme="dark"] .gedge--explained_by, [data-theme="dark"] .arrow--explained_by { --e: var(--gray-400, #9a9a9a); }
 
 /* Smoother START motion: bubble and disc share one slow period with a sine-like ease, so they float together instead of jittering at different speeds. */
 @keyframes aroFloat { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -4px, 0); } }

@@ -1,6 +1,6 @@
 // Explore: the publication knowledge graph. Same data model as the journey; stage nodes show live progress.
 // Cards sit on a pannable, zoomable board. Every card can be dragged; links stay attached and light up
-// (with a travelling pulse) for the selected card. Lanes, type panels and a focus view are three ways to lay it out.
+// for the selected card. Lanes, type panels and a focus view are three ways to lay it out.
 import { h, icon, svg, clear, reducedMotion } from '../lib/dom.js';
 import { graph, neighbours, pathFromStart, dependencies, routeFor, REL_LABEL, KIND_LABEL, stage, stageProgress, conflict, D } from '../lib/model.js';
 import { guidanceBadge, statusBadge, sfx } from '../lib/ui.js';
@@ -382,25 +382,8 @@ export function renderExplore(root, _p, query) {
         JSON.parse(s).forEach(([id, x, y]) => moveNode(id, x, y));
         commitMove();
     }
-    // pulses: a travelling dash on every lit link, from source card to target card
-    function refreshPulses() {
-        const pg = world?.querySelector('.graph-pulses');
-        if (!pg)
-            return;
-        clear(pg);
-        pulseEls = new Map();
-        if (reducedMotion())
-            return;
-        let n = 0;
-        L.edges.forEach((e, i) => {
-            if (n >= 36 || !edgeEls[i]?.classList.contains('is-lit'))
-                return;
-            const p = svg('path', { d: edgeEls[i].getAttribute('d'), class: `gpulse gpulse--${e.rel}`, pathLength: 100 });
-            pg.appendChild(p);
-            pulseEls.set(i, p);
-            n++;
-        });
-    }
+    // no travelling glow on links: lit links are shown by colour and weight only
+    function refreshPulses() { }
     function restyle() {
         if (ui.mode !== 'graph' || !svgRoot)
             return;
