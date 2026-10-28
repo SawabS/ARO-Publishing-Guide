@@ -42,7 +42,7 @@ export function renderJourney(root: HTMLElement) {
       h('div.kicker.kicker--blue', null, 'Your research paper → ARO, Koya University'),
       h('h1.display-hero.journey-title', null, 'Publish your research paper in ', h('em', null, 'ARO'), ', step by step'),
       h('p.ts-body-lg.c-secondary.journey-sub', null,
-        cur ? ['Start where you are. Next up: ', h('b', null, stageLabel(cur)), ' — ', cur.short] : 'Every checklist item is done. Review the readiness report before you celebrate.'),
+        cur ? ['Start where you are. Next up: ', h('b', null, stageLabel(cur)), ': ', cur.short] : 'Every checklist item is done. Review the readiness report before you celebrate.'),
       h('div.row.hero-actions', null,
         h('a.btn3d.btn3d--blue', { href: resume, 'data-continue': '' }, h('span.btn3d__face', null, icon('i-play', 16), last && last !== '#/' ? 'Continue where I left off' : 'Start stage 01')),
         h('button.btn3d.btn3d--white', { onclick: () => (window as unknown as { startTour: () => void }).startTour() }, h('span.btn3d__face', null, 'Take the tour'))),

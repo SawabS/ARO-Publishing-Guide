@@ -50,7 +50,7 @@ export function conflictCallout(id: string, compact = false): HTMLElement {
   return h(`div.callout.callout--${tone}.conflict-callout`, null,
     h('div.callout__title', null, icon(c.status === 'unresolved' ? 'i-alert' : 'i-info', 18),
       c.status === 'unresolved' ? 'Sources disagree: confirm with the office' : c.status === 'reconciled' ? 'Sources differ: one action satisfies all' : 'Worth knowing'),
-    h('p', null, h('b', null, c.title), compact ? null : ' — ' + c.recommendation),
+    h('p', null, h('b', null, c.title), compact ? null : ': ' + c.recommendation),
     note ? h('p.c-secondary', null, 'Your note: ' + note) : null,
     h('a.c-link', { href: routeFor(id) }, compact ? 'See both sources and the recommendation' : 'Open the comparison'));
 }

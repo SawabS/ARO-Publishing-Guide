@@ -154,7 +154,7 @@ export async function analyse(file: File): Promise<Report> {
   if (absIdx < 0) push({ id: 'a-abstract', label: 'Abstract', verdict: 'fail', confidence: 'medium', detail: 'No paragraph starting with “Abstract” was found.' });
   else {
     const end = [kwIdx, introIdx].filter(i => i > absIdx).sort((a, b) => a - b)[0] ?? absIdx + 1;
-    const absText = all.slice(absIdx, end).map(p => p.text).join(' ').replace(/^abstract\s*[—–:.-]?\s*/i, '');
+    const absText = all.slice(absIdx, end).map(p => p.text).join(' ').replace(/^abstract\s*[\u2014\u2013:.-]?\s*/i, '');
     const aw = wordsIn(absText);
     const cites = absText.match(/\([A-Z][^()]{1,60}?,?\s(19|20)\d{2}[a-z]?\)|\[\d+(?:[,–-]\s?\d+)*\]/g) || [];
     push({ id: 'a-abstract', label: 'Abstract length and citations', confidence: 'medium',
@@ -165,7 +165,7 @@ export async function analyse(file: File): Promise<Report> {
   // ── keywords
   if (kwIdx < 0) push({ id: 'a-keywords', label: 'Index terms', verdict: 'fail', confidence: 'medium', detail: 'No “Index Terms” or “Keywords” paragraph found.' });
   else {
-    const terms = all[kwIdx].text.replace(/^(index terms|keywords?)\s*[—–:.-]?\s*/i, '').split(/[,;]/).map(s => s.trim().replace(/\.$/, '')).filter(Boolean);
+    const terms = all[kwIdx].text.replace(/^(index terms|keywords?)\s*[\u2014\u2013:.-]?\s*/i, '').split(/[,;]/).map(s => s.trim().replace(/\.$/, '')).filter(Boolean);
     const sorted = [...terms].sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));
     const alpha = terms.every((t, i) => t === sorted[i]);
     push({ id: 'a-keywords', label: 'Index terms', confidence: 'high',

@@ -27,14 +27,14 @@ export function checklistMarkdown() {
         lines.push(`## ${stageLabel(s)}`, '');
         s.checklist.forEach(c => {
             const st = checkStatus(c);
-            const a = c.auto && auto[c.auto] ? ` — automated check: ${auto[c.auto].verdict}` : '';
+            const a = c.auto && auto[c.auto] ? ` (automated check: ${auto[c.auto].verdict})` : '';
             lines.push(`- [${st === 'done' ? 'x' : ' '}] ${c.label} (${STATUS_WORD[st]})${a}`);
         });
         lines.push('');
     });
     const open = D.conflicts.filter(c => c.status === 'unresolved');
     lines.push('## Questions for the editorial office', '');
-    open.forEach(c => lines.push(`- ${c.title}${store.get().confirmed[c.id] ? ` — answer recorded: ${store.get().confirmed[c.id]}` : ' — not yet answered'}`));
+    open.forEach(c => lines.push(`- ${c.title}${store.get().confirmed[c.id] ? ` (answer recorded: ${store.get().confirmed[c.id]})` : ' (not yet answered)'}`));
     lines.push('', 'Official journal site: https://aro.koyauniversity.org/', '');
     return lines.join('\n');
 }

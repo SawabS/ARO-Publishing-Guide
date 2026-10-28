@@ -52,7 +52,7 @@ def make_docx(path: pathlib.Path, good: bool):
     d.add_heading('Abstract', 1)
     words = ('This illustrative abstract describes a study of methods for an example problem and reports what was done why it matters and what was found. ' * (12 if good else 2)).split()
     d.add_paragraph(' '.join(words[:200] if good else words[:40]) + ('' if good else ' (Smith, 2020)'))
-    d.add_paragraph('Index Terms—Deep learning, Image segmentation, Medical imaging, Transfer learning, U-Net')
+    d.add_paragraph('Index Terms: Deep learning, Image segmentation, Medical imaging, Transfer learning, U-Net')
     body = ' '.join(['Example sentence about corpora and evaluation of segmentation quality.'] * 40)
     for h in ['Introduction', 'Materials and Methods', 'Results and Discussion', 'Conclusions', 'Acknowledgment']:
         d.add_heading(h, 1)
