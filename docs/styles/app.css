@@ -745,3 +745,10 @@ main p, main li, main dd, main td, main blockquote, main pre { overflow-wrap: br
 [data-theme="dark"] .gedge--requires, [data-theme="dark"] .arrow--requires, [data-theme="dark"] .gpulse--requires { --e: var(--purple-400, #b18cff); }
 [data-theme="dark"] .gedge--depends_on, [data-theme="dark"] .arrow--depends_on, [data-theme="dark"] .gpulse--depends_on, [data-theme="dark"] .gpulse--leads_to { --e: var(--blue-400, #6f8dff); }
 [data-theme="dark"] .gedge--explained_by, [data-theme="dark"] .arrow--explained_by, [data-theme="dark"] .gpulse--explained_by { --e: var(--gray-400, #9a9a9a); }
+
+/* Smoother START motion: bubble and disc share one slow period with a sine-like ease, so they float together instead of jittering at different speeds. */
+@keyframes aroFloat { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -4px, 0); } }
+@keyframes aroBubble { 0%, 100% { transform: translate3d(-50%, 0, 0); } 50% { transform: translate3d(-50%, -4px, 0); } }
+.lesson-node[data-state="current"] svg { animation: aroFloat 3.2s cubic-bezier(.45, 0, .55, 1) infinite; will-change: transform; }
+.start-bubble { animation: aroBubble 3.2s cubic-bezier(.45, 0, .55, 1) infinite; animation-delay: -.25s; will-change: transform; backface-visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .lesson-node[data-state="current"] svg, .start-bubble { animation: none; } }
