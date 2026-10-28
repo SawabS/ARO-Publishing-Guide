@@ -13,6 +13,7 @@ export function h(sel: string, attrs?: Attrs, ...kids: Child[]): HTMLElement {
   if (id) el.id = id;
   if (classes.length) el.className = classes.join(' ');
   if (attrs) for (const [k, v] of Object.entries(attrs)) {
+    if (k.startsWith('aria-') && typeof v === 'boolean') { el.setAttribute(k, String(v)); continue; } // ARIA states need "true"/"false"
     if (v === undefined || v === null || v === false) continue;
     if (k === 'class') el.className = [el.className, v].filter(Boolean).join(' ');
     else if (k === 'style' && typeof v === 'object') Object.assign(el.style, v);

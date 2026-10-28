@@ -134,14 +134,14 @@ function openSearch() {
     results = search(input.value);
     if (input.value.trim().length > 1 && !results.length) list.append(h('li.search-empty', null, 'No matches. Try “abstract”, “ORCID”, “template” or “preprint”.'));
     results.forEach((d, i) => list.append(h('li', { role: 'option', 'aria-selected': i === sel },
-      h('a', { href: d.route, onclick: close }, h('span.badge.badge--subtle.badge--blue', null, d.type), h('span.search-title', null, d.title)))));
+      h('a', { href: d.route, onclick: () => close(false) }, h('span.badge.badge--subtle.badge--blue', null, d.type), h('span.search-title', null, d.title)))));
   };
-  const close = () => { overlay.remove(); document.removeEventListener('keydown', keys); (qs('[data-search-btn]') as HTMLElement | null)?.focus(); };
+  const close = (refocus = true) => { overlay.remove(); document.removeEventListener('keydown', keys); if (refocus) (qs('[data-search-btn]') as HTMLElement | null)?.focus(); else main.focus({ preventScroll: true }); };
   const keys = (e: KeyboardEvent) => {
     if (e.key === 'Escape') close();
     else if (e.key === 'ArrowDown') { sel = Math.min(sel + 1, results.length - 1); render(); e.preventDefault(); }
     else if (e.key === 'ArrowUp') { sel = Math.max(sel - 1, 0); render(); e.preventDefault(); }
-    else if (e.key === 'Enter' && results[sel]) { location.hash = results[sel].route; close(); }
+    else if (e.key === 'Enter' && results[sel]) { e.preventDefault(); location.hash = results[sel].route; close(false); }
   };
   input.addEventListener('input', () => { sel = 0; render(); });
   const overlay = h('div.overlay.search-overlay', { onclick: (e: Event) => { if (e.target === overlay) close(); } },

@@ -117,16 +117,16 @@ export function renderJourney(root: HTMLElement) {
   const side = h('aside.side.journey-side', null,
     h('div.card.card--elevated.stack', null,
       h('div.ts-heading-sm', null, 'Before you submit, ask ARO'),
-      h('p.ts-body-sm.c-secondary', null, 'Official pages disagree on three points that change what you upload.'),
+      h('p.ts-body-sm.c-secondary', null, 'Official pages disagree on points that change what you upload.'),
       h('ul.ts-body-sm.tight-list', null, D.conflicts.filter(c => c.status === 'unresolved' && c.severity !== 'low').slice(0, 4).map(c => h('li', null, h('a', { href: `#/questions/${c.id}` }, c.title)))),
-      h('a.btn.btn--outline.btn--sm', { href: '#/directory#email' }, icon('a-mail', 16), 'Draft the email')),
+      h('a.btn.btn--outline.btn--sm', { href: '#/directory?focus=email' }, icon('a-mail', 16), 'Draft the email')),
     h('div.callout.callout--purple', null,
       h('div.callout__title', null, icon('i-sparkle', 18), 'Key restrictions'),
       h('ul.ts-body-sm.tight-list', null,
         h('li', null, h('a', { href: '#/req/r-ai-text' }, 'No AI-generated text')),
         h('li', null, h('a', { href: '#/req/r-no-preprints' }, 'No non-peer-reviewed preprints')),
         h('li', null, h('a', { href: '#/req/r-similarity' }, 'Similarity above 15% is declined')),
-        h('li', null, h('a', { href: '#/req/r-length' }, 'Words vs figures limits'))))));
+        h('li', null, h('a', { href: '#/req/r-length' }, 'Words vs figures limits')))));
 
   layout.append(card, pathCol, side);
   root.append(layout);

@@ -102,6 +102,14 @@ export function renderExplore(root: HTMLElement, _p: string[], query: URLSearchP
     ui.view = { k, x: (r.width - L.w * k) / 2, y: Math.max(0, (r.height - L.h * k) / 2) };
     applyView();
   }
+  // first view: legible labels, anchored at the top-left (Stage 01); 'Fit to view' still shows everything
+  function readable() {
+    if (!svgRoot) return;
+    const r = svgRoot.getBoundingClientRect();
+    const k = Math.max(0.7, Math.min(1, r.width / L.w));
+    ui.view = { k, x: k * L.w < r.width ? (r.width - L.w * k) / 2 : 8, y: 8 };
+    applyView();
+  }
   function zoom(f: number, cx?: number, cy?: number) {
     if (!svgRoot) return;
     const r = svgRoot.getBoundingClientRect();
@@ -211,7 +219,7 @@ export function renderExplore(root: HTMLElement, _p: string[], query: URLSearchP
       if (m[e.key]) { e.preventDefault(); ui.view.x += m[e.key][0]; ui.view.y += m[e.key][1]; applyView(); }
       if (e.key === '+' || e.key === '=') zoom(1.2); if (e.key === '-') zoom(0.83); if (e.key === '0') fit();
     });
-    requestAnimationFrame(() => { fit(); if (ui.selected) center(ui.selected); });
+    requestAnimationFrame(() => { readable(); if (ui.selected) center(ui.selected); });
   }
 
   function restyle() {

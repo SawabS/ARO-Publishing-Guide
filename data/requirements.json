@@ -1,217 +1,933 @@
 {
   "$comment": "Official ARO requirements, paraphrased from the cited pages. status: mandatory | conditional | recommended | informational. stages are publication-stage ids (s01..s10). topic is the Handbook chapter. Every item must cite at least one official source (validated by scripts/validate-data.mjs).",
   "requirements": [
-    { "id": "r-scope", "title": "Sciences and engineering only", "topic": "journal", "status": "mandatory", "stages": ["s01", "s02"], "sources": ["aro-about", "aro-guide", "aro-editorial-policies"],
+    {
+      "id": "r-scope",
+      "title": "Sciences and engineering only",
+      "topic": "journal",
+      "status": "mandatory",
+      "stages": [
+        "s01",
+        "s02"
+      ],
+      "sources": [
+        "aro-about",
+        "aro-guide",
+        "aro-editorial-policies"
+      ],
       "rule": "ARO publishes original research articles, review articles and letters in the sciences and engineering, including interdisciplinary work. It does not take pre-submission enquiries; scope questions go to the editorial office by email.",
       "explain": "A Kurdish tokenizer study is computer science, which is inside the scope. ARO published a Sorani Kurdish NLP paper in 2026, so the topic has precedent.",
-      "how": "Read two or three recent ARO computer science papers before writing, so your framing and depth match what the journal prints." },
-    { "id": "r-article-types", "title": "Pick one article type", "topic": "length", "status": "mandatory", "stages": ["s01", "s03"], "sources": ["aro-submissions", "tpl-stage-one", "aro-publishing"],
+      "how": "Read two or three recent ARO computer science papers before writing, so your framing and depth match what the journal prints."
+    },
+    {
+      "id": "r-article-types",
+      "title": "Pick one article type",
+      "topic": "length",
+      "status": "mandatory",
+      "stages": [
+        "s01",
+        "s03"
+      ],
+      "sources": [
+        "aro-submissions",
+        "tpl-stage-one",
+        "aro-publishing"
+      ],
       "rule": "Section policies: Articles (the main type), Review Articles (critical analysis of a field's literature) and Letters (short reports of an outstanding finding). The template asks you to tick one: Research Article (2,500–6,000 words), Review Paper (4,000–10,000 words) or Letter (under 2,500 words).",
       "explain": "Experiments comparing BPE, Unigram and existing tokenizers are original research, so the type is Research Article.",
-      "how": "Tick Research Article on the template's first page." },
-    { "id": "r-discipline", "title": "Declare your discipline on the first page", "topic": "template", "status": "mandatory", "stages": ["s04", "s05"], "sources": ["tpl-stage-one"], "conflicts": ["c-discipline"],
+      "how": "Tick Research Article on the template's first page."
+    },
+    {
+      "id": "r-discipline",
+      "title": "Declare your discipline on the first page",
+      "topic": "template",
+      "status": "mandatory",
+      "stages": [
+        "s04",
+        "s05"
+      ],
+      "sources": [
+        "tpl-stage-one"
+      ],
+      "conflicts": [
+        "c-discipline"
+      ],
       "rule": "Tick one submission field. The discipline must match the author's specialty; undeclared disciplines are not considered. The Computer Science group lists Software Engineering.",
       "explain": "There is no NLP or AI box. Picking the wrong one could delay screening.",
-      "how": "Ask the office which box fits an NLP paper; plan for Computer Science until they answer." },
-    { "id": "r-original", "title": "Original and not under review elsewhere", "topic": "originality", "status": "mandatory", "stages": ["s02", "s06", "s07"], "sources": ["aro-submissions", "aro-editorial-policies", "aro-pubethics"],
+      "how": "Ask the office which box fits an NLP paper; plan for Computer Science until they answer."
+    },
+    {
+      "id": "r-original",
+      "title": "Original and not under review elsewhere",
+      "topic": "originality",
+      "status": "mandatory",
+      "stages": [
+        "s02",
+        "s06",
+        "s07"
+      ],
+      "sources": [
+        "aro-submissions",
+        "aro-editorial-policies",
+        "aro-pubethics"
+      ],
       "rule": "The submission must not have been published before or be under consideration at another journal; if it has, explain this in Comments to the Editor. Simultaneous submission is prohibited; confirmed cases can lead to rejection, a warning letter, blacklisting, a $200 reviewing fee and notification of your institution.",
       "explain": "A thesis chapter or course report is usually not 'published', but a conference paper or a public preprint might count. Say so up front rather than letting the editor find it.",
-      "how": "List every earlier public version of this work in Comments to the Editor." },
-    { "id": "r-no-prelim", "title": "No preliminary results or reworked papers", "topic": "originality", "status": "mandatory", "stages": ["s02"], "sources": ["tpl-stage-one"],
+      "how": "List every earlier public version of this work in Comments to the Editor."
+    },
+    {
+      "id": "r-no-prelim",
+      "title": "No preliminary results or reworked papers",
+      "topic": "originality",
+      "status": "mandatory",
+      "stages": [
+        "s02"
+      ],
+      "sources": [
+        "tpl-stage-one"
+      ],
       "rule": "The template's editorial policy section rules out reworked versions of previously submitted or published papers and papers with only preliminary data or results.",
       "explain": "Submit when the experiment grid is complete and analysed, not after the first runs.",
-      "how": "Finish every planned tokenizer configuration and its evaluation before writing the Results section." },
-    { "id": "r-contribution", "title": "State your contribution clearly", "topic": "originality", "status": "mandatory", "stages": ["s02", "s03"], "sources": ["aro-guide", "aro-publishing"],
+      "how": "Finish every planned tokenizer configuration and its evaluation before writing the Results section."
+    },
+    {
+      "id": "r-contribution",
+      "title": "State your contribution clearly",
+      "topic": "originality",
+      "status": "mandatory",
+      "stages": [
+        "s02",
+        "s03"
+      ],
+      "sources": [
+        "aro-guide",
+        "aro-publishing"
+      ],
       "rule": "Under Original Contribution, authors must state clearly what their work contributes. Publishing with ARO says editors look for research that fills a gap or has real-world relevance, backed by solid data.",
       "explain": "Reviewers will ask what is new compared with earlier Kurdish tokenization and NLP work.",
-      "how": "End the Introduction with a short list of contributions that each point to a result in the paper." },
-    { "id": "r-official-email", "title": "Official institutional email for every author", "topic": "authors", "status": "mandatory", "stages": ["s05"], "sources": ["aro-submissions", "tpl-stage-one"],
+      "how": "End the Introduction with a short list of contributions that each point to a result in the paper."
+    },
+    {
+      "id": "r-official-email",
+      "title": "Official institutional email for every author",
+      "topic": "authors",
+      "status": "mandatory",
+      "stages": [
+        "s05"
+      ],
+      "sources": [
+        "aro-submissions",
+        "tpl-stage-one"
+      ],
       "rule": "Only members of the academic community may publish. Every author must give an official university or institute email address at registration. The template asks for an organisational email per author.",
       "explain": "A personal Gmail address will not satisfy this.",
-      "how": "Collect each co-author's university address before registering." },
-    { "id": "r-orcid-scholar", "title": "ORCID and Google Scholar for every author", "topic": "authors", "status": "mandatory", "stages": ["s05"], "sources": ["aro-submissions", "aro-guide", "tpl-stage-one"],
+      "how": "Collect each co-author's university address before registering."
+    },
+    {
+      "id": "r-orcid-scholar",
+      "title": "ORCID and Google Scholar for every author",
+      "topic": "authors",
+      "status": "mandatory",
+      "stages": [
+        "s05"
+      ],
+      "sources": [
+        "aro-submissions",
+        "aro-guide",
+        "tpl-stage-one"
+      ],
       "rule": "All authors need an active Google Scholar account and an ORCID iD, provided at registration and on the template's first page. Affiliation, ORCID and Google Scholar URL are mandatory in the online system.",
       "explain": "Creating a Google Scholar profile and an ORCID takes minutes, but co-authors who have neither will hold up the submission.",
-      "how": "Ask every co-author for their ORCID iD and Google Scholar profile URL in week one." },
-    { "id": "r-biography", "title": "Author biography (up to 100 words)", "topic": "authors", "status": "mandatory", "stages": ["s05"], "sources": ["aro-submissions", "aro-guide"], "conflicts": ["c-biography"],
+      "how": "Ask every co-author for their ORCID iD and Google Scholar profile URL in week one."
+    },
+    {
+      "id": "r-biography",
+      "title": "Author biography (up to 100 words)",
+      "topic": "authors",
+      "status": "mandatory",
+      "stages": [
+        "s05"
+      ],
+      "sources": [
+        "aro-submissions",
+        "aro-guide"
+      ],
+      "conflicts": [
+        "c-biography"
+      ],
       "rule": "The checklist asks for an academic biography of up to 100 words with a clear statement of affiliation. The Guide calls the biography optional and says the corresponding author supplies it at registration.",
       "explain": "Treat it as required because it is on the checklist you confirm.",
-      "how": "Draft 60–100 words per author: position, affiliation, research focus." },
-    { "id": "r-author-metadata", "title": "Author details on the first page and in the system", "topic": "authors", "status": "mandatory", "stages": ["s05", "s07"], "sources": ["aro-guide", "tpl-stage-one", "aro-register"], "conflicts": ["c-anonymization"],
+      "how": "Draft 60–100 words per author: position, affiliation, research focus."
+    },
+    {
+      "id": "r-author-metadata",
+      "title": "Author details on the first page and in the system",
+      "topic": "authors",
+      "status": "mandatory",
+      "stages": [
+        "s05",
+        "s07"
+      ],
+      "sources": [
+        "aro-guide",
+        "tpl-stage-one",
+        "aro-register"
+      ],
+      "conflicts": [
+        "c-anonymization"
+      ],
       "rule": "Stage One: put all authors' names, affiliations, ORCID iDs and Google Scholar URLs on the first page and enter the same details in the submission system. Registration requires given name, affiliation, country, email, username and password.",
       "explain": "The details must match exactly between the manuscript, the system and each author's ORCID record.",
-      "how": "Keep one table of author metadata and copy from it everywhere." },
-    { "id": "r-authorship", "title": "Authorship and co-author agreement", "topic": "ethics", "status": "mandatory", "stages": ["s05"], "sources": ["aro-faq", "tpl-stage-one"],
+      "how": "Keep one table of author metadata and copy from it everywhere."
+    },
+    {
+      "id": "r-authorship",
+      "title": "Authorship and co-author agreement",
+      "topic": "ethics",
+      "status": "mandatory",
+      "stages": [
+        "s05"
+      ],
+      "sources": [
+        "aro-faq",
+        "tpl-stage-one"
+      ],
       "rule": "Everyone who made a significant contribution is listed, in an order that reflects relative contribution. The submitting author must obtain agreement from all co-authors (and any required sponsor consent). Courtesy authorship is strongly discouraged.",
       "explain": "For a team project, agree on the author list and order before writing, and record who did what.",
-      "how": "Get written approval of the final manuscript and author order from every co-author." },
-    { "id": "r-template", "title": "Use the Stage-One template", "topic": "template", "status": "mandatory", "stages": ["s04"], "sources": ["aro-guide", "aro-submissions", "tpl-stage-one", "tpl-aro-dotx"], "conflicts": ["c-anonymization"],
+      "how": "Get written approval of the final manuscript and author order from every co-author."
+    },
+    {
+      "id": "r-template",
+      "title": "Use the Stage-One template",
+      "topic": "template",
+      "status": "mandatory",
+      "stages": [
+        "s04"
+      ],
+      "sources": [
+        "aro-guide",
+        "aro-submissions",
+        "tpl-stage-one",
+        "tpl-aro-dotx"
+      ],
+      "conflicts": [
+        "c-anonymization"
+      ],
       "rule": "Prepare the first submission in the ARO Stage-One template and do not remove its first-page information fields (tick boxes for article type and field, author details).",
       "explain": "Start writing inside the template rather than reformatting at the end; it fixes margins, spacing and fonts for you.",
-      "how": "Download the template from the Submissions page link and save your draft from it." },
-    { "id": "r-typography", "title": "Times New Roman 12 pt, double-spaced, one column", "topic": "typography", "status": "mandatory", "stages": ["s04"], "sources": ["aro-guide", "aro-submissions", "tpl-stage-one"],
+      "how": "Download the template from the Submissions page link and save your draft from it."
+    },
+    {
+      "id": "r-typography",
+      "title": "Times New Roman 12 pt, double-spaced, one column",
+      "topic": "typography",
+      "status": "mandatory",
+      "stages": [
+        "s04"
+      ],
+      "sources": [
+        "aro-guide",
+        "aro-submissions",
+        "tpl-stage-one"
+      ],
       "rule": "Single column, double-spaced, Times New Roman, normal, 12-point. Do not change font sizes or line spacing to fit more text. Use italics for emphasis, not underlining.",
       "explain": "Stage One is a review copy, not the final layout. The production team sets the published two-column layout after acceptance.",
-      "how": "Keep the template's styles; avoid manual font changes." },
-    { "id": "r-page-setup", "title": "Letter paper, 20 mm margins", "topic": "typography", "status": "mandatory", "stages": ["s04"], "sources": ["tpl-stage-one"],
+      "how": "Keep the template's styles; avoid manual font changes."
+    },
+    {
+      "id": "r-page-setup",
+      "title": "Letter paper, 20 mm margins",
+      "topic": "typography",
+      "status": "mandatory",
+      "stages": [
+        "s04"
+      ],
+      "sources": [
+        "tpl-stage-one"
+      ],
       "rule": "Letter-size paper, one column, 20 mm margins on all four sides.",
       "explain": "The template already has these settings; they change only if you paste into a new document.",
-      "how": "Check Layout → Margins and Size in Word before submitting." },
-    { "id": "r-file-format", "title": "Microsoft Word file", "topic": "files", "status": "mandatory", "stages": ["s04", "s07"], "sources": ["aro-guide", "aro-submissions", "tpl-stage-one", "aro-howto"], "conflicts": ["c-file-format"],
+      "how": "Check Layout → Margins and Size in Word before submitting."
+    },
+    {
+      "id": "r-file-format",
+      "title": "Microsoft Word file",
+      "topic": "files",
+      "status": "mandatory",
+      "stages": [
+        "s04",
+        "s07"
+      ],
+      "sources": [
+        "aro-guide",
+        "aro-submissions",
+        "tpl-stage-one",
+        "aro-howto"
+      ],
+      "conflicts": [
+        "c-file-format"
+      ],
       "rule": "Submit Microsoft Word (.doc or .docx; the Guide also accepts .rtf). The template mentions .docx and .pdf at the review stage.",
       "explain": "A LaTeX PDF alone is not enough. If you write in LaTeX, you will still need a Word version in the template.",
-      "how": "Submit .docx; keep a PDF export ready." },
-    { "id": "r-figures-inline", "title": "Figures and tables inside the text", "topic": "figures", "status": "mandatory", "stages": ["s04"], "sources": ["aro-submissions", "aro-guide"],
+      "how": "Submit .docx; keep a PDF export ready."
+    },
+    {
+      "id": "r-figures-inline",
+      "title": "Figures and tables inside the text",
+      "topic": "figures",
+      "status": "mandatory",
+      "stages": [
+        "s04"
+      ],
+      "sources": [
+        "aro-submissions",
+        "aro-guide"
+      ],
       "rule": "Place all illustrations, figures and tables within the text at the relevant points, not at the end. Upload supplementary material separately.",
       "explain": "Some journals ask for figures at the end; ARO does not.",
-      "how": "Insert each figure right after the paragraph that first cites it." },
-    { "id": "r-title", "title": "Title of at most 15 words", "topic": "organization", "status": "mandatory", "stages": ["s03"], "sources": ["tpl-stage-one"],
+      "how": "Insert each figure right after the paragraph that first cites it."
+    },
+    {
+      "id": "r-title",
+      "title": "Title of at most 15 words",
+      "topic": "organization",
+      "status": "mandatory",
+      "stages": [
+        "s03"
+      ],
+      "sources": [
+        "tpl-stage-one"
+      ],
       "rule": "No more than 15 words; avoid abbreviations unless unavoidable.",
       "explain": "Spell out names reviewers may not know. 'BPE' is widely known in NLP, but the journal's readers span all of science and engineering.",
-      "how": "Count the words; expand acronyms." },
-    { "id": "r-abstract", "title": "Abstract: 150–250 words, no citations", "topic": "abstract", "status": "mandatory", "stages": ["s03", "s06"], "sources": ["aro-guide", "aro-submissions", "tpl-stage-one"], "conflicts": ["c-abstract-length"],
+      "how": "Count the words; expand acronyms."
+    },
+    {
+      "id": "r-abstract",
+      "title": "Abstract: 150–250 words, no citations",
+      "topic": "abstract",
+      "status": "mandatory",
+      "stages": [
+        "s03",
+        "s06"
+      ],
+      "sources": [
+        "aro-guide",
+        "aro-submissions",
+        "tpl-stage-one"
+      ],
+      "conflicts": [
+        "c-abstract-length"
+      ],
       "rule": "At most 250 words (one Guide section says 150–250). Self-contained, with symbols defined and no citations. It should state why the work was done, what was done and how, what was found, and why it matters.",
       "explain": "The abstract is read alone in indexes and by the editor deciding whether to send the paper for review.",
-      "how": "Write five sentences, one per element, then expand to 150–250 words." },
-    { "id": "r-keywords", "title": "About five index terms, alphabetical", "topic": "keywords", "status": "mandatory", "stages": ["s03"], "sources": ["tpl-stage-one", "aro-guide"],
+      "how": "Write five sentences, one per element, then expand to 150–250 words."
+    },
+    {
+      "id": "r-keywords",
+      "title": "About five index terms, alphabetical",
+      "topic": "keywords",
+      "status": "mandatory",
+      "stages": [
+        "s03"
+      ],
+      "sources": [
+        "tpl-stage-one",
+        "aro-guide"
+      ],
       "rule": "Index Terms: about five keywords or phrases, in alphabetical order, separated by commas. (The Guide has a Keywords heading but gives no number.)",
       "explain": "Keywords route the paper to reviewers and search engines.",
-      "how": "Example: Byte pair encoding, Kurdish, Large language models, Tokenization, Unigram language model." },
-    { "id": "r-structure", "title": "Section order and what each section does", "topic": "organization", "status": "mandatory", "stages": ["s03"], "sources": ["aro-guide", "tpl-stage-one"],
+      "how": "Example: Byte pair encoding, Kurdish, Large language models, Tokenization, Unigram language model."
+    },
+    {
+      "id": "r-structure",
+      "title": "Section order and what each section does",
+      "topic": "organization",
+      "status": "mandatory",
+      "stages": [
+        "s03"
+      ],
+      "sources": [
+        "aro-guide",
+        "tpl-stage-one"
+      ],
       "rule": "Introduction (concise, no subheadings); Materials and Methods (enough detail to replicate; subsections allowed); Results and Discussion (may be combined or split); Conclusions (main conclusions, their importance, applications; do not repeat the abstract); Appendix (if any) before Acknowledgment; Acknowledgment (singular heading); References.",
       "explain": "Related work has no section of its own in this list. Put it in the Introduction without subheadings, or make it the first subsection of Methods.",
-      "how": "Use the template's heading levels." },
-    { "id": "r-length", "title": "Word and figure limits", "topic": "length", "status": "mandatory", "stages": ["s03", "s06"], "sources": ["aro-guide", "tpl-stage-one"],
+      "how": "Use the template's heading levels."
+    },
+    {
+      "id": "r-length",
+      "title": "Word and figure limits",
+      "topic": "length",
+      "status": "mandatory",
+      "stages": [
+        "s03",
+        "s06"
+      ],
+      "sources": [
+        "aro-guide",
+        "tpl-stage-one"
+      ],
       "rule": "Research papers: 2,500–3,000 words with fewer than 15 figures; 3,000–4,500 with fewer than 12; 4,500–5,000 with fewer than 10; 5,000–6,000 with fewer than 8. Over 6,000 words is overlong. Reviews: up to 10,000 words and fewer than 20 figures. All papers: at most 12 tables. Word counts include the abstract, references and appendices but exclude figure captions and table contents.",
       "explain": "The more words you use, the fewer figures you are allowed. A tokenizer grid study easily produces many plots; combine them into multi-panel figures.",
-      "how": "Use the length calculator in the Handbook." },
-    { "id": "r-figures", "title": "Figure resolution and captions", "topic": "figures", "status": "mandatory", "stages": ["s04"], "sources": ["aro-guide", "tpl-stage-one"],
+      "how": "Use the length calculator in the Handbook."
+    },
+    {
+      "id": "r-figures",
+      "title": "Figure resolution and captions",
+      "topic": "figures",
+      "status": "mandatory",
+      "stages": [
+        "s04"
+      ],
+      "sources": [
+        "aro-guide",
+        "tpl-stage-one"
+      ],
       "rule": "Bitmap formats (TIF, JPEG and similar) at least 300 dpi unless a lower resolution is scientifically justified; keep labels on a separate layer from the image. The template adds: line art 600 dpi monochrome, photographs and greyscale 300 dpi, colour RGB TIFF 400 dpi or more; captions as 'Fig. 1.' followed by an explanation.",
       "explain": "Plots exported at screen resolution (72–96 dpi) fail this. Export vector or high-dpi raster from your plotting code.",
-      "how": "In matplotlib: savefig('fig1.tif', dpi=600) for line plots." },
-    { "id": "r-tables", "title": "Table rules", "topic": "figures", "status": "mandatory", "stages": ["s04"], "sources": ["aro-guide", "tpl-stage-one"],
+      "how": "In matplotlib: savefig('fig1.tif', dpi=600) for line plots."
+    },
+    {
+      "id": "r-tables",
+      "title": "Table rules",
+      "topic": "figures",
+      "status": "mandatory",
+      "stages": [
+        "s04"
+      ],
+      "sources": [
+        "aro-guide",
+        "tpl-stage-one"
+      ],
       "rule": "Cite tables consecutively in the text, give each a descriptive title, put units in column headings and avoid vertical rules. The template numbers tables with Roman numerals (Table I, Table II) and uses lettered footnotes; build tables with Word's table tool.",
       "explain": "Results tables for vocabulary size × algorithm × dataset mix should state the metric and unit in each heading.",
-      "how": "Never paste tables as images." },
-    { "id": "r-equations", "title": "Equations", "topic": "equations", "status": "mandatory", "stages": ["s04"], "sources": ["aro-guide", "tpl-stage-one"],
+      "how": "Never paste tables as images."
+    },
+    {
+      "id": "r-equations",
+      "title": "Equations",
+      "topic": "equations",
+      "status": "mandatory",
+      "stages": [
+        "s04"
+      ],
+      "sources": [
+        "aro-guide",
+        "tpl-stage-one"
+      ],
       "rule": "Number equations consecutively, in parentheses, flush right. Refer to them as '(1)', not 'Eq. (1)', except at the start of a sentence. Use the Word equation editor or MathType, not 'float over text'. Italicise variables and define symbols before or right after the equation.",
       "explain": "Fertility, compression ratio and normalised sequence length are worth writing as numbered equations, so reviewers can check your definitions.",
-      "how": "See the worked example in the Handbook." },
-    { "id": "r-units", "title": "SI units", "topic": "equations", "status": "mandatory", "stages": ["s04"], "sources": ["aro-guide", "tpl-stage-one"],
+      "how": "See the worked example in the Handbook."
+    },
+    {
+      "id": "r-units",
+      "title": "SI units",
+      "topic": "equations",
+      "status": "mandatory",
+      "stages": [
+        "s04"
+      ],
+      "sources": [
+        "aro-guide",
+        "tpl-stage-one"
+      ],
       "rule": "Use SI units (CGS accepted by the template; do not mix the two in one equation).",
       "explain": "For computing results: seconds (s), bytes with SI or binary prefixes stated explicitly.",
-      "how": "Write '3.2 s', not '3.2 sec'." },
-    { "id": "r-harvard", "title": "Harvard author-date referencing", "topic": "references", "status": "mandatory", "stages": ["s03", "s04", "s06"], "sources": ["aro-guide", "tpl-stage-one", "aru-harvard"],
+      "how": "Write '3.2 s', not '3.2 sec'."
+    },
+    {
+      "id": "r-harvard",
+      "title": "Harvard author-date referencing",
+      "topic": "references",
+      "status": "mandatory",
+      "stages": [
+        "s03",
+        "s04",
+        "s06"
+      ],
+      "sources": [
+        "aro-guide",
+        "tpl-stage-one",
+        "aru-harvard"
+      ],
       "rule": "Use the Harvard system as described in the ARO/Harvard guidance the Guide links to (Anglia Ruskin University Library). In-text: author and year, e.g. (Garrett, 2011). Reference list in alphabetical order by author. Manuscripts without proper references are returned; authors are responsible for accuracy.",
       "explain": "ACL-style numeric references from LaTeX templates must be converted.",
-      "how": "Work through the Harvard module in the Handbook." },
-    { "id": "r-ref-min", "title": "At least 15 references", "topic": "references", "status": "mandatory", "stages": ["s03", "s06"], "sources": ["tpl-stage-one"],
+      "how": "Work through the Harvard module in the Handbook."
+    },
+    {
+      "id": "r-ref-min",
+      "title": "At least 15 references",
+      "topic": "references",
+      "status": "mandatory",
+      "stages": [
+        "s03",
+        "s06"
+      ],
+      "sources": [
+        "tpl-stage-one"
+      ],
       "rule": "The template requires a minimum of 15 references.",
       "explain": "Easy for tokenization work, but every reference must be peer reviewed (see the preprint rule).",
-      "how": "Count after removing non-peer-reviewed items." },
-    { "id": "r-ref-urls", "title": "URLs or DOIs for references", "topic": "references", "status": "mandatory", "stages": ["s06"], "sources": ["aro-submissions", "tpl-stage-one", "aro-guide"],
+      "how": "Count after removing non-peer-reviewed items."
+    },
+    {
+      "id": "r-ref-urls",
+      "title": "URLs or DOIs for references",
+      "topic": "references",
+      "status": "mandatory",
+      "stages": [
+        "s06"
+      ],
+      "sources": [
+        "aro-submissions",
+        "tpl-stage-one",
+        "aro-guide"
+      ],
       "rule": "Provide URLs for references where available. The template's journal-article example ends with 'Retrieved from http://dx.doi.org/…'. The Guide points to Crossref's Simple Text Query for finding DOIs.",
       "explain": "A DOI link is the most stable URL for a paper.",
-      "how": "Paste your reference list into Crossref Simple Text Query to fetch missing DOIs." },
-    { "id": "r-no-preprints", "title": "Do not cite non-peer-reviewed preprints", "topic": "citations", "status": "mandatory", "stages": ["s03", "s06"], "sources": ["aro-guide"], "conflicts": ["c-preprints"],
+      "how": "Paste your reference list into Crossref Simple Text Query to fetch missing DOIs."
+    },
+    {
+      "id": "r-no-preprints",
+      "title": "Do not cite non-peer-reviewed preprints",
+      "topic": "citations",
+      "status": "mandatory",
+      "stages": [
+        "s03",
+        "s06"
+      ],
+      "sources": [
+        "aro-guide"
+      ],
+      "conflicts": [
+        "c-preprints"
+      ],
       "rule": "ARO does not accept citations of papers available only in preprint repositories (including arXiv) that have not been formally peer reviewed.",
       "explain": "Much LLM work is on arXiv. Cite the conference or journal version when one exists (check the ACL Anthology); otherwise find a peer-reviewed alternative or ask the office.",
-      "how": "Search every arXiv reference for a published version before submitting." },
-    { "id": "r-similarity", "title": "Similarity report below 15%", "topic": "similarity", "status": "mandatory", "stages": ["s06"], "sources": ["aro-submissions", "aro-guide", "tpl-stage-one", "aro-review-process"],
+      "how": "Search every arXiv reference for a published version before submitting."
+    },
+    {
+      "id": "r-similarity",
+      "title": "Similarity report below 15%",
+      "topic": "similarity",
+      "status": "mandatory",
+      "stages": [
+        "s06"
+      ],
+      "sources": [
+        "aro-submissions",
+        "aro-guide",
+        "tpl-stage-one",
+        "aro-review-process"
+      ],
       "rule": "Submissions are screened for plagiarism and self-plagiarism (Crossref CrossCheck). A similarity report above 15% is not accepted and the submission is declined; the Guide says 15% or more may lead to rejection.",
       "explain": "Similarity counts your own earlier text too: a thesis, a course report or an earlier paper can raise the score.",
-      "how": "Rewrite rather than reuse text from your earlier documents, and quote and cite anything you must reuse." },
-    { "id": "r-plagiarism-any-stage", "title": "Plagiarism found at any stage", "topic": "similarity", "status": "informational", "stages": ["s08", "s09"], "sources": ["aro-guide", "aro-editorial-policies"],
+      "how": "Rewrite rather than reuse text from your earlier documents, and quote and cite anything you must reuse."
+    },
+    {
+      "id": "r-plagiarism-any-stage",
+      "title": "Plagiarism found at any stage",
+      "topic": "similarity",
+      "status": "informational",
+      "stages": [
+        "s08",
+        "s09"
+      ],
+      "sources": [
+        "aro-guide",
+        "aro-editorial-policies"
+      ],
       "rule": "If plagiarism is detected at any stage, including after acceptance or at proof stage, authors are asked to rewrite, quote accurately or cite; failure to resolve it can lead to rejection.",
       "explain": "Acceptance does not end the similarity check.",
-      "how": "Keep the same care in revisions." },
-    { "id": "r-ai-text", "title": "No AI-generated text", "topic": "ai", "status": "mandatory", "stages": ["s03", "s06"], "sources": ["aro-guide"], "conflicts": ["c-ai-tools"],
+      "how": "Keep the same care in revisions."
+    },
+    {
+      "id": "r-ai-text",
+      "title": "No AI-generated text",
+      "topic": "ai",
+      "status": "mandatory",
+      "stages": [
+        "s03",
+        "s06"
+      ],
+      "sources": [
+        "aro-guide"
+      ],
+      "conflicts": [
+        "c-ai-tools"
+      ],
       "rule": "Text generated from AI, machine learning or similar algorithmic tools is not allowed in submitted papers; a violation is scientific misconduct.",
       "explain": "This covers drafting, rewriting and translation by chat models and paraphrasers. The Guide still encourages grammar checking. Describing LLMs you study is not covered by the ban; generating your text with one is.",
-      "how": "Write it yourself; keep drafts and history; see the AI policy chapter." },
-    { "id": "r-english", "title": "Clear English", "topic": "writing", "status": "mandatory", "stages": ["s03", "s06"], "sources": ["aro-guide", "tpl-stage-one", "aro-faq"],
+      "how": "Write it yourself; keep drafts and history; see the AI policy chapter."
+    },
+    {
+      "id": "r-english",
+      "title": "Clear English",
+      "topic": "writing",
+      "status": "mandatory",
+      "stages": [
+        "s03",
+        "s06"
+      ],
+      "sources": [
+        "aro-guide",
+        "tpl-stage-one",
+        "aro-faq"
+      ],
       "rule": "Write in clear, concise English; proofread before submitting (grammar software or a native speaker is suggested). The template lists undecipherable English as a valid reason for rejection. ARO also offers paid language editing (FAQ).",
       "explain": "Accepted papers are edited and proofread for free by ARO's contracted editing company, but the review copy must already be readable.",
-      "how": "Ask a colleague outside NLP to read the Introduction aloud." },
-    { "id": "r-style", "title": "Template style rules", "topic": "writing", "status": "recommended", "stages": ["s03", "s04"], "sources": ["tpl-stage-one"],
+      "how": "Ask a colleague outside NLP to read the Introduction aloud."
+    },
+    {
+      "id": "r-style",
+      "title": "Template style rules",
+      "topic": "writing",
+      "status": "recommended",
+      "stages": [
+        "s03",
+        "s04"
+      ],
+      "sources": [
+        "tpl-stage-one"
+      ],
       "rule": "Define abbreviations at first use in the text even if defined in the abstract; one space after periods; leading zero (0.25); 's' for seconds; no contractions; serial comma; first person allowed; avoid footnotes where possible; 'et al.' with no period after 'et'; 'data' is plural.",
       "explain": "Small things, but reviewers notice them.",
-      "how": "Run a find-and-replace pass for each rule." },
-    { "id": "r-ethics", "title": "Publication ethics (COPE)", "topic": "ethics", "status": "mandatory", "stages": ["s02", "s06"], "sources": ["aro-pubethics", "aro-editorial-policies", "aro-ethics-policy"],
+      "how": "Run a find-and-replace pass for each rule."
+    },
+    {
+      "id": "r-ethics",
+      "title": "Publication ethics (COPE)",
+      "topic": "ethics",
+      "status": "mandatory",
+      "stages": [
+        "s02",
+        "s06"
+      ],
+      "sources": [
+        "aro-pubethics",
+        "aro-editorial-policies",
+        "aro-ethics-policy"
+      ],
       "rule": "ARO follows COPE. Authors declare that all text, data, figures and tables are original, cite copyrighted material properly and do not infringe others' rights. Fabrication, falsification and plagiarism are prohibited. Conflicts of interest must be disclosed.",
       "explain": "Corpus licensing belongs here: say where each Kurdish corpus came from and under what terms you used it.",
-      "how": "Add a data and licence paragraph to Methods." },
-    { "id": "r-human-participants", "title": "Human participants need ethics approval", "topic": "ethics", "status": "conditional", "stages": ["s02"], "sources": ["aro-ethics-policy"],
+      "how": "Add a data and licence paragraph to Methods."
+    },
+    {
+      "id": "r-human-participants",
+      "title": "Human participants need ethics approval",
+      "topic": "ethics",
+      "status": "conditional",
+      "stages": [
+        "s02"
+      ],
+      "sources": [
+        "aro-ethics-policy"
+      ],
       "rule": "Research with human participants needs informed consent, confidentiality and approval from an institutional review board or equivalent before it starts.",
       "explain": "Applies if you run human evaluations, annotation studies or surveys of speakers. Pure corpus experiments usually do not involve participants.",
-      "how": "If you plan human evaluation, get approval before collecting any data." },
-    { "id": "r-coi-funding", "title": "Conflicts of interest and funding", "topic": "ethics", "status": "mandatory", "stages": ["s05", "s06"], "sources": ["aro-ethics-policy", "aro-pubethics", "aro-guide"],
+      "how": "If you plan human evaluation, get approval before collecting any data."
+    },
+    {
+      "id": "r-coi-funding",
+      "title": "Conflicts of interest and funding",
+      "topic": "ethics",
+      "status": "mandatory",
+      "stages": [
+        "s05",
+        "s06"
+      ],
+      "sources": [
+        "aro-ethics-policy",
+        "aro-pubethics",
+        "aro-guide"
+      ],
       "rule": "Disclose all potential conflicts of interest. Acknowledgements may include supporting grants.",
       "explain": "Compute donated by a company, or an employer with an interest in the result, is worth disclosing.",
-      "how": "Add funding and compute support to the Acknowledgment." },
-    { "id": "r-double-blind", "title": "Double-blind peer review", "topic": "blind", "status": "mandatory", "stages": ["s06", "s08"], "sources": ["aro-review-process", "aro-guide", "aro-editorial-policies", "aro-faq", "aro-submissions"], "conflicts": ["c-anonymization", "c-review-model"],
+      "how": "Add funding and compute support to the Acknowledgment."
+    },
+    {
+      "id": "r-double-blind",
+      "title": "Double-blind peer review",
+      "topic": "blind",
+      "status": "mandatory",
+      "stages": [
+        "s06",
+        "s08"
+      ],
+      "sources": [
+        "aro-review-process",
+        "aro-guide",
+        "aro-editorial-policies",
+        "aro-faq",
+        "aro-submissions"
+      ],
+      "conflicts": [
+        "c-anonymization",
+        "c-review-model"
+      ],
       "rule": "Author and reviewer identities are kept from each other. The Guide says the editorial office removes author information before review; checklist item 11 asks you to follow the double-blind instructions.",
       "explain": "Author names are only one leak. Self-citations in the first person, repository links with your username, acknowledgements and the file's author property also identify you.",
-      "how": "Run the anonymisation module in the Handbook." },
-    { "id": "r-supplementary", "title": "Supplementary files uploaded separately", "topic": "revisions", "status": "conditional", "stages": ["s07"], "sources": ["aro-guide", "aro-howto"],
+      "how": "Run the anonymisation module in the Handbook."
+    },
+    {
+      "id": "r-supplementary",
+      "title": "Supplementary files uploaded separately",
+      "topic": "submission",
+      "status": "conditional",
+      "stages": [
+        "s07"
+      ],
+      "sources": [
+        "aro-guide",
+        "aro-howto"
+      ],
       "rule": "Upload supplementary materials as separate files.",
       "explain": "Extra tables of per-dialect results or tokenizer configurations can go here instead of using up the 12-table limit.",
-      "how": "Name files clearly, e.g. Supplementary_Table_S1.xlsx." },
-    { "id": "r-registration", "title": "Register an account", "topic": "authors", "status": "mandatory", "stages": ["s07"], "sources": ["aro-register", "aro-guide", "aro-authors-info"],
+      "how": "Name files clearly, e.g. Supplementary_Table_S1.xlsx."
+    },
+    {
+      "id": "r-registration",
+      "title": "Register an account",
+      "topic": "submission",
+      "status": "mandatory",
+      "stages": [
+        "s07"
+      ],
+      "sources": [
+        "aro-register",
+        "aro-guide",
+        "aro-authors-info"
+      ],
       "rule": "Create an account in the online system: given name, family name, affiliation, country, email, username and password, plus a privacy consent option.",
       "explain": "Use your official university email so it matches the checklist requirement.",
-      "how": "Register a few days before submitting to sort out any account problems." },
-    { "id": "r-metadata", "title": "Enter submission metadata", "topic": "authors", "status": "mandatory", "stages": ["s07"], "sources": ["aro-guide", "aro-howto"],
+      "how": "Register a few days before submitting to sort out any account problems."
+    },
+    {
+      "id": "r-metadata",
+      "title": "Enter submission metadata",
+      "topic": "submission",
+      "status": "mandatory",
+      "stages": [
+        "s07"
+      ],
+      "sources": [
+        "aro-guide",
+        "aro-howto"
+      ],
       "rule": "In the system, enter title, abstract, affiliations, ORCID, Google Scholar URL, discipline and keywords; corresponding author details; upload the manuscript and any supplementary files; review and confirm.",
       "explain": "The metadata becomes the published record. Copy it exactly from your final manuscript.",
-      "how": "Paste from the manuscript, not from memory." },
-    { "id": "r-compliance", "title": "Confirm compliance at submission", "topic": "ethics", "status": "mandatory", "stages": ["s07"], "sources": ["aro-howto", "aro-submissions"],
+      "how": "Paste from the manuscript, not from memory."
+    },
+    {
+      "id": "r-compliance",
+      "title": "Confirm compliance at submission",
+      "topic": "ethics",
+      "status": "mandatory",
+      "stages": [
+        "s07"
+      ],
+      "sources": [
+        "aro-howto",
+        "aro-submissions"
+      ],
       "rule": "Confirm that the research was conducted ethically, that the manuscript has not been published or submitted elsewhere, that permissions are in place, and that you meet each checklist item; non-compliant submissions may be returned.",
       "explain": "These are declarations you make, so make them true first.",
-      "how": "Work through the Readiness dashboard before you tick anything." },
-    { "id": "r-review-process", "title": "How ARO reviews a paper", "topic": "blind", "status": "informational", "stages": ["s08"], "sources": ["aro-review-process", "aro-review-policy", "aro-faq", "tpl-stage-one"],
+      "how": "Work through the Readiness dashboard before you tick anything."
+    },
+    {
+      "id": "r-review-process",
+      "title": "How ARO reviews a paper",
+      "topic": "blind",
+      "status": "informational",
+      "stages": [
+        "s08"
+      ],
+      "sources": [
+        "aro-review-process",
+        "aro-review-policy",
+        "aro-faq",
+        "tpl-stage-one"
+      ],
       "rule": "Papers are checked for completeness, scope and similarity (CrossCheck), then reviewed by at least two subject experts (at least one not suggested by the author). An Associate Editor recommends acceptance, revision or rejection, and the Editor-in-Chief decides. Rejected authors are notified promptly.",
       "explain": "The three outcomes named by ARO are acceptance, revision and rejection.",
-      "how": "See the review simulator." },
-    { "id": "r-no-changes", "title": "No changes while under review", "topic": "revisions", "status": "mandatory", "stages": ["s08"], "sources": ["aro-faq"],
+      "how": "See the review simulator."
+    },
+    {
+      "id": "r-no-changes",
+      "title": "No changes while under review",
+      "topic": "revisions",
+      "status": "mandatory",
+      "stages": [
+        "s08"
+      ],
+      "sources": [
+        "aro-faq"
+      ],
       "rule": "You cannot change the manuscript during review. If it is accepted with revisions, changes are made in consultation with the editor and reviewers.",
       "explain": "Submit the version you are prepared to defend.",
-      "how": "Keep a list of improvements to fold into the revision." },
-    { "id": "r-timelines", "title": "Expected timing", "topic": "journal", "status": "informational", "stages": ["s08"], "sources": ["aro-faq", "aro-example-2814"], "conflicts": ["c-review-time"],
+      "how": "Keep a list of improvements to fold into the revision."
+    },
+    {
+      "id": "r-timelines",
+      "title": "Expected timing",
+      "topic": "journal",
+      "status": "informational",
+      "stages": [
+        "s08"
+      ],
+      "sources": [
+        "aro-faq",
+        "aro-example-2814"
+      ],
+      "conflicts": [
+        "c-review-time"
+      ],
       "rule": "Initial review about 4–6 weeks; a decision typically 8–12 weeks after submission, depending on reviewers and revisions.",
       "explain": "Track status by logging in; the FAQ lists in review, under revision and accepted.",
-      "how": "Plan buffers around fixed deadlines." },
-    { "id": "r-production", "title": "Stage Two: production after acceptance", "topic": "revisions", "status": "informational", "stages": ["s09"], "sources": ["aro-guide", "aro-mes", "tpl-stage-one"],
+      "how": "Plan buffers around fixed deadlines."
+    },
+    {
+      "id": "r-production",
+      "title": "Stage Two: production after acceptance",
+      "topic": "revisions",
+      "status": "informational",
+      "stages": [
+        "s09"
+      ],
+      "sources": [
+        "aro-guide",
+        "aro-mes",
+        "tpl-stage-one"
+      ],
       "rule": "After acceptance, ARO's production team prepares the camera-ready paper. All accepted papers are edited and proofread by a contracted manuscript editing company, free of charge, before going online.",
       "explain": "The public pages do not describe an author proof step. Watch your email after acceptance and answer queries quickly.",
-      "how": "Reply to production queries within the time they give." },
-    { "id": "r-license", "title": "CC BY-NC-SA 4.0, you keep copyright", "topic": "journal", "status": "informational", "stages": ["s09", "s10"], "sources": ["aro-oa", "aro-submissions", "aro-guide", "doaj"],
+      "how": "Reply to production queries within the time they give."
+    },
+    {
+      "id": "r-license",
+      "title": "CC BY-NC-SA 4.0, you keep copyright",
+      "topic": "journal",
+      "status": "informational",
+      "stages": [
+        "s09",
+        "s10"
+      ],
+      "sources": [
+        "aro-oa",
+        "aro-submissions",
+        "aro-guide",
+        "doaj"
+      ],
       "rule": "Authors retain copyright and grant ARO first publication rights; articles are published under CC BY-NC-SA 4.0. Authors may make separate non-exclusive agreements (repositories, books) crediting ARO's first publication. Commercial use of the publisher PDF requires a licence fee.",
       "explain": "Your tokenizer code and models can carry their own licences; the article licence covers the paper.",
-      "how": "Cite ARO as the first publisher wherever you re-post the paper." },
-    { "id": "r-fees", "title": "No fees (diamond open access)", "topic": "journal", "status": "informational", "stages": ["s01"], "sources": ["aro-publishing", "aro-guide", "aro-oa", "aro-faq"],
+      "how": "Cite ARO as the first publisher wherever you re-post the paper."
+    },
+    {
+      "id": "r-fees",
+      "title": "No fees (diamond open access)",
+      "topic": "journal",
+      "status": "informational",
+      "stages": [
+        "s01"
+      ],
+      "sources": [
+        "aro-publishing",
+        "aro-guide",
+        "aro-oa",
+        "aro-faq"
+      ],
       "rule": "No article submission charge and no article processing charge. Published articles are free to read and download.",
       "explain": "Any message asking you to pay to publish in ARO is not from ARO.",
-      "how": "Only language editing before acceptance is a paid, optional service." },
-    { "id": "r-issues", "title": "Two issues a year, online ahead of print", "topic": "journal", "status": "informational", "stages": ["s09"], "sources": ["aro-publishing", "aro-editorial-policies"], "conflicts": ["c-issue-cutoff"],
+      "how": "Only language editing before acceptance is a paid, optional service."
+    },
+    {
+      "id": "r-issues",
+      "title": "Two issues a year, online ahead of print",
+      "topic": "journal",
+      "status": "informational",
+      "stages": [
+        "s09"
+      ],
+      "sources": [
+        "aro-publishing",
+        "aro-editorial-policies"
+      ],
+      "conflicts": [
+        "c-issue-cutoff"
+      ],
       "rule": "ARO publishes two issues a year, in print and online. Accepted papers go online ahead of print once review is finalised, then appear in the issue for their period.",
       "explain": "Your paper becomes citable when it is online, before the issue closes.",
-      "how": "Check the cut-off dates if a particular issue matters." },
-    { "id": "r-indexing", "title": "Indexing and identifiers", "topic": "journal", "status": "informational", "stages": ["s01"], "sources": ["aro-indexing", "aro-publishing", "aro-about", "doaj"], "conflicts": ["c-impact-factor"],
+      "how": "Check the cut-off dates if a particular issue matters."
+    },
+    {
+      "id": "r-indexing",
+      "title": "Indexing and identifiers",
+      "topic": "journal",
+      "status": "informational",
+      "stages": [
+        "s01"
+      ],
+      "sources": [
+        "aro-indexing",
+        "aro-publishing",
+        "aro-about",
+        "doaj"
+      ],
+      "conflicts": [
+        "c-impact-factor"
+      ],
       "rule": "Listed in Web of Science ESCI since 2016, DOAJ, Google Scholar and Crossref; Scopus acceptance reported February 2025. e-ISSN 2307-549X, p-ISSN 2410-9355, DOI prefix 10.14500.",
       "explain": "Metrics differ between ARO's own pages; check Clarivate if a number matters.",
-      "how": "No action." },
-    { "id": "r-self-archive", "title": "Sharing and self-archiving", "topic": "journal", "status": "informational", "stages": ["s10"], "sources": ["aro-oa", "aro-repository", "aro-archiving"],
+      "how": "No action."
+    },
+    {
+      "id": "r-self-archive",
+      "title": "Sharing and self-archiving",
+      "topic": "journal",
+      "status": "informational",
+      "stages": [
+        "s10"
+      ],
+      "sources": [
+        "aro-oa",
+        "aro-repository",
+        "aro-archiving"
+      ],
       "rule": "Authors are encouraged to deposit all versions (preprint, accepted manuscript, version of record) in institutional or subject repositories; the final publisher PDF may be posted on websites. ARO deposits issues in repositories and preserves content via LOCKSS, CLOCKSS and the PKP Preservation Network.",
       "explain": "You can share the published PDF on your profile pages and university repository.",
-      "how": "Link to the DOI wherever you post it." },
-    { "id": "r-how-to-cite", "title": "Every article has a 'How to cite'", "topic": "journal", "status": "informational", "stages": ["s10"], "sources": ["aro-faq", "aro-example-2814"],
+      "how": "Link to the DOI wherever you post it."
+    },
+    {
+      "id": "r-how-to-cite",
+      "title": "Every article has a 'How to cite'",
+      "topic": "journal",
+      "status": "informational",
+      "stages": [
+        "s10"
+      ],
+      "sources": [
+        "aro-faq",
+        "aro-example-2814"
+      ],
       "rule": "Each published article page includes a How to cite section and a DOI (format 10.14500/aro.NNNNN).",
       "explain": "Use it when you add the paper to ORCID, Google Scholar and your CV.",
-      "how": "Copy the DOI from the article page." },
-    { "id": "r-corrections", "title": "Corrections and retractions", "topic": "journal", "status": "informational", "stages": ["s10"], "sources": ["aro-editorial-policies"],
+      "how": "Copy the DOI from the article page."
+    },
+    {
+      "id": "r-corrections",
+      "title": "Corrections and retractions",
+      "topic": "journal",
+      "status": "informational",
+      "stages": [
+        "s10"
+      ],
+      "sources": [
+        "aro-editorial-policies"
+      ],
       "rule": "ARO investigates errors or misconduct in published articles and may issue corrections, clarifications or retractions.",
       "explain": "If you find an error after publication, contact the office promptly.",
-      "how": "Write to aro.journal@koyauniversity.org with the DOI and the correction." }
+      "how": "Write to aro.journal@koyauniversity.org with the DOI and the correction."
+    }
   ]
 }
