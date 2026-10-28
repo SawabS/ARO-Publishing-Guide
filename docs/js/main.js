@@ -17,7 +17,7 @@ const NAV = [
     { id: 'research', label: 'My Research', short: 'Paper', href: '#/research', icon: 'a-flask' },
     { id: 'resources', label: 'Resources', short: 'Files', href: '#/resources', icon: 'a-doc' },
     { id: 'readiness', label: 'Readiness', short: 'Ready', href: '#/readiness', icon: 'a-checklist' },
-    { id: 'directory', label: 'ARO Directory', short: 'ARO', href: '#/directory', icon: 'a-users' },
+    { id: 'directory', label: 'Directory', short: 'ARO', href: '#/directory', icon: 'a-users' },
 ];
 const ROUTES = {
     '': { view: renderJourney, nav: 'journey' },
@@ -85,7 +85,7 @@ function route() {
     keepCurrent = !!(out && out.keep);
     store.setRoute(location.hash || '#/');
     const title = main.querySelector('h1')?.textContent;
-    document.title = title ? `${title} · ARO Publication Navigator` : 'ARO Publication Navigator';
+    document.title = title ? `ARO Publication Navigator · ${title}` : 'ARO Publication Navigator';
     if (!query.get('focus') && !query.get('lesson'))
         window.scrollTo({ top: 0 });
 }
