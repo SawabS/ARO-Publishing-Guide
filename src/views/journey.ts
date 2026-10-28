@@ -64,6 +64,8 @@ export function renderJourney(root: HTMLElement) {
       progressBar(all.pct, 'Overall progress', 'progress--lg')),
     legend());
 
+  // A smooth winding path: horizontal offsets (px at full width) that sweep right, then left.
+  const WAVE = [0, 60, 110, 60, 0, -60, -110, -60];
   const pathCol = h('div.course-path.journey-path');
   let row = 0;
   LEVELS.forEach((lvl, li) => {
@@ -74,7 +76,7 @@ export function renderJourney(root: HTMLElement) {
     lvStages.forEach(s => {
       const p = stageProgress(s);
       const st = nodeState(s, cur);
-      const pos = ['center', 'start', 'center', 'end'][row++ % 4];
+      const wave = WAVE[row++ % WAVE.length];
       const popId = 'pop-' + s.id;
       const pop = h('div.popover-card.stage-pop', { id: popId, role: 'dialog', 'aria-label': stageLabel(s), hidden: true },
         h('div.stack', { style: '--stack-gap: 4px' },
@@ -97,11 +99,11 @@ export function renderJourney(root: HTMLElement) {
         st === 'current' ? h('span.start-bubble', null, p.done ? 'Next' : 'Start') : null,
         lessonNode({ state: st, hue: s.hue, segments: s.checklist.length, progress: p.done }),
         h('span.path__label', null, h('span', null, h('span.path__num', null, String(s.num).padStart(2, '0') + ' '), s.title)));
-      path.append(h(`div.path__row.path__row--${pos}`, null, h('div.node-wrap', null, btn, pop)));
+      path.append(h('div.path__row.path__row--wave', { style: `--wave:${wave}` }, h('div.node-wrap', null, btn, pop)));
     });
     // level milestone (star plate)
-    const pos = ['center', 'start', 'center', 'end'][row++ % 4];
-    path.append(h(`div.path__row.path__row--${pos}`, null,
+    const wave = WAVE[row++ % WAVE.length];
+    path.append(h('div.path__row.path__row--wave', { style: `--wave:${wave}` },
       h('a.path__item', { href: '#/readiness', 'aria-label': `Milestone: ${lvl.milestone}${lvDone ? ', reached' : ''}` },
         lessonNode({ state: lvDone ? 'done' : 'locked', hue: 'green', segments: 1, progress: lvDone ? 1 : 0, shape: 'review' }),
         h('span.path__label', null, h('span', null, 'Milestone: ', lvl.milestone)))));

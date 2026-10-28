@@ -30,6 +30,8 @@ export function renderJourney(root) {
     root.append(h('div.container.journey-dash', null, dashboardTiles()));
     const layout = h('div.course-layout.journey-layout');
     const card = h('aside.course-card.journey-card', null, h('div.journey-card__art', { html: window.B?.node({ shape: 'review', segments: 3, progress: Math.round(all.pct * 3) }) || '', 'aria-hidden': 'true' }), h('h2.course-card__title', null, 'From manuscript to DOI'), h('p.course-card__desc', null, 'Ten stages, each with lessons, ARO rules, documents, sources and a checklist. Revisit any stage at any time.'), h('div.course-card__meta', null, h('span', null, icon('i-layers', 16), `${D.stages.length} stages`), h('span', null, icon('a-checklist', 16), `${all.total} checks`), h('span', null, icon('i-book', 16), `${D.requirements.length} ARO rules`)), h('div.stack', { style: 'width:100%; --stack-gap: 8px' }, h('div.row', { style: 'justify-content: space-between' }, h('span.ts-heading-xs', null, 'Progress'), h('span.ts-body-sm.c-secondary', null, `${all.done} of ${all.total}`)), progressBar(all.pct, 'Overall progress', 'progress--lg')), legend());
+    // A smooth winding path: horizontal offsets (px at full width) that sweep right, then left.
+    const WAVE = [0, 60, 110, 60, 0, -60, -110, -60];
     const pathCol = h('div.course-path.journey-path');
     let row = 0;
     LEVELS.forEach((lvl, li) => {
@@ -40,7 +42,7 @@ export function renderJourney(root) {
         lvStages.forEach(s => {
             const p = stageProgress(s);
             const st = nodeState(s, cur);
-            const pos = ['center', 'start', 'center', 'end'][row++ % 4];
+            const wave = WAVE[row++ % WAVE.length];
             const popId = 'pop-' + s.id;
             const pop = h('div.popover-card.stage-pop', { id: popId, role: 'dialog', 'aria-label': stageLabel(s), hidden: true }, h('div.stack', { style: '--stack-gap: 4px' }, h('div.popover-card__title', null, s.title), h('div.popover-card__meta', null, `Stage ${String(s.num).padStart(2, '0')} · ${s.lessons.length} lessons · ${p.done}/${p.total} checks`)), h('p.ts-body-sm.c-secondary.pop-short', null, s.short), unmetPrereqs(s).length ? h('p.ts-body-sm.pop-warn', null, icon('i-alert', 14), ` Usually after ${unmetPrereqs(s).map(x => x.title).join(', ')}`) : null, h('a.btn3d.btn3d--blue.btn3d--block', { href: `#/stage/${s.id}` }, h('span.btn3d__face', null, p.done ? 'Resume' : 'Start')));
             const btn = h('button.path__item', {
@@ -56,11 +58,11 @@ export function renderJourney(root) {
                         sfx('open');
                 },
             }, st === 'current' ? h('span.start-bubble', null, p.done ? 'Next' : 'Start') : null, lessonNode({ state: st, hue: s.hue, segments: s.checklist.length, progress: p.done }), h('span.path__label', null, h('span', null, h('span.path__num', null, String(s.num).padStart(2, '0') + ' '), s.title)));
-            path.append(h(`div.path__row.path__row--${pos}`, null, h('div.node-wrap', null, btn, pop)));
+            path.append(h('div.path__row.path__row--wave', { style: `--wave:${wave}` }, h('div.node-wrap', null, btn, pop)));
         });
         // level milestone (star plate)
-        const pos = ['center', 'start', 'center', 'end'][row++ % 4];
-        path.append(h(`div.path__row.path__row--${pos}`, null, h('a.path__item', { href: '#/readiness', 'aria-label': `Milestone: ${lvl.milestone}${lvDone ? ', reached' : ''}` }, lessonNode({ state: lvDone ? 'done' : 'locked', hue: 'green', segments: 1, progress: lvDone ? 1 : 0, shape: 'review' }), h('span.path__label', null, h('span', null, 'Milestone: ', lvl.milestone)))));
+        const wave = WAVE[row++ % WAVE.length];
+        path.append(h('div.path__row.path__row--wave', { style: `--wave:${wave}` }, h('a.path__item', { href: '#/readiness', 'aria-label': `Milestone: ${lvl.milestone}${lvDone ? ', reached' : ''}` }, lessonNode({ state: lvDone ? 'done' : 'locked', hue: 'green', segments: 1, progress: lvDone ? 1 : 0, shape: 'review' }), h('span.path__label', null, h('span', null, 'Milestone: ', lvl.milestone)))));
         path.firstElementChild?.classList.add('path__row--level-start');
         pathCol.append(h('section.level', { 'aria-label': `Level ${li + 1}: ${lvl.title}` }, h('div.level__head', null, h(`button.level-header${lvDone ? '.level-header--done' : lvCurrent ? '.level-header--current' : ''}`, {
             onclick: () => path.querySelector('.path__item')?.focus(), 'aria-label': `Level ${li + 1}: ${lvl.title}`,

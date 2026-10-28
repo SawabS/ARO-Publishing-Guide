@@ -639,3 +639,25 @@ main p, main li, main dd, main td, main blockquote, main pre { overflow-wrap: br
   .main-nav { gap: 8px; }
   .brand__logo { height: 34px; padding: 0 9px; font-size: 18px; }
 }
+
+/* ── journey map: roomier columns and a clear zigzag path ─────────────── */
+@media (min-width: 992px) {
+  .journey-layout { display: grid; grid-template-columns: minmax(300px, 340px) minmax(420px, 460px); gap: var(--space-8) 72px; justify-content: center; align-items: start; padding-inline: var(--space-8); }
+  .journey-layout .journey-card { grid-column: 1; grid-row: 1; flex: none; min-width: 0; max-width: none; position: static; }
+  .journey-layout .journey-side { grid-column: 1; grid-row: 2; }
+  .journey-layout .journey-path { grid-column: 2; grid-row: 1 / span 2; width: 100%; }
+  .journey-path .level, .journey-path .path { max-width: 460px; }
+  .journey-path .path { gap: 44px; }
+}
+@media (min-width: 1320px) {
+  .journey-layout { grid-template-columns: 340px 460px 320px; gap: 0 64px; }
+  .journey-layout .journey-card { position: sticky; top: 90px; }
+  .journey-layout .journey-side { grid-column: 3; grid-row: 1; position: sticky; top: 90px; }
+  .journey-layout .journey-path { grid-row: 1; }
+}
+@media (max-width: 991px) { .journey-path .path { gap: 38px; } }
+.path__row--wave { --amp: 1; justify-content: center !important; }
+.path__row--wave .node-wrap { transform: translateX(calc(var(--wave) * var(--amp) * 1px)); }
+.path__row--wave .stage-pop { left: 50%; margin-left: calc(min(300px, 86vw) / -2 - var(--wave) * var(--amp) * 1px); }
+@media (max-width: 480px) { .path__row--wave { --amp: .4; } .path__row--wave .path__label { width: 100px; } }
+@media (max-width: 370px) { .path__row--wave { --amp: .28; } }
