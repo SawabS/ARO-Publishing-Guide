@@ -745,3 +745,8 @@ main p, main li, main dd, main td, main blockquote, main pre { overflow-wrap: br
 .lesson-node[data-state="current"] svg { animation: aroFloat 3.2s cubic-bezier(.45, 0, .55, 1) infinite; will-change: transform; }
 .start-bubble { animation: aroBubble 3.2s cubic-bezier(.45, 0, .55, 1) infinite; animation-delay: -.25s; will-change: transform; backface-visibility: hidden; }
 @media (prefers-reduced-motion: reduce) { .lesson-node[data-state="current"] svg, .start-bubble { animation: none; } }
+
+/* An open stage popover must sit above every later node: each node wrap is its own stacking context, so lift the wrap and row that hold it. */
+.path__row:has(.stage-pop:not([hidden])) { position: relative; z-index: 30; }
+.node-wrap:has(.stage-pop:not([hidden])) { position: relative; z-index: 30; }
+.lesson-node[data-state="current"] svg, .start-bubble { will-change: auto; }
