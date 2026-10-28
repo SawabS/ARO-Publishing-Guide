@@ -215,7 +215,8 @@ export function renderExplore(root, _p, query) {
             const tt = svg('title');
             tt.textContent = p.n.label;
             g.appendChild(tt);
-            g.addEventListener('click', ev => { ev.stopPropagation(); select(p.n.id, false); });
+            g.addEventListener('click', ev => { ev.stopPropagation(); if (ev.pointerType && ev.pointerType !== 'mouse')
+                return; select(p.n.id, false); });
             g.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') {
                 ev.preventDefault();
                 select(p.n.id, false);
@@ -229,16 +230,62 @@ export function renderExplore(root, _p, query) {
         stageEl.append(svgRoot, controls, legendEl);
         // pan & zoom
         let drag = null;
-        svgRoot.addEventListener('pointerdown', e => { if (e.target.closest('.gnode'))
-            return; drag = { x: e.clientX, y: e.clientY, vx: ui.view.x, vy: ui.view.y }; svgRoot.setPointerCapture(e.pointerId); svgRoot.classList.add('is-panning'); });
-        svgRoot.addEventListener('pointermove', e => { if (!drag)
-            return; ui.view.x = drag.vx + e.clientX - drag.x; ui.view.y = drag.vy + e.clientY - drag.y; applyView(); });
-        svgRoot.addEventListener('pointerup', e => { if (drag && Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) < 4 && !e.target.closest('.gnode')) {
-            ui.selected = '';
-            ui.highlight = null;
-            restyle();
-            showPanel();
-        } drag = null; svgRoot.classList.remove('is-panning'); });
+        // one pointer pans, two pointers pinch-zoom (touch screens); a tap on empty space clears the selection
+        const pts = new Map();
+        let pinch = null;
+        const dist = () => { const [a, b] = [...pts.values()]; return Math.hypot(a.x - b.x, a.y - b.y); };
+        svgRoot.addEventListener('pointerdown', e => {
+            if (e.target.closest('.gnode') && e.pointerType === 'mouse')
+                return;
+            pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+            try {
+                svgRoot.setPointerCapture(e.pointerId);
+            }
+            catch { /* synthetic or already-released pointer */ }
+            if (pts.size === 2) {
+                pinch = { d: dist(), k: ui.view.k };
+                drag = null;
+            }
+            else if (pts.size === 1) {
+                drag = { x: e.clientX, y: e.clientY, vx: ui.view.x, vy: ui.view.y };
+                svgRoot.classList.add('is-panning');
+            }
+        });
+        svgRoot.addEventListener('pointermove', e => {
+            if (!pts.has(e.pointerId))
+                return;
+            pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+            if (pinch && pts.size === 2) {
+                const r = svgRoot.getBoundingClientRect(), [a, b] = [...pts.values()];
+                zoom((pinch.k * dist() / pinch.d) / ui.view.k, (a.x + b.x) / 2 - r.left, (a.y + b.y) / 2 - r.top);
+            }
+            else if (drag) {
+                ui.view.x = drag.vx + e.clientX - drag.x;
+                ui.view.y = drag.vy + e.clientY - drag.y;
+                applyView();
+            }
+        });
+        const end = (e) => {
+            const tapped = drag && !pinch && Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) < 6;
+            const g = document.elementFromPoint(e.clientX, e.clientY)?.closest('.gnode');
+            if (tapped && g && e.pointerType !== 'mouse')
+                select(g.dataset.id, false);
+            else if (tapped && !g) {
+                ui.selected = '';
+                ui.highlight = null;
+                restyle();
+                showPanel();
+            }
+            pts.delete(e.pointerId);
+            if (pts.size < 2)
+                pinch = null;
+            if (!pts.size) {
+                drag = null;
+                svgRoot.classList.remove('is-panning');
+            }
+        };
+        svgRoot.addEventListener('pointerup', end);
+        svgRoot.addEventListener('pointercancel', end);
         svgRoot.addEventListener('wheel', e => { e.preventDefault(); const r = svgRoot.getBoundingClientRect(); zoom(e.deltaY < 0 ? 1.1 : 0.9, e.clientX - r.left, e.clientY - r.top); }, { passive: false });
         svgRoot.addEventListener('keydown', e => {
             if (e.target !== svgRoot)
@@ -291,6 +338,7 @@ export function renderExplore(root, _p, query) {
     }
     function showPanel() {
         clear(panel);
+        panel.classList.toggle('has-sel', !!ui.selected);
         if (!ui.selected) {
             panel.append(h('div.stack', null, h('div.eyebrow', null, 'Node details'), h('p.ts-body-sm.c-secondary', null, 'Select any node. Its neighbours light up; the panel lists every relationship, with links to the full explanation and the official source.'), h('div.callout.callout--oat', null, h('div.callout__title', null, icon('a-route', 18), 'Try a path'), h('p.ts-body-sm', null, 'Select “Double-blind peer review” or “Figure resolution and captions”, then choose “Path from Stage 01”.'))));
             return;
@@ -324,7 +372,7 @@ export function renderExplore(root, _p, query) {
         history.replaceState(null, '', `#/explore?focus=${id}`);
         sfx('select');
         if (matchMedia('(max-width: 991px)').matches)
-            panel.scrollIntoView({ block: 'nearest', behavior: reducedMotion() ? 'auto' : 'smooth' });
+            panel.scrollTop = 0; // on phones the panel is a bottom sheet
     }
     function rerender() {
         clear(root);

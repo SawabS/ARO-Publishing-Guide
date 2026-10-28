@@ -12,9 +12,9 @@ import { renderReadiness } from './views/readiness.js';
 import { renderDirectory } from './views/directory.js';
 const NAV = [
     { id: 'journey', label: 'Journey', short: 'Journey', href: '#/', icon: 'a-map' },
-    { id: 'explore', label: 'Explore', short: 'Explore', href: '#/explore', icon: 'a-graph' },
-    { id: 'handbook', label: 'Handbook', short: 'Handbook', href: '#/handbook', icon: 'i-book' },
-    { id: 'research', label: 'My Research', short: 'Research', href: '#/research', icon: 'a-flask' },
+    { id: 'explore', label: 'Explore', short: 'Graph', href: '#/explore', icon: 'a-graph' },
+    { id: 'handbook', label: 'Handbook', short: 'Rules', href: '#/handbook', icon: 'i-book' },
+    { id: 'research', label: 'My Research', short: 'Paper', href: '#/research', icon: 'a-flask' },
     { id: 'resources', label: 'Resources', short: 'Files', href: '#/resources', icon: 'a-doc' },
     { id: 'readiness', label: 'Readiness', short: 'Ready', href: '#/readiness', icon: 'a-checklist' },
     { id: 'directory', label: 'ARO Directory', short: 'ARO', href: '#/directory', icon: 'a-users' },
@@ -38,7 +38,7 @@ let keepCurrent = false;
 function shell() {
     clear(app);
     const themeBtn = h('button.icon-btn', { 'aria-label': 'Switch light or dark theme', onclick: toggleTheme }, icon('i-moon', 22));
-    const bar = h('header.app-bar', null, h('div.app-bar__inner', null, h('a.app-bar__brand.brand', { href: '#/', 'aria-label': 'ARO Publication Navigator, home' }, h('span.brand__mark', { 'aria-hidden': 'true', html: window.B?.node({ shape: 'lesson', segments: 2, progress: 1 }) || '' }), h('span.brand__text', null, h('b', null, 'ARO'), ' Publication Navigator')), h('nav.app-bar__nav.main-nav', { 'aria-label': 'Primary' }, NAV.map(n => h('a', { href: n.href, 'data-nav': n.id }, icon(n.icon, 16), h('span', null, n.label)))), h('div.app-bar__actions', null, h('button.icon-btn', { 'aria-label': 'Search (press /)', onclick: openSearch, 'data-search-btn': '' }, icon('a-search', 22)), themeBtn)));
+    const bar = h('header.app-bar', null, h('div.app-bar__inner', null, h('a.app-bar__brand.brand', { href: '#/', 'aria-label': 'ARO Publication Navigator, home' }, h('span.brand__mark', { 'aria-hidden': 'true', html: window.B?.node({ shape: 'lesson', segments: 2, progress: 1 }) || '' }), h('span.brand__text', null, h('b', null, 'ARO'), ' ', h('span.brand__pub', null, 'Publication '), 'Navigator')), h('nav.app-bar__nav.main-nav', { 'aria-label': 'Primary' }, NAV.map(n => h('a', { href: n.href, 'data-nav': n.id }, icon(n.icon, 16), h('span', null, n.label)))), h('div.app-bar__actions', null, h('button.icon-btn', { 'aria-label': 'Search (press /)', onclick: openSearch, 'data-search-btn': '' }, icon('a-search', 22)), themeBtn, h('a.gh-link', { href: 'https://github.com/SawabS', target: '_blank', rel: 'noopener noreferrer', 'aria-label': 'SawabS on GitHub (opens in a new tab)', title: 'github.com/SawabS' }, icon('a-github', 20), h('span.gh-link__name', { 'aria-hidden': 'true' }, 'SawabS')))));
     main = h('main#main', { tabindex: '-1' });
     const tabbar = h('nav.tabbar', { 'aria-label': 'Primary (mobile)' }, NAV.map(n => h('a', { href: n.href, 'data-nav': n.id }, icon(n.icon, 20), h('span', null, n.short))));
     const footer = h('footer.site-footer.app-footer', null, h('div.app-footer__inner', null, h('p', null, 'ARO Publication Navigator is an independent study aid, not an ARO or Koya University service. Official rules live at ', h('a', { href: 'https://aro.koyauniversity.org/', target: '_blank', rel: 'noopener' }, 'aro.koyauniversity.org'), '. Progress is stored only in this browser.'), h('p', null, h('a', { href: '#/sources' }, 'Source registry'), ' · ', h('a', { href: '#/questions' }, 'Open questions'), ' · ', h('button.link-btn', { onclick: startTour }, 'Guided tour'), ' · ', h('button.link-btn', { onclick: resetProgress }, 'Reset progress'))));
@@ -196,6 +196,16 @@ document.addEventListener('keydown', e => {
     }
 });
 window.addEventListener('hashchange', route);
+// Tables become stacked cards on phones: each cell gets its column name for CSS to show.
+function labelTables(root) {
+    root.querySelectorAll('table.table:not([data-labelled])').forEach(t => {
+        const heads = [...t.querySelectorAll('thead th')].map(th => th.textContent || '');
+        t.querySelectorAll('tbody tr').forEach(tr => [...tr.children].forEach((td, i) => td.setAttribute('data-label', heads[i] || '')));
+        t.classList.add('table--stack');
+        t.dataset.labelled = '';
+    });
+}
+new MutationObserver(() => labelTables(document)).observe(document.body, { childList: true, subtree: true });
 function boot() { shell(); route(); }
 if (window.B)
     boot();

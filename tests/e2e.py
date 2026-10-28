@@ -1,6 +1,7 @@
 """End-to-end tests for ARO Publication Navigator (Python Playwright; no npm packages needed).
 
-    python3 tests/e2e.py http://localhost:4173
+    python3 tests/e2e.py http://localhost:4173                 # desktop (1280×860)
+    python3 tests/e2e.py http://localhost:4173 "iPhone 13"     # any Playwright device: touch, mobile viewport
 
 Covers every route, progress persistence and cross-view sync, search, the knowledge graph (select, path,
 list mode), handbook modules, the .docx checker (with generated good and bad manuscripts), exports,
@@ -9,6 +10,7 @@ import sys, tempfile, pathlib, traceback
 from playwright.sync_api import sync_playwright, expect
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else 'http://localhost:4173').rstrip('/')
+DEVICE = sys.argv[2] if len(sys.argv) > 2 else ''
 results: list[tuple[str, bool, str]] = []
 IGNORED = ('ERR_TUNNEL_CONNECTION_FAILED', 'fonts.googleapis', 'ERR_NAME_NOT_RESOLVED', 'ERR_INTERNET_DISCONNECTED')
 
@@ -157,7 +159,7 @@ def _(page):
 
 @test('graph: select node, shortest path, dependency highlight, list mode')
 def _(page):
-    page.set_viewport_size({'width': 1440, 'height': 900})
+    if not DEVICE: page.set_viewport_size({'width': 1440, 'height': 900})
     go(page, '#/explore?focus=r-double-blind')
     page.locator('[role=tab]', has_text='Graph').click()
     expect(page.locator('.explore-panel h2')).to_have_text('Double-blind peer review')
@@ -175,8 +177,9 @@ def _(page):
 
 @test('graph relations are logically typed')
 def _(page):
-    go(page, '#/explore?focus=res-stage-one')
+    go(page, '#/explore')
     page.locator('[role=tab]', has_text='List').click()
+    go(page, '#/explore?focus=res-stage-one')
     expect(page.locator('.explore-panel')).to_contain_text('downloaded from')
     go(page, '#/explore?focus=c-anonymization')
     expect(page.locator('.explore-panel')).to_contain_text('conflicts with')
@@ -348,6 +351,18 @@ def _(page):
     expect(page.locator('.explore-panel h2')).to_contain_text('Structure your paper')
 
 
+@test('GitHub link: logo and username in the top bar, opens github.com/SawabS')
+def _(page):
+    go(page, '#/')
+    a = page.locator('.app-bar a.gh-link')
+    expect(a).to_be_visible()
+    assert a.get_attribute('href') == 'https://github.com/SawabS' and a.get_attribute('target') == '_blank'
+    expect(a.locator('svg use')).to_have_attribute('href', '#a-github')
+    name = a.locator('.gh-link__name')
+    if DEVICE: expect(name).to_be_hidden(); bb = a.bounding_box(); assert bb['width'] >= 40 and bb['height'] >= 40, bb
+    else: expect(name).to_have_text('SawabS')
+
+
 @test('theme toggle switches and persists')
 def _(page):
     go(page, '#/')
@@ -364,6 +379,96 @@ def _(page):
     page.get_by_role('button', name='Reset progress').click()
     page.wait_for_timeout(200)
     expect(page.locator('.dash-tile--green .kpi__value')).to_have_text('0')
+
+
+def phone_tests(page):
+    """Touch-specific checks, run only with a device argument."""
+    def t(name, fn):
+        try: fn(); results.append((name, True, ''))
+        except Exception as e: results.append((name, False, f'{type(e).__name__}: ' + ' | '.join(l.strip() for l in str(e).splitlines() if l.strip())[:700]))  # noqa: E701
+
+    def tabbar():
+        go(page, '#/')
+        expect(page.locator('.tabbar')).to_be_visible()
+        expect(page.locator('.main-nav')).to_be_hidden()
+        for label, url in [('Graph', '#/explore'), ('Rules', '#/handbook'), ('Paper', '#/research'), ('Files', '#/resources'), ('Ready', '#/readiness'), ('ARO', '#/directory'), ('Journey', '#/')]:
+            page.locator('.tabbar a', has_text=label).tap()
+            page.wait_for_url('**/' + url)
+            expect(page.locator(f'.tabbar a[href="{url}"]')).to_have_attribute('aria-current', '')
+        # the fixed bar never hides the end of the page
+        go(page, '#/stage/s01')
+        page.evaluate('window.scrollTo(0, document.body.scrollHeight)'); page.wait_for_timeout(200)
+        bar = page.locator('.tabbar').bounding_box(); foot = page.locator('.app-footer').bounding_box()
+        assert foot['y'] + foot['height'] <= bar['y'] + 1, (foot, bar)
+    t('phone: bottom tab bar navigates every area and never covers content', tabbar)
+
+    def graph_touch():
+        go(page, '#/explore')
+        expect(page.locator('.graph-list')).to_be_visible()          # list view by default on phones
+        expect(page.locator('.explore-panel')).to_be_hidden()        # no empty panel taking space
+        page.locator('.graph-list__node', has_text='01 Understand ARO').tap()
+        sheet = page.locator('.explore-panel.has-sel')
+        expect(sheet).to_be_visible()
+        box = sheet.bounding_box(); vh = page.viewport_size['height']
+        assert box['y'] > vh * 0.2 and box['y'] + box['height'] <= vh + 1, box   # a bottom sheet, fully on screen
+        y = page.evaluate('window.scrollY')
+        sheet.get_by_role('button', name='Clear selection').tap()
+        expect(page.locator('.explore-panel')).to_be_hidden()
+        assert abs(page.evaluate('window.scrollY') - y) < 5               # selecting did not throw the page around
+        page.locator('[role=tab]', has_text='Graph').tap()
+        expect(page.locator('svg.graph-svg')).to_be_visible()
+        node = page.locator('g.gnode[data-id="s01"]')
+        node.tap()
+        expect(page.locator('.explore-panel h2')).to_contain_text('Understand ARO')
+        page.locator('.explore-panel').get_by_role('button', name='Clear selection').tap()
+        expect(page.locator('.explore-panel')).to_be_hidden()
+        k0 = page.evaluate("+document.querySelector('.graph-world').getAttribute('transform').match(/scale\\(([\\d.]+)/)[1]")
+        page.locator('svg.graph-svg').scroll_into_view_if_needed()
+        page.evaluate("document.querySelector('svg.graph-svg').scrollIntoView({block: 'center'})"); page.wait_for_timeout(200)
+        box = page.locator('svg.graph-svg').bounding_box()
+        cx, cy = box['x'] + box['width'] / 2, box['y'] + box['height'] / 2
+        cdp = page.context.new_cdp_session(page)
+        def touch(kind, d):
+            pts = [] if kind == 'touchEnd' else [{'x': cx - d, 'y': cy, 'id': 1}, {'x': cx + d, 'y': cy, 'id': 2}]
+            cdp.send('Input.dispatchTouchEvent', {'type': kind, 'touchPoints': pts})
+        touch('touchStart', 30)
+        for d in range(40, 130, 10): touch('touchMove', d)
+        touch('touchEnd', 0)
+        page.wait_for_timeout(100)
+        k1 = page.evaluate("+document.querySelector('.graph-world').getAttribute('transform').match(/scale\\(([\\d.]+)/)[1]")
+        assert k1 > k0 * 2, (k0, k1)                                       # pinch-out zoomed in
+    t('phone: graph list view, bottom-sheet details, tap on nodes, pinch zoom', graph_touch)
+
+    def targets():
+        small = []
+        for r in ['#/', '#/stage/s04', '#/explore', '#/handbook/references', '#/handbook/length', '#/resources', '#/readiness', '#/directory']:
+            go(page, r)
+            small += page.evaluate(f"""() => [...document.querySelectorAll('main button, main select, main input:not([type=checkbox]):not([type=file]):not(.visually-hidden), main .btn, main .btn3d, main .chip, .tabbar a, .app-bar button')]
+              .filter(e => {{ const b = e.getBoundingClientRect(); return b.width > 0 && b.height > 0 && (b.height < 36 || b.width < 36) && !e.closest('details:not([open]) > :not(summary)') && !e.classList.contains('link-btn'); }})
+              .map(e => '{r} ' + (e.getAttribute('aria-label') || e.textContent.trim().slice(0, 30)) + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height))""")
+        assert not small, small[:8]
+    t('phone: every button, field and tab is at least 36 px in both directions', targets)
+
+    def readable():
+        go(page, '#/handbook/references')
+        size = page.evaluate("parseFloat(getComputedStyle(document.querySelector('.req-rule')).fontSize)")
+        assert size >= 15, size
+        small = page.evaluate("""() => [...document.querySelectorAll('main p, main li, main td, main dd, main label')].filter(e => e.offsetParent && e.textContent.trim() && parseFloat(getComputedStyle(e).fontSize) < 12).length""")
+        assert small == 0, small
+    t('phone: body text is 12 px or larger', readable)
+
+    def forms():
+        go(page, '#/stage/s01')
+        page.locator('label[for="chk-k-read-example"]').tap()
+        expect(page.locator('#chk-k-read-example')).to_be_checked()
+        go(page, '#/handbook/length')
+        page.locator('input[aria-label="Figures (number)"]').fill('20')
+        expect(page.locator('#module')).to_contain_text('overlong')
+        go(page, '#/handbook/references')
+        page.locator('.jump-module').tap()
+        page.wait_for_timeout(300)
+        assert page.locator('#module').bounding_box()['y'] < page.viewport_size['height']
+    t('phone: tapping labels, typing in fields and the jump link all work', forms)
 
 
 def mobile_and_motion(browser):
@@ -387,7 +492,11 @@ def mobile_and_motion(browser):
 
 with sync_playwright() as p:
     browser = p.chromium.launch()
-    ctx = browser.new_context(viewport={'width': 1280, 'height': 860}, accept_downloads=True)
+    if DEVICE:
+        dev = dict(p.devices[DEVICE]); dev.pop('default_browser_type', None)
+        ctx = browser.new_context(**dev, accept_downloads=True)
+    else:
+        ctx = browser.new_context(viewport={'width': 1280, 'height': 860}, accept_downloads=True)
     page = ctx.new_page()
     errors: list[str] = []
     page.on('pageerror', lambda e: errors.append(str(e)))
@@ -396,6 +505,9 @@ with sync_playwright() as p:
     for t in TESTS:
         t(page)
     results.append(('no JavaScript errors in the console', not errors, '; '.join(errors[:3])))
+    if DEVICE:
+        go(page, '#/'); page.evaluate('localStorage.clear()'); page.reload()
+        phone_tests(page)
     mobile_and_motion(browser)
     browser.close()
 
@@ -403,5 +515,5 @@ w = max(len(n) for n, _, _ in results)
 for n, ok, msg in results:
     print(f"{'PASS' if ok else 'FAIL'}  {n.ljust(w)}  {msg}")
 failed = sum(not ok for _, ok, _ in results)
-print(f'\n{len(results) - failed}/{len(results)} passed')
+print(f'\n{len(results) - failed}/{len(results)} passed' + (f' on {DEVICE}' if DEVICE else ' on desktop'))
 sys.exit(1 if failed else 0)

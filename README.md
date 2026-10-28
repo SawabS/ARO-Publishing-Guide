@@ -48,11 +48,15 @@ Progress is stored in the browser's localStorage only; manuscripts checked on th
 ```bash
 pip install playwright python-docx && python -m playwright install chromium
 npm run serve &                     # in another terminal
-npm run test:e2e                    # 28 end-to-end checks
+npm run test:e2e                    # 29 end-to-end checks on a desktop viewport
+python3 tests/e2e.py http://localhost:4173 "iPhone 13"   # same suite + 5 touch checks on any Playwright device
+python3 tests/mobile_audit.py http://localhost:4173 qa/phone "Pixel 7" dark   # phone screenshots of every route
 npm run screenshots                 # light/dark × desktop/mobile into qa/screenshots, plus overflow and console checks
 npm run validate:data               # data integrity only
 npm run check:links                 # re-check every source URL → link-report.json
 ```
+
+Verified on desktop (1280px), iPhone SE, iPhone 13, Pixel 7, Galaxy S9+ and iPad Mini emulation: 34/34 on every phone and tablet. Phones get a bottom tab bar, a bottom-sheet for graph details, two-finger pinch zoom on the graph, stacked tables, swipeable filter rows and touch-sized controls; the top bar links to the author's GitHub (logo + username on wide screens, icon on phones).
 
 The end-to-end suite covers every route, progress persistence and cross-view sync, blocking and unblocking, search, graph selection/paths/list view, every interactive module, the .docx checker against generated compliant and non-compliant manuscripts (plus a corrupt file), exports, directory search and the mailto draft, the guided tour, keyboard use, theme persistence, reset, and a 320px dark reduced-motion pass with no horizontal overflow.
 
