@@ -8,7 +8,7 @@
     "build": "node scripts/build.mjs",
     "validate:data": "node scripts/validate-data.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "serve": "cd dist && python3 -m http.server 4173",
+    "serve": "python3 -m http.server 4173",
     "test:e2e": "python3 tests/e2e.py http://localhost:4173",
     "screenshots": "python3 tests/shoot.py http://localhost:4173 qa/screenshots"
   }

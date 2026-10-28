@@ -37,8 +37,8 @@ Requirements: Node.js 18+ and TypeScript (`npm i -g typescript`). There are **no
 ```bash
 git clone https://github.com/SawabS/ARO-Publishing-Guide.git
 cd ARO-Publishing-Guide
-npm run build          # validate data → src/generated/data.ts → tsc → dist/
-npm run serve          # http://localhost:4173  (any static server works)
+npm run build          # validate data → src/generated/data.ts → tsc → docs/ + root index.html
+npm run serve          # http://localhost:4173  (serves the repo root, like GitHub Pages)
 ```
 
 Progress is stored in the browser's localStorage only; manuscripts checked on the Readiness page are read in the browser and never uploaded.
@@ -58,7 +58,14 @@ The end-to-end suite covers every route, progress persistence and cross-view syn
 
 ## Deploy
 
-`.github/workflows/pages.yml` builds, runs the end-to-end tests and deploys `dist/` to GitHub Pages on every push to `main`, and runs the link checker as a non-blocking job. One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Any static host works too: upload `dist/`.
+**Live site: https://sawabs.github.io/ARO-Publishing-Guide/**
+
+GitHub Pages publishes straight from the `main` branch (Settings → Pages → *Deploy from a branch*). The built site is committed in `docs/`, and the generated root `index.html` loads it, so both Pages folder options work:
+
+- `main` / `(root)` (current setting): served at the repository URL.
+- `main` / `docs`: also works, with no other change.
+
+After changing anything in `src/` or `data/`, run `npm run build` and commit `docs/` and `index.html` together with your source change. `.github/workflows/ci.yml` rebuilds on every push, warns if the committed build is stale, runs the end-to-end tests against a Pages-style subpath and checks the source links. Any other static host works too: upload the repository root or just `docs/`.
 
 ## Project structure
 
@@ -74,6 +81,8 @@ data/                 structured content: the single source of truth
   graph.json          extra graph nodes (processes, artifacts) and edges
   handbook.json       handbook chapters and their interactive modules
 scripts/              build, data validation, link checker
+docs/                 the built site (committed; served by GitHub Pages)
+index.html            generated entry page that loads docs/
 src/
   main.ts             app shell, hash router, search, tour, theme
   lib/                model (indexes, progress, graph algorithms), store, DOM helpers, UI parts, quiz, .docx reader

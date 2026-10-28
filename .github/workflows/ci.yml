@@ -1,0 +1,52 @@
+name: Build and test
+
+# GitHub Pages publishes this repository from the main branch: the committed docs/ folder holds the
+# built site and the root index.html loads it. This workflow rebuilds from source, warns if the committed
+# build is stale, runs the end-to-end tests against a Pages-style subpath, and checks source links.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install TypeScript
+        run: npm install -g typescript@5
+      - name: Validate data and build
+        run: node scripts/build.mjs
+      - name: Check the committed build is current
+        run: |
+          if ! git diff --quiet -- docs/sources.json docs/index.html index.html; then
+            echo "::warning::The committed site differs from a fresh build. Run 'npm run build' and commit docs/ and index.html."
+            git diff --stat -- docs index.html
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: End-to-end tests (served like GitHub Pages)
+        run: |
+          pip install playwright python-docx
+          python -m playwright install --with-deps chromium
+          mkdir -p /tmp/pages && ln -s "$GITHUB_WORKSPACE" /tmp/pages/ARO-Publishing-Guide
+          (cd /tmp/pages && python3 -m http.server 4173 &) && sleep 1
+          python3 tests/e2e.py http://localhost:4173/ARO-Publishing-Guide
+
+  links:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-links.mjs

@@ -9,7 +9,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "rootDir": "src",
-    "outDir": "dist/js",
+    "outDir": "docs/js",
     "skipLibCheck": true
   },
   "include": ["src/**/*.ts"]

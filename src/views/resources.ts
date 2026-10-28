@@ -85,7 +85,7 @@ export function renderSources(root: HTMLElement, _p: string[], query: URLSearchP
         h('td', null, statusLabel[s.check]),
         h('td', null, fmtDate(s.verified)),
         h('td.num', null, String(used.get(s.id) || 0))))))),
-    h('p.ts-body-sm.c-secondary', null, `${[...reqs.values()].length} requirements cite these sources. The registry is also published as `, h('a', { href: 'sources.json' }, 'sources.json'), '.'),
+    h('p.ts-body-sm.c-secondary', null, `${[...reqs.values()].length} requirements cite these sources. The registry is also published as `, h('a', { href: new URL('../../sources.json', import.meta.url).href }, 'sources.json'), '.'),
     verifiedNote()));
   if (focus) requestAnimationFrame(() => document.getElementById('src-' + focus)?.scrollIntoView({ block: 'center' }));
 }

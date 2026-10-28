@@ -280,5 +280,5 @@ The site's email draft (ARO Directory → Ask the editorial office) contains exa
 
 ## Maintenance
 
-- `npm run check:links` (or `node scripts/check-links.mjs`) re-checks every URL and writes `link-report.json`; it exits non-zero if an official ARO page fails. The GitHub workflow runs it on every push without blocking deployment.
+- `npm run check:links` (or `node scripts/check-links.mjs`) re-checks every URL and writes `link-report.json`; it exits non-zero if an official ARO page fails. The CI workflow runs it on every push as a non-blocking job.
 - When ARO changes a rule: edit `data/requirements.json` (and `conflicts.json` if relevant), update `verified` in `data/sources.json` and `verifiedDate`, then rebuild. The build refuses data that breaks references.
